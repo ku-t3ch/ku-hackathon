@@ -24,7 +24,7 @@ const HomeSection: NextPage<Props> = () => {
                         <div className="bg-black w-full h-full"></div>
                     </div>
                     <div className="text-base md:text-xl text-gray-300">
-                        กระเทาะปัญหาเพื่อนิสิตโดยนิสิต
+                        กระเทาะแอปนิสิต โดยนิสิต เพื่อนิสิต
                     </div>
                 </div>
                 <ChevronDown
