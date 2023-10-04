@@ -18,6 +18,11 @@ const timelineItems: TimelineItem[] = [
         end: new Date("2023-11-03 23:59"),
     },
     {
+        children: "เปิดรับ PROPOSAL",
+        start: new Date("2023-10-09 23:59"),
+        end: new Date("2023-11-10 23:59"),
+    },
+    {
         children: "ประกาศผลผู้เข้ารอบ",
         start: new Date("2023-11-13 23:59"),
         end: new Date("2023-11-13 23:59"),
