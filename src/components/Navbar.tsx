@@ -43,7 +43,7 @@ const Navbar: NextPage<Props> = () => {
     }, []);
 
     return (
-        <div className="fixed w-full">
+        <div className="fixed w-full z-10">
             <NavbarComponent
                 onMenuOpenChange={setIsMenuOpen}
                 isMenuOpen={isMenuOpen}

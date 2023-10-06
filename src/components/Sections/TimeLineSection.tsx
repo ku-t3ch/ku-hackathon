@@ -13,17 +13,20 @@ interface TimelineItem {
 
 const timelineItems: TimelineItem[] = [
     {
-        children: "เปิดโพลรับปัญหาของเด็กในมหาลัย",
+        // children: "เปิดโพลรับปัญหาของเด็กในมหาลัย",
+        children: "PROBLEM SUBMISSION",
         start: new Date("2023-10-02 23:59"),
         end: new Date("2023-11-03 23:59"),
     },
     {
-        children: "เปิดรับ PROPOSAL",
+        // children: "เปิดรับ PROPOSAL",
+        children: "PROPOSAL SUBMISSION",
         start: new Date("2023-10-09 23:59"),
         end: new Date("2023-11-10 23:59"),
     },
     {
-        children: "ประกาศผลผู้เข้ารอบ",
+        // children: "ประกาศผลผู้เข้ารอบ",
+        children: "PARTICIPANT ANNOUNCEMENT",
         start: new Date("2023-11-13 23:59"),
         end: new Date("2023-11-13 23:59"),
     },
@@ -33,7 +36,8 @@ const timelineItems: TimelineItem[] = [
         end: new Date("2023-11-15 23:59"),
     },
     {
-        children: "คลาสสอน UX UI",
+        // children: "คลาสสอน UX UI",
+        children: "LEARNING SESSION",
         start: new Date("2023-11-17 23:59"),
         end: new Date("2023-11-17 23:59"),
     },
@@ -54,9 +58,9 @@ const TimeLineSection: NextPage<Props> = () => {
         <>
             <Element
                 name="time-line"
-                className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex  flex-col"
+                className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col items-center"
             >
-                <div className="text-4xl">ไทม์ไลน์</div>
+                <div className="text-4xl font-bold">TIMELINE</div>
                 <div>
                     <Timeline
                         className="mt-10"

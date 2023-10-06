@@ -9,7 +9,7 @@ const JoinSection: NextPage<Props> = () => {
         <>
             <Element
                 name="join"
-                className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] min-h-screen flex  flex-col"
+                className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] min-h-screen flex  items-center flex-col"
             >
                 <div className="text-4xl">สมัครเข้าร่วม</div>
             </Element>
