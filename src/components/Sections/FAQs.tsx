@@ -44,7 +44,6 @@ const FAQs: NextPage<Props> = () => {
                 <Collapse
                     className="w-full"
                     ghost
-                    defaultActiveKey={["1"]}
                     expandIcon={({ isActive }) => (
                         <ChevronRight
                             style={{
