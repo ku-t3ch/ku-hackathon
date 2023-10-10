@@ -1,163 +1,166 @@
-"use client";
-import { NextPage } from "next";
+'use client';
+import { NextPage } from 'next';
 import {
-    Navbar as NavbarComponent,
-    NavbarBrand,
-    NavbarContent,
-    NavbarItem,
-    NavbarMenuToggle,
-    NavbarMenu,
-    NavbarMenuItem,
-    Link,
-    Button,
-} from "@nextui-org/react";
-import React, { useEffect, useMemo } from "react";
-import { ClipboardEdit } from "lucide-react";
-import { Events, scroller } from "react-scroll";
+  Navbar as NavbarComponent,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
+  Link,
+  Button,
+} from '@nextui-org/react';
+import React, { useEffect } from 'react';
+import { ClipboardEdit } from 'lucide-react';
+import Scroll, { Events, animateScroll } from 'react-scroll';
+import { NavLinksInterface } from '@/interfaces/NavbarInterface';
+import { usePathname } from 'next/navigation';
 
 interface Props {}
 
+// to = ถ้าต้องการให้ redirect ไป page อื่นๆ ให้ใช้ / นำหน้า เช่น /register, /join, ...
+const navLinks: NavLinksInterface[] = [
+  {
+    to: '/join',
+    children: (
+      <Button color="primary" radius="none" variant="flat" size="sm">
+        <ClipboardEdit size={15} />
+        สมัครเข้าร่วม
+      </Button>
+    ),
+    mobileChildren: (
+      <>
+        <ClipboardEdit size={15} className="mr-1.5" />
+        สมัครเข้าร่วม
+      </>
+    ),
+  },
+  {
+    to: 'time-line',
+    children: 'ไทม์ไลน์',
+  },
+  {
+    to: 'schedule',
+    children: 'กำหนดการ',
+  },
+];
+
 const Navbar: NextPage<Props> = () => {
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-    const [currentView, setCurrentView] = React.useState("home");
+  const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-    const scrollTo = (name: string) => {
-        scroller.scrollTo(name, {
-            duration: 800,
-            delay: 0,
-            smooth: "easeInOutQuart",
-        });
+  useEffect(() => {
+    Events.scrollEvent.register('end', function () {
+      console.log(arguments[0]);
+    });
+
+    return () => {
+      Events.scrollEvent.remove('end');
     };
+  }, []);
 
-    useEffect(() => {
-        Events.scrollEvent.register("begin", function () {
-            setCurrentView(arguments[0]);
-        });
-        Events.scrollEvent.register("end", function () {
-            console.log(arguments[0]);
-        });
-        return () => {
-            Events.scrollEvent.remove("begin");
-            Events.scrollEvent.remove("end");
-        };
-    }, []);
+  return (
+    <div className="fixed w-full z-[999]">
+      <NavbarComponent onMenuOpenChange={setIsMenuOpen} isMenuOpen={isMenuOpen}>
+        <NavbarContent>
+          <NavbarMenuToggle
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            className="sm:hidden"
+          />
+          <NavbarBrand
+            onClick={() => {
+              if (pathname == '/') {
+                animateScroll.scrollToTop();
+              } else {
+                location.replace('/');
+              }
+              setIsMenuOpen(false);
+            }}
+            className="cursor-pointer"
+          >
+            <p className="font-bold text-inherit">KU Hackathon</p>
+          </NavbarBrand>
+        </NavbarContent>
 
-    return (
-        <div className="fixed w-full z-10">
-            <NavbarComponent
-                onMenuOpenChange={setIsMenuOpen}
-                isMenuOpen={isMenuOpen}
-            >
-                <NavbarContent>
-                    <NavbarMenuToggle
-                        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-                        className="sm:hidden"
-                    />
-                    <NavbarBrand
-                        onClick={() => {
-                            scrollTo("home");
-                            setIsMenuOpen(false);
-                        }}
-                        className="cursor-pointer"
-                    >
-                        <p className="font-bold text-inherit">KU Hackathon</p>
-                    </NavbarBrand>
-                </NavbarContent>
+        <NavbarContent className="hidden sm:flex gap-4" justify="center">
+          {navLinks.map((nav, idx) => {
+            return (
+              <NavbarItem key={idx}>
+                {nav.to.startsWith('/') ? (
+                  <Link href={nav.to} className="text-white">
+                    <>{nav.children}</>
+                  </Link>
+                ) : typeof nav.children == 'string' ? (
+                  <LinkScroll to={nav.to} className="text-md">
+                    {nav.children}
+                  </LinkScroll>
+                ) : (
+                  <div>{nav?.children}</div>
+                )}
+              </NavbarItem>
+            );
+          })}
+        </NavbarContent>
 
-                <NavbarContent
-                    className="hidden sm:flex gap-4"
-                    justify="center"
-                >
-                    <NavbarItem>
-                        <Button
-                            as={Link}
-                            color="primary"
-                            radius="none"
-                            variant="flat"
-                            size="sm"
-                            onClick={() => scrollTo("join")}
-                        >
-                            <ClipboardEdit size={15} />
-                            สมัครเข้าร่วม
-                        </Button>
-                    </NavbarItem>
-                    <NavbarItem>
-                        <Link
-                            color={
-                                (currentView !== "time-line" && "foreground") ||
-                                "primary"
-                            }
-                            href="#"
-                            onClick={() => scrollTo("time-line")}
-                        >
-                            ไทม์ไลน์
-                        </Link>
-                    </NavbarItem>
-                    <NavbarItem>
-                        <Link
-                            color={
-                                (currentView !== "schedule" && "foreground") ||
-                                "primary"
-                            }
-                            href="#"
-                            onClick={() => scrollTo("schedule")}
-                        >
-                            กำหนดการ
-                        </Link>
-                    </NavbarItem>
-                </NavbarContent>
+        <NavbarMenu>
+          {navLinks.map((nav, idx) => {
+            const children = nav?.mobileChildren ?? nav.children;
 
-                <NavbarMenu>
-                    <NavbarMenuItem>
-                        <Link
-                            color={
-                                (currentView !== "join" && "foreground") ||
-                                "primary"
-                            }
-                            href="#"
-                            onClick={() => {
-                                scrollTo("join");
-                                setIsMenuOpen(false);
-                            }}
-                        >
-                            <ClipboardEdit size={15} className="mr-2" />
-                            สมัครเข้าร่วม
-                        </Link>
-                    </NavbarMenuItem>
-                    <NavbarMenuItem>
-                        <Link
-                            href="#"
-                            color={
-                                (currentView !== "time-line" && "foreground") ||
-                                "primary"
-                            }
-                            onClick={() => {
-                                scrollTo("time-line");
-                                setIsMenuOpen(false);
-                            }}
-                        >
-                            ไทม์ไลน์
-                        </Link>
-                    </NavbarMenuItem>
-                    <NavbarMenuItem>
-                        <Link
-                            href="#"
-                            color={
-                                (currentView !== "schedule" && "foreground") ||
-                                "primary"
-                            }
-                            onClick={() => {
-                                scrollTo("schedule");
-                                setIsMenuOpen(false);
-                            }}
-                        >
-                            กำหนดการ
-                        </Link>
-                    </NavbarMenuItem>
-                </NavbarMenu>
-            </NavbarComponent>
-        </div>
-    );
+            return (
+              <NavbarMenuItem key={idx}>
+                {nav.to.startsWith('/') ? (
+                  <Link href={nav.to} className="text-white">
+                    <>{children}</>
+                  </Link>
+                ) : typeof children == 'string' ? (
+                  <LinkScroll
+                    to={nav.to}
+                    onSetActive={() => {
+                      setIsMenuOpen(false);
+                    }}
+                    className="text-[16px]"
+                  >
+                    {children}
+                  </LinkScroll>
+                ) : (
+                  <>{nav?.children}</>
+                )}
+              </NavbarMenuItem>
+            );
+          })}
+        </NavbarMenu>
+      </NavbarComponent>
+    </div>
+  );
+};
+
+interface LinkScrollProps {
+  to: string;
+  className?: string;
+  onSetActive?: () => void;
+  children: React.ReactNode;
+}
+
+const LinkScroll: NextPage<LinkScrollProps> = ({
+  to,
+  className = '',
+  onSetActive,
+  children,
+}) => {
+  return (
+    <Scroll.Link
+      to={to}
+      duration={800}
+      smooth="easeInOutQuart"
+      onClick={onSetActive}
+      activeClass="text-primary"
+      spy={true}
+      className={`${className} hover:text-primary cursor-pointer`}
+    >
+      {children}
+    </Scroll.Link>
+  );
 };
 
 export default Navbar;
