@@ -49,9 +49,8 @@ export const CircularPacking = ({
               r={node.r}
               onMouseOver={() => setHover(node.data.name)}
               onMouseOut={() => setHover('')}
-              opacity={0.8}
               className={
-                hover == node.data.name ? 'fill-primary' : 'fill-default-100'
+                hover == node.data.name ? 'fill-primary' : 'fill-default-50'
               }
             />
           </Tooltip>
