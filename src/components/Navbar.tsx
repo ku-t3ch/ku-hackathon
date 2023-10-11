@@ -54,7 +54,7 @@ const navLinks: NavLinksInterface[] = [
   },
   {
     to: 'partners',
-    children: 'Supports',
+    children: 'Supporters',
   },
   {
     to: 'faqs',
