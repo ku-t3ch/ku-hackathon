@@ -26,23 +26,39 @@ const navLinks: NavLinksInterface[] = [
     children: (
       <Button color="primary" radius="none" variant="flat" size="sm">
         <ClipboardEdit size={15} />
-        สมัครเข้าร่วม
+        Apply Now
       </Button>
     ),
     mobileChildren: (
       <>
         <ClipboardEdit size={15} className="mr-1.5" />
-        สมัครเข้าร่วม
+        Apply Now
       </>
     ),
   },
   {
     to: 'time-line',
-    children: 'ไทม์ไลน์',
+    children: 'Timeline',
   },
   {
-    to: 'schedule',
-    children: 'กำหนดการ',
+    to: 'benefit',
+    children: 'Prizes',
+  },
+  {
+    to: 'gurus',
+    children: 'Gurus',
+  },
+  {
+    to: 'issues',
+    children: 'Issues',
+  },
+  {
+    to: 'partners',
+    children: 'Supports',
+  },
+  {
+    to: 'faqs',
+    children: 'FAQs',
   },
 ];
 
