@@ -28,7 +28,9 @@ const Partners: NextPage<Props> = () => {
       name="partners"
       className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col  items-center"
     >
-      <div className="text-4xl font-bold">PARTNERS & SUPPORTERS</div>
+      <div className="text-4xl font-bold text-center">
+        PARTNERS & SUPPORTERS
+      </div>
       <div className="flex gap-5 mt-10">
         {partners.map((partner, index) => (
           <a

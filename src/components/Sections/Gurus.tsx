@@ -37,7 +37,7 @@ const Gurus: NextPage<Props> = () => {
       name="gurus"
       className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col  items-center"
     >
-      <div className="text-4xl font-bold">GURUS</div>
+      <div className="text-4xl font-bold text-center">GURUS</div>
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[4rem]">
         {gurus.map((guru, idx) => {
           return (
