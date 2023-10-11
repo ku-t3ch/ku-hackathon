@@ -4,6 +4,7 @@ import { CircularPacking } from '@/components/Charts/CircularPacking';
 import { Tree } from '@/interfaces/CircularPackingInterface';
 import { useRef } from 'react';
 import { useContainerDimensions } from '../hooks/useContainerDimensions';
+import { Button } from '@nextui-org/button';
 
 interface Props {}
 
@@ -34,12 +35,18 @@ const Issues: NextPage<Props> = () => {
       className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col  items-center"
     >
       <div className="text-4xl font-bold text-center">SUBMITTED ISSUES</div>
-      <div ref={circularElement} className="mt-10 w-full">
-        <CircularPacking
-          data={issues}
-          width={width > 0 ? width : 400}
-          height={400}
-        />
+      <div ref={circularElement} className="mt-10 w-full text-center">
+        {width <= 0 ? (
+          <Button
+            color="default"
+            size="lg"
+            variant="light"
+            isLoading
+            className=""
+          />
+        ) : (
+          <CircularPacking data={issues} width={width} height={400} />
+        )}
       </div>
     </Element>
   );
