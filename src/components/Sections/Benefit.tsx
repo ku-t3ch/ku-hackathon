@@ -17,14 +17,14 @@ const Benefit: NextPage<Props> = () => {
         </div>
         <div className="p-5 w-full flex flex-col gap-3 border-l-3 border-green-500 bg-green-500/30 justify-center">
           <div className="text-xl">Second place</div>
-          <div className="text-lg">15,000 THB</div>
+          <div className="text-lg">20,000 THB</div>
         </div>
         <div className="p-5 w-full flex flex-col gap-3 border-l-3 border-green-500 bg-green-500/20 justify-center">
           <div className="text-xl">Third place</div>
-          <div className="text-base">5,000 THB</div>
+          <div className="text-base">12,500 THB</div>
         </div>
         <div className="p-5 w-full flex flex-col gap-3 border-l-3 border-green-500 bg-green-500/10 justify-center">
-          <div className="text-xl">Popular vote</div>
+          <div className="text-xl">Consolation</div>
           <div className="text-sm">3,000 THB</div>
         </div>
       </div>
