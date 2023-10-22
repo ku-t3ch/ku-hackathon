@@ -18,13 +18,13 @@ const timelineItems: TimelineItem[] = [
     {
         // children: "เปิดโพลรับปัญหาของเด็กในมหาลัย",
         children: "PROBLEM SUBMISSION",
-        start: new Date("2023-10-02 23:59"),
+        start: new Date("2023-10-09 23:59"),
         end: new Date("2023-11-03 23:59"),
     },
     {
         // children: "เปิดรับ PROPOSAL",
         children: "PROPOSAL SUBMISSION",
-        start: new Date("2023-10-09 23:59"),
+        start: new Date("2023-10-23 23:59"),
         end: new Date("2023-11-10 23:59"),
     },
     {
@@ -41,14 +41,20 @@ const timelineItems: TimelineItem[] = [
             <div className="flex flex-col">
                 <div>8:30-9:00 Register</div>
                 <div>9:00-12:00 Overview</div>
-                <div>12:00-13:00 break</div>
+                <div>12:00-13:00 Break</div>
                 <div>13:00-16:00 Matching Team</div>
             </div>
         ),
     },
     {
+        // children: "ประกาศผลผู้เข้ารอบ",
+        children: "OVERVIEW PROBLEM",
+        start: new Date("2023-11-16 23:59"),
+        end: new Date("2023-11-16 23:59"),
+    },
+    {
         // children: "คลาสสอน UX UI",
-        children: "LEARNING SESSION",
+        children: "UX/UI WORKSHOP",
         start: new Date("2023-11-17 23:59"),
         end: new Date("2023-11-17 23:59"),
         detail: (
@@ -61,6 +67,20 @@ const timelineItems: TimelineItem[] = [
         ),
     },
     {
+        // children: "คลาสสอน UX UI",
+        children: "DEV WORKSHOP",
+        start: new Date("2023-11-19 23:59"),
+        end: new Date("2023-11-19 23:59"),
+        detail: (
+            <div className="flex flex-col">
+                <div>8:30-9:00 Register</div>
+                <div>9:00-12:00 React</div>
+                <div>12:00-13:00 Break</div>
+                <div>13:00-16:00 FastAPI</div>
+            </div>
+        ),
+    },
+    {
         children: "PITCHING DAY",
         start: new Date("2023-11-20 23:59"),
         end: new Date("2023-11-20 23:59"),
@@ -68,9 +88,9 @@ const timelineItems: TimelineItem[] = [
             <div className="flex flex-col">
                 <div>8:30-9:00 Register</div>
                 <div>9:00-12:00 Pitching</div>
-                <div>12:00-13:00 break</div>
+                <div>12:00-13:00 Break</div>
                 <div>13:00-14:00 Pitching</div>
-                <div>14:00-14:30 break</div>
+                <div>14:00-14:30 Break</div>
                 <div>14:30-15:30 Announce Winner</div>
             </div>
         ),

@@ -6,6 +6,16 @@ interface Props {}
 
 const partners = [
   {
+    name: 'KU Biz',
+    image: 'https://s3.tech.nisit.ku.ac.th/assets/partner/kubic.jpg',
+    link: 'https://web.facebook.com/KUBICTHAILAND',
+  },
+  {
+    name: 'KU OCS',
+    image: 'https://s3.tech.nisit.ku.ac.th/assets/partner/ocslogo.png',
+    link: 'https://web.facebook.com/ocs.ku',
+  },
+  {
     name: 'GDSC KU',
     image: 'https://s3.tech.nisit.ku.ac.th/assets/partner/GDSCKU.png',
     link: 'https://www.facebook.com/gdsc.ku/',
@@ -18,20 +28,20 @@ const partners = [
   {
     name: 'KU Tech',
     image: 'https://tech.nisit.ku.ac.th/logo/KUTechBlack.png',
-    link: 'https://web.facebook.com/ku.t3ch',
-  },
+    link: 'https://www.facebook.com/ku.t3ch',
+  }
 ];
 
 const Partners: NextPage<Props> = () => {
   return (
     <Element
       name="partners"
-      className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col  items-center"
+      className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col items-center"
     >
       <div className="text-4xl font-bold text-center">
         PARTNERS & SUPPORTERS
       </div>
-      <div className="flex gap-5 mt-10">
+      <div className="flex flex-wrap justify-center gap-5 mt-10">
         {partners.map((partner, index) => (
           <a
             className="flex flex-col"

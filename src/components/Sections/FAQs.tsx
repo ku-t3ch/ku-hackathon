@@ -35,7 +35,7 @@ const FAQs: NextPage<Props> = () => {
   return (
     <Element
       name="faqs"
-      className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col  items-center"
+      className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col items-center"
     >
       <div className="text-4xl font-bold text-center">FAQs</div>
       <div className="flex gap-5 mt-10 w-full">
