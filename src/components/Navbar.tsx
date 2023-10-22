@@ -48,10 +48,10 @@ const navLinks: NavLinksInterface[] = [
     to: 'gurus',
     children: 'Gurus',
   },
-  {
-    to: 'issues',
-    children: 'Issues',
-  },
+  // {
+  //   to: 'issues',
+  //   children: 'Issues',
+  // },
   {
     to: 'partners',
     children: 'Supporters',
