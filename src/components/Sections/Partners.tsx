@@ -6,7 +6,7 @@ interface Props {}
 
 const partners = [
   {
-    name: 'KU Biz',
+    name: 'KU BIC',
     image: 'https://s3.tech.nisit.ku.ac.th/assets/partner/kubic.jpg',
     link: 'https://web.facebook.com/KUBICTHAILAND',
   },
