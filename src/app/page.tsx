@@ -19,7 +19,7 @@ export default function Home() {
       <TimeLineSection />
       <Benefit />
       <Gurus />
-      <Issues />
+      {/* <Issues /> */}
       <Partners />
       <FAQs />
     </>
