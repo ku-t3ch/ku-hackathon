@@ -6,7 +6,7 @@ interface Props {}
 
 const gurus = [
   {
-    name: 'Isoon Pitipasit (Non)',
+    name: 'Isoon Phitiphasit (Non)',
     job: 'Full-stack Developer',
     company: 'RentSpree Thailand',
     image: 'https://s3.tech.nisit.ku.ac.th/assets/speaker/isoon.jpg',
