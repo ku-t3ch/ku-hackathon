@@ -15,7 +15,7 @@ const getItems: CollapseProps['items'] = [
   {
     key: '2',
     label: <div className="text-lg">งานจัดเมื่อไร?</div>,
-    children: <div className='ml-7'>เริ่มจัดตั้งแต่วันที่ 15 พฤศจิกายน 2023 และ มีการจัด workshop ตามสาขาที่ยื่นสมัคร ในตารางที่กำหนดให้</div>,
+    children: <div className='ml-7'>เริ่มจัดตั้งแต่วันที่ 15 พฤศจิกายน 2023 และ มีการจัด Workshop ตามสาขาที่ยื่นสมัคร ในตารางที่กำหนดให้</div>,
   },
   {
     key: '3',
