@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     keywords: "KU Hackathon, กระเทาะแอปนิสิต, นิสิต เพื่อนิสิต",
     authors: [{ name: "KUTech Team", url: "https://tech.nisit.ku.ac.th" }],
     creator: "KUTech Team",
+    icons: {
+        icon: "/favicon.ico",
+    },
     openGraph: {
         type: "website",
         url: "https://hackathon.tech.nisit.ku.ac.th",
