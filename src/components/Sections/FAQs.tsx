@@ -37,7 +37,7 @@ const getItems: CollapseProps['items'] = [
   {
     key: '6',
     label: <div className="text-lg">จัดออนไซต์หรือออนไลน์?</div>,
-    children: <div className='ml-7'>สมัครได้เพียง 1 สาขาเท่านั้น โดยแต่ละสาขาจะมีโจทย์ที่แตกต่างกันออกไป</div>,
+    children: <div className='ml-7'>จัดแบบผสม โดยจะมีจัดออนไลน์ในบางกิจกกรม</div>,
   },
   {
     key: '7',
