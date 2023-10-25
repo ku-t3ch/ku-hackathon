@@ -13,27 +13,32 @@ import {
 } from '@nextui-org/react';
 import React, { useEffect } from 'react';
 import { ClipboardEdit } from 'lucide-react';
-import Scroll, { Events, animateScroll } from 'react-scroll';
+import Scroll, { Events, animateScroll, scroller } from 'react-scroll';
 import { NavLinksInterface } from '@/interfaces/NavbarInterface';
 import { usePathname } from 'next/navigation';
 
-interface Props {}
+interface Props { }
 
 // to = ถ้าต้องการให้ redirect ไป page อื่นๆ ให้ใช้ / นำหน้า เช่น /register, /join, ...
 const navLinks: NavLinksInterface[] = [
   {
-    to: '/join',
+    to: 'join',
     children: (
-      <Button color="primary" radius="none" variant="flat" size="sm">
-        <ClipboardEdit size={15} />
-        Apply Now
+      <Button color="primary" radius="none" variant="flat" size="sm"
+        onPress={(_: any) => {
+          scroller.scrollTo('join', {
+            duration: 800,
+            smooth: "easeInOutQuart",
+          })
+        }} startContent={<ClipboardEdit size={15} />}>
+        <span>Apply Now</span>
       </Button>
     ),
     mobileChildren: (
-      <>
+      <div className='flex items-center'>
         <ClipboardEdit size={15} className="mr-1.5" />
         Apply Now
-      </>
+      </div>
     ),
   },
   {
@@ -112,7 +117,9 @@ const Navbar: NextPage<Props> = () => {
                     {nav.children}
                   </LinkScroll>
                 ) : (
-                  <div>{nav?.children}</div>
+                  <LinkScroll to={nav.to}>
+                    <>{nav?.children}</>
+                  </LinkScroll>
                 )}
               </NavbarItem>
             );
@@ -140,7 +147,11 @@ const Navbar: NextPage<Props> = () => {
                     {children}
                   </LinkScroll>
                 ) : (
-                  <>{nav?.children}</>
+                  <LinkScroll to={nav.to} onSetActive={() => {
+                    setIsMenuOpen(false);
+                  }}>
+                    <>{children}</>
+                  </LinkScroll>
                 )}
               </NavbarMenuItem>
             );
