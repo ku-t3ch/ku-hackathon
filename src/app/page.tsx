@@ -16,6 +16,7 @@ export default function Home() {
     <>
       <HomeSection />
       <Objective />
+      <JoinSection />
       <TimeLineSection />
       <Benefit />
       <Gurus />
