@@ -6,9 +6,9 @@ interface Props {}
 
 const partners = [
   {
-    name: 'KU BIC',
-    image: 'https://s3.tech.nisit.ku.ac.th/assets/partner/kubic.jpg',
-    link: 'https://web.facebook.com/KUBICTHAILAND',
+    name: 'SD KU',
+    image: 'https://s3.tech.nisit.ku.ac.th/assets/partner/ku.png',
+    link: 'https://www.facebook.com/SDKUkasetsart',
   },
   {
     name: 'KU OCS',
@@ -48,6 +48,7 @@ const Partners: NextPage<Props> = () => {
             key={index}
             href={partner.link}
             target="_bank"
+            title={partner.name}
           >
             <Avatar
               color="success"
