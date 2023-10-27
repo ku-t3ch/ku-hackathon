@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         type: "website",
-        url: "https://hackathon.tech.nisit.ku.ac.th",
+        url: "https://hackathon.ku.ac.th",
         title: "KU Hackathon",
         description: "KU Hackathon กระเทาะแอปนิสิต โดยนิสิต เพื่อนิสิต",
         siteName: "KU Hackathon",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
             },
         ],
     },
-    metadataBase: new URL("https://hackathon.tech.nisit.ku.ac.th"),
+    metadataBase: new URL("https://hackathon.ku.ac.th"),
 };
 
 export default function RootLayout({
