@@ -62,6 +62,7 @@ const JoinSection: NextPage<Props> = (props) => {
         >
             <div className="text-4xl font-bold text-center">APPLICATION</div>
             <div>
+                {/* TODO: Fix chart width and make it so it looks much better. */}
                 {charts}
             </div>
             <div className="flex basis-1/2 grow md:grow-0 flex-col gap-3 md:flex-row items-center w-full mt-5">
