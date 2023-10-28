@@ -11,18 +11,30 @@ import Partners from '@/components/Sections/Partners';
 import ScheduleSection from '@/components/Sections/ScheduleSection';
 import TimeLineSection from '@/components/Sections/TimeLineSection';
 
-export default function Home() {
-  return (
-    <>
-      <HomeSection />
-      <Objective />
-      <JoinSection />
-      <TimeLineSection />
-      <Benefit />
-      <Gurus />
-      {/* <Issues /> */}
-      <Partners />
-      <FAQs />
-    </>
-  );
+import { getListedIssues } from '../utils/GSheetToIssues';
+
+export async function getServerSideProps(context) { 
+    const issues = await getListedIssues();
+
+    return {
+        props: {
+            issues: issues
+        },
+    }
+}
+
+export default function Home({ issues }) {
+    return (
+      <>
+        <HomeSection />
+        <Objective />
+        <JoinSection issues={issues}/>
+        <TimeLineSection />
+        <Benefit />
+        <Gurus />
+        <Issues />
+        <Partners />
+        <FAQs />
+      </>
+    );
 }

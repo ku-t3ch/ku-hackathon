@@ -18,6 +18,8 @@
     "d3": "^7.8.5",
     "date-fns": "^2.30.0",
     "framer-motion": "^10.16.4",
+    "google-auth-library": "^9.2.0",
+    "google-spreadsheet": "^4.1.0",
     "lucide": "^0.279.0",
     "lucide-react": "^0.279.0",
     "next": "latest",
@@ -34,6 +36,7 @@
     "@types/react-dom": "latest",
     "@types/react-scroll": "^1.8.8",
     "autoprefixer": "latest",
+    "dotenv": "^16.3.1",
     "postcss": "latest",
     "tailwindcss": "latest",
     "typescript": "latest"
