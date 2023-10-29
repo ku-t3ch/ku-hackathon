@@ -12,7 +12,7 @@ const serviceAccountAuth = new JWT({
     ]
 })
 
-const _doc = new GoogleSpreadsheet('1N_JmzCnMBUqSMu41uadhsLjXdv0UAXsO8TsjRR7-FGY', serviceAccountAuth)
+const _doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID!, serviceAccountAuth)
 
 const getSheet: () => Promise<GoogleSpreadsheetWorksheet> = async () => {
     await _doc.loadInfo();
