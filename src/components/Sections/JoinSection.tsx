@@ -2,12 +2,13 @@ import { NextPage } from "next";
 import { Element } from "react-scroll";
 import { useRef } from "react";
 import { Card, CardBody, Button } from "@nextui-org/react";
-import { PenTool, SquareCode } from "lucide-react";
+import { PenTool, SquareCode, ChevronRight } from "lucide-react";
 import { Issue } from "@/interfaces/IssueInterface";
 import { Tree } from "@/interfaces/CircularPackingInterface";
 import { useContainerDimensions } from "../hooks/useContainerDimensions";
 import Link from "next/link";
-import { CircularPacking } from "../Charts/CircularPacking";
+import { CircularPacking } from "../Charts/CircularPackingModified";
+import { Collapse, CollapseProps } from "antd";
 
 interface Props {
     issues: Issue[];
@@ -16,13 +17,15 @@ interface Props {
 const JoinSection: NextPage<Props> = (props) => {
 
     const issueTrees: Tree[] = [];
+    const sectionContainer = useRef(null);
 
     props.issues.forEach((i) => {
         const issueTree: Tree = {
             type: 'node',
             name: i.name,
             value: i.subissues.reduce((count, subissue) => count += subissue.count, 0),
-            children: i.subissues.map((subissue): Tree => {
+            children: i.subissues.filter((s) => s.count > 10).map((subissue): Tree => {
+                // > 10 because less significant issues make harder-to-use interface
                 return {
                     type: 'leaf',
                     name: subissue.name,
@@ -33,37 +36,44 @@ const JoinSection: NextPage<Props> = (props) => {
         issueTrees.push(issueTree);
     })    
 
-    const charts = issueTrees.map(t => {
+    const charts: CollapseProps["items"] = issueTrees.map(t => {
 
-        const element = useRef(null);
-        const { width } = useContainerDimensions(element);
-        
-        return (
-            <div key={t.name} ref={element} className="mt-10 w-full text-center">
-                {width <= 0 ? (
-                <Button
-                    color="default"
-                    size="lg"
-                    variant="light"
-                    isLoading
-                    className=""
-                />
-                ) : (
-                <CircularPacking data={t} width={width} height={400} />
-                )}
-            </div>
-        );
+        const { width } = useContainerDimensions(sectionContainer);
+
+        return {
+            key: `Collapsible ${t.name}`,
+            label: <div className="text-lg">{t.name}</div>,
+            children: (
+                <div key={t.name} className="mt-10 w-full text-center">
+                    <CircularPacking data={t} width={width} height={300} />
+                </div>
+            )
+        };
     })
+
+
 
     return (
         <Element
             name="join"
             className="max-w-screen mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex items-center flex-col"
         >
-            <div className="text-4xl font-bold text-center">APPLICATION</div>
-            <div>
-                {/* TODO: Fix chart width and make it so it looks much better. */}
-                {charts}
+            <div className="text-4xl font-bold text-center" ref={sectionContainer}>APPLICATION</div>
+            <span className="text-xl md:text-2xl text-left w-full md:w-5/6 p-5 border-l-3 border-green-500">Issues to Hack</span>
+            <div className="flex basis-1/2 grow flex-col md:grow-0 w-full md:w-5/6">
+                <Collapse className="w-full"
+                    ghost
+                    expandIcon={({ isActive }) => (
+                        <ChevronRight
+                            style={{
+                                transform: `rotate(${isActive ? 90 : 0}deg)`,
+                                transition: "transform 0.2s ease-in-out",
+                            }}
+                        />
+                    )}
+                    items={charts}
+                    accordion
+                />
             </div>
             <div className="flex basis-1/2 grow md:grow-0 flex-col gap-3 md:flex-row items-center w-full mt-5">
                 <Card className="w-full h-full md:ml-20 md:py-3">

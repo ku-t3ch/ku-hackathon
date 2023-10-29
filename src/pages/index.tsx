@@ -32,7 +32,7 @@ export default function Home({ issues }) {
         <TimeLineSection />
         <Benefit />
         <Gurus />
-        <Issues />
+        {/*<Issues />*/}
         <Partners />
         <FAQs />
       </>

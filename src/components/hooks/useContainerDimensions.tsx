@@ -5,8 +5,8 @@ export const useContainerDimensions = (myRef: RefObject<any>) => {
 
   useEffect(() => {
     const getDimensions = () => ({
-      width: myRef.current.offsetWidth,
-      height: myRef.current.offsetHeight,
+      width: myRef.current?.offsetWidth,
+      height: myRef.current?.offsetHeight,
     });
 
     const handleResize = () => {
