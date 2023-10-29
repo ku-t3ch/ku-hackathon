@@ -12,8 +12,9 @@ import ScheduleSection from '@/components/Sections/ScheduleSection';
 import TimeLineSection from '@/components/Sections/TimeLineSection';
 
 import { getListedIssues } from '../utils/GSheetToIssues';
+import { Issue } from '@/interfaces/IssueInterface';
 
-export async function getStaticProps(context) { 
+export async function getStaticProps() { 
     const issues = await getListedIssues();
 
     return {
@@ -23,7 +24,11 @@ export async function getStaticProps(context) {
     }
 }
 
-export default function Home({ issues }) {
+interface HomeProps {
+  issues: Issue[]
+}
+
+export default function Home({ issues }: HomeProps) {
     return (
       <>
         <HomeSection />

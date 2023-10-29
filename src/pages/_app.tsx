@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 import { Inter } from "next/font/google";
+import { AppProps } from "next/app";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -50,7 +51,7 @@ function RootLayout({
     );
 }
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
     return (
         <RootLayout>
             <Component {...pageProps} />
