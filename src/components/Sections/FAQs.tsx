@@ -93,7 +93,7 @@ const getItems: CollapseProps["items"] = [
                 </div>
                 <div>
                     โดยจะประกาศผลทางเว็บไซต์{" "}
-                    <a className="text-blue-500 underline" href="https://hackathon.tech.nisit.ku.ac.th">https://hackathon.tech.nisit.ku.ac.th</a>
+                    <a className="text-blue-500 underline" href="https://hackathon.ku.ac.th">https://hackathon.tech.nisit.ku.ac.th</a>
                 </div>
             </div>
         ),
