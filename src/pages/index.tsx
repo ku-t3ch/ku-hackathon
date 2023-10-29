@@ -13,7 +13,7 @@ import TimeLineSection from '@/components/Sections/TimeLineSection';
 
 import { getListedIssues } from '../utils/GSheetToIssues';
 
-export async function getServerSideProps(context) { 
+export async function getStaticProps(context) { 
     const issues = await getListedIssues();
 
     return {
