@@ -51,7 +51,7 @@ const JoinSection: NextPage<Props> = (props) => {
     const charts: CollapseProps["items"] = IssueTree.map((t) => {
         return {
             key: `Collapsible ${t.name}`,
-            label: <div className="text-lg">{t.name}</div>,
+            label: <div className="text-xl md:text-2xl">{t.name}</div>,
             children: (
                 <div className="flex flex-col gap-3">
                     {_.orderBy(
@@ -88,12 +88,6 @@ const JoinSection: NextPage<Props> = (props) => {
             name="join"
             className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col items-center gap-3"
         >
-            {/* <div
-                className="text-4xl font-bold text-center"
-                ref={sectionContainer}
-            >
-                APPLICATION
-            </div> */}
             <div className="flex flex-col gap-2">
                 <div className="text-3xl md:text-4xl font-bold text-center">
                     ปัญหาที่พบในมหาวิทยาลัย

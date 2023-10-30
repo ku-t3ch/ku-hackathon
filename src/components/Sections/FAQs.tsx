@@ -9,39 +9,43 @@ interface Props {}
 const getItems: CollapseProps["items"] = [
     {
         key: "1",
-        label: <div className="text-lg">ใครสมัครได้บ้าง?</div>,
+        label: <div className="text-xl md:text-2xl">ใครสมัครได้บ้าง?</div>,
         children: (
-            <div className="ml-7">
-                นิสิตมหาวิทยาลัยเกษตรศาสตร์ทุกวิทยาเขต
+            <div className="ml-7 text-xl">
+                - นิสิตมหาวิทยาลัยเกษตรศาสตร์ทุกวิทยาเขต
                 ที่กำลังศึกษาอยู่ในปัจจุบัน เท่านั้น
             </div>
         ),
     },
     {
         key: "2",
-        label: <div className="text-lg">งานจัดเมื่อไร?</div>,
+        label: <div className="text-xl md:text-2xl">งานจัดเมื่อไร?</div>,
         children: (
-            <div className="ml-7">
-                เริ่มจัดตั้งแต่วันที่ 15 พฤศจิกายน 2023 และ มีการจัด Workshop
+            <div className="ml-7 text-xl">
+                - เริ่มจัดตั้งแต่วันที่ 15 พฤศจิกายน 2023 และ มีการจัด Workshop
                 ตามสาขาที่ยื่นสมัคร ในตารางที่กำหนดให้
             </div>
         ),
     },
     {
         key: "3",
-        label: <div className="text-lg">มีค่าใช้จ่ายไหม?</div>,
+        label: <div className="text-xl md:text-2xl">มีค่าใช้จ่ายไหม?</div>,
         children: (
-            <div className="ml-7">
-                มีค่าใช้จ่ายเป็นมัดจำ 300 บาท ได้คืนหลังจบโครงการ
+            <div className="ml-7 text-xl">
+                - มีค่าใช้จ่ายเป็นมัดจำ 300 บาท ได้คืนหลังจบโครงการ
             </div>
         ),
     },
     {
         key: "4",
-        label: <div className="text-lg">สมัครแล้วได้เข้าร่วมทุกคนหรือไม่?</div>,
+        label: (
+            <div className="text-xl md:text-2xl">
+                สมัครแล้วได้เข้าร่วมทุกคนหรือไม่?
+            </div>
+        ),
         children: (
-            <div className="ml-7">
-                ทางทีมงานจะคัดเลือกแต่ละสาขา สาขา Developer 40-60 คน และ สาขา
+            <div className="ml-7 text-xl">
+                - ทางทีมงานจะคัดเลือกแต่ละสาขา สาขา Developer 40-60 คน และ สาขา
                 Designer 40 คน
                 รวมแล้วจะมีผู้ที่ถูกคัดเลือกให้เข้าร่วมรอบต่อไปจำนวน 80-100 คน
             </div>
@@ -49,40 +53,46 @@ const getItems: CollapseProps["items"] = [
     },
     {
         key: "5",
-        label: <div className="text-lg">สมัครได้กี่สาขา?</div>,
+        label: <div className="text-xl md:text-2xl">สมัครได้กี่สาขา?</div>,
         children: (
-            <div className="ml-7">
-                สมัครได้เพียง 1 สาขาเท่านั้น
+            <div className="ml-7 text-xl">
+                - สมัครได้เพียง 1 สาขาเท่านั้น
                 โดยแต่ละสาขาจะมีโจทย์ที่แตกต่างกันออกไป
             </div>
         ),
     },
     {
         key: "6",
-        label: <div className="text-lg">จัดออนไซต์หรือออนไลน์?</div>,
+        label: (
+            <div className="text-xl md:text-2xl">จัดออนไซต์หรือออนไลน์?</div>
+        ),
         children: (
-            <div className="ml-7">จัดแบบผสม โดยจะมีจัดออนไลน์ในบางกิจกกรม</div>
+            <div className="ml-7 text-xl">
+                - จัดแบบผสม โดยจะมีจัดออนไลน์ในบางกิจกกรม
+            </div>
         ),
     },
     {
         key: "7",
-        label: <div className="text-lg">สมัครเดี่ยวหรือเป็นกลุ่ม?</div>,
+        label: (
+            <div className="text-xl md:text-2xl">สมัครเดี่ยวหรือเป็นกลุ่ม?</div>
+        ),
         children: (
-            <div className="ml-7 flex flex-col">
+            <div className="ml-7 text-xl flex flex-col">
                 <div>- สาขา Developer ทีมละ 2-3 คน (กลุ่ม)</div>
-                <div>- สาขา Designer 1 คน (เดียว)</div>
+                <div>- สาขา Designer 1 คน (เดี่ยว)</div>
             </div>
         ),
     },
     {
         key: "8",
         label: (
-            <div className="text-lg">
+            <div className="text-xl md:text-2xl">
                 จะทราบผลการคัดเลือกได้จากช่องทางไหน เมื่อไร?
             </div>
         ),
         children: (
-            <div className="ml-7 flex flex-col">
+            <div className="ml-7 text-xl flex flex-col">
                 <div>
                     - การประกาศผลผู้สิทธิ์มีเข้าร่วมโครงการ ซึ่งจะประกาศในวันที่
                     13 พฤศจิกายน 2023
@@ -106,19 +116,45 @@ const getItems: CollapseProps["items"] = [
     {
         key: "9",
         label: (
-            <div className="text-lg">
-                เราสามารถจับทีมไปเองได้ไหม Developer กับ Design?
+            <div className="text-xl md:text-2xl">
+                เราสามารถจับทีมไปเองได้ไหม Developer กับ Designer?
             </div>
         ),
         children: (
-            <div className="ml-7 flex flex-col">
+            <div className="ml-7 text-xl flex flex-col">
                 - ไม่ได้ เนื่องจากจะต้องจับคู่ทีมผ่านกิจกรรม Matching Team
                 โดยเป็นกิจกรรมที่ผู้เข้าร่วมสามารถทำความรู้จักกัน
                 และแลกเปลี่ยนความคิดเห็นกันผ่านกิจกรรมต่าง ๆ
-                ซึ่งในท้ายกิจกรรมนั้นจะเป็นการจับคู่ทีม
-                จะเริ่มจากผู้นำทีมจะเป็นจากฝ่าย Developer หรือ Designer ก็ได้
-                โดยที่ผู้นำทีมจะต้องแสดงไอเดีย หรือวิสัยทัศน์ เพื่อดึงดูดลูกทีม
-                เพื่อไปแข่งในวัน Hackathon
+                ซึ่งในท้ายกิจกรรมนั้นจะเป็นการจับคู่ทีม (ตามความสมัครใจ)
+                จะเริ่มจากผู้นำทีม (ฝ่าย Developer หรือ Designer)
+                จะต้องแสดงไอเดีย หรือวิสัยทัศน์เพื่อดึงดูดลูกทีมไปแข่งในวัน
+                Hackathon
+            </div>
+        ),
+    },
+    {
+        key: "10",
+        label: (
+            <div className="text-xl md:text-2xl">
+                หลังจาก Matching Team จะได้ทีมเป็นอย่างไร ?
+            </div>
+        ),
+        children: (
+            <div className="ml-7 text-xl flex flex-col">
+                - Designer 2 คน, Developer 2-3 คน รวมแล้วไม่เกิน 5 คน
+            </div>
+        ),
+    },
+    {
+        key: "11",
+        label: (
+            <div className="text-xl md:text-2xl">
+                หลังจาก Matching Team จะได้ทีมเป็นอย่างไร ?
+            </div>
+        ),
+        children: (
+            <div className="ml-7 text-xl flex flex-col">
+                - Designer 2 คน, Developer 2-3 คน รวมแล้วไม่เกิน 5 คน
             </div>
         ),
     },
