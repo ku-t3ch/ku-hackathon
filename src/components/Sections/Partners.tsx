@@ -1,22 +1,24 @@
 import { Avatar } from "@nextui-org/avatar";
 import { NextPage } from "next";
 import { Element } from "react-scroll";
+import React, { useState, useRef  } from 'react';
+import 'src/app/partner.css';
 
 interface Props {}
 
 const partners = [
     {
-        name: "SD KU",
+        name: "Kasetsart University",
         image: "https://s3.tech.nisit.ku.ac.th/assets/partner/ku.png",
         link: "https://www.facebook.com/SDKUkasetsart",
     },
     {
-        name: "KU OCS",
+        name: "Office of Computer Services",
         image: "https://s3.tech.nisit.ku.ac.th/assets/partner/ocslogo.png",
         link: "https://web.facebook.com/ocs.ku",
     },
     {
-        name: "GDSC KU",
+        name: "Google Developer Student Clubs",
         image: "https://s3.tech.nisit.ku.ac.th/assets/partner/GDSCKU.png",
         link: "https://www.facebook.com/gdsc.ku/",
     },
@@ -33,36 +35,56 @@ const partners = [
 ];
 
 const Partners: NextPage<Props> = () => {
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
+
+    const handleMouseEnter = (index: number) => {
+        setHoveredIndex(index);
+        if (hoverTimeout.current) {
+            clearTimeout(hoverTimeout.current);
+        }
+    };
+
+    const handleMouseLeave = () => {
+        hoverTimeout.current = setTimeout(() => {
+            setHoveredIndex(null);
+        }, 500);
+    };
+
     return (
         <Element
             name="partners"
-            className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col items-center"
+            className="max-w-8xl mx-auto w-full px-3 py-5 flex flex-col bg-slate-800"
         >
-            <div className="flex flex-col gap-2">
-                <div className="text-3xl md:text-4xl font-bold text-center">
-                    ขับเคลื่อนโดย
-                </div>
-                <div className="text-xl text-green-500 font-bold text-center">
-                    Powered by
-                </div>
-            </div>
-            <div className="flex flex-wrap justify-center gap-5 mt-10">
+            <div className="flex flex-wrap place-content-evenly gap-5">
                 {partners.map((partner, index) => (
-                    <a
-                        className="flex flex-col"
-                        key={index}
-                        href={partner.link}
-                        target="_bank"
-                        title={partner.name}
-                    >
-                        <Avatar
-                            color="success"
-                            className="w-20 h-20 text-large bg-white"
-                            isBordered
-                            src={partner.image}
-                            alt={partner.name}
-                        />
-                    </a>
+                    <div key={index} className="flex flex-col">
+                        <a
+                            className={"avatar-container flex flex-row"}
+                            onMouseEnter={() => handleMouseEnter(index)}
+                            onMouseLeave={handleMouseLeave}
+                            href={partner.link}
+                        >
+                            <Avatar
+                                className={`w-16 h-16 text-large bg-white ${
+                                    index === hoveredIndex ? 'hovered' : 'unhovered'
+                                }`}
+                                isBordered
+                                src={partner.image}
+                                alt={partner.name}
+                            />
+
+                            {/* <div className={"text-container"}>
+                                <div 
+                                    className={`flex h-full text-xm font-bold ${
+                                        index === hoveredIndex ? 'hovered' : 'unhovered'
+                                    }`} 
+                                    style={{ alignItems: 'center' }}>
+                                    {partners[index].name}
+                                </div>
+                            </div> */}
+                        </a>
+                    </div>
                 ))}
             </div>
         </Element>

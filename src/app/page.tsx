@@ -15,13 +15,13 @@ export default function Home() {
   return (
     <>
       <HomeSection />
+      <Partners />
       <Objective />
       <JoinSection />
       <FAQs />
       <TimeLineSection />
       <Benefit />
       <Gurus />
-      <Partners />
     </>
   );
 }
