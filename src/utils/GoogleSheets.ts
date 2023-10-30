@@ -5,7 +5,7 @@ dotenv.config()
 
 const serviceAccountAuth = new JWT({
     email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-    key: process.env.GOOGLE_PRIV_KEY,
+    key: process.env.GOOGLE_PRIV_KEY!.split(String.raw`\n`).join('\n'),
     scopes: [
         'https://www.googleapis.com/auth/drive.file',
         'https://www.googleapis.com/auth/spreadsheets',
