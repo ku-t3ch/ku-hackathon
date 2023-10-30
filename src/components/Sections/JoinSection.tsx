@@ -9,6 +9,7 @@ import { useContainerDimensions } from "../hooks/useContainerDimensions";
 import Link from "next/link";
 import { CircularPacking } from "../Charts/CircularPackingModified";
 import { Collapse, CollapseProps } from "antd";
+import axios from "axios";
 
 interface Props {
     // issues: Issue[];
@@ -23,9 +24,8 @@ const JoinSection: NextPage<Props> = (props) => {
     }, []);
 
     const getIssues = async () => {
-        const res = await fetch("/api/issues");
-        const data = (await res.json()) as Issue[];
-        data.forEach((i) => {
+        const res = await axios.get<Issue[]>("/api/issues");
+        res.data.forEach((i) => {
             const issueTree: Tree = {
                 type: "node",
                 name: i.name,
@@ -46,7 +46,7 @@ const JoinSection: NextPage<Props> = (props) => {
             };
             setIssueTree((prev) => [...prev, issueTree]);
         });
-        setIssues(data);
+        setIssues(res.data);
     };
 
     const sectionContainer = useRef(null);
