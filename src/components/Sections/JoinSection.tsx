@@ -61,11 +61,19 @@ const JoinSection: NextPage<Props> = (props) => {
                     ).map((item) => (
                         <Card className="w-full">
                             <CardHeader className="flex gap-3">
-                                <Button color="primary" variant="flat">
-                                    {item.value} ครั้ง
+                                <Button
+                                    color="primary"
+                                    variant="flat"
+                                >
+                                    <div className="flex items-end gap-1">
+                                        <div className="text-xl">
+                                            {item.value}
+                                        </div>
+                                        <div className="pb-[2px]">ครั้ง</div>
+                                    </div>
                                 </Button>
                                 <div className="flex flex-col">
-                                    <p className="text-md">{item.name}</p>
+                                    <p className="text-xl">{item.name}</p>
                                 </div>
                             </CardHeader>
                         </Card>
@@ -87,7 +95,7 @@ const JoinSection: NextPage<Props> = (props) => {
                 APPLICATION
             </div> */}
             <div className="flex flex-col gap-2">
-                <div className="text-4xl font-bold text-center">
+                <div className="text-3xl md:text-4xl font-bold text-center">
                     ปัญหาที่พบในมหาวิทยาลัย
                 </div>
                 <div className="text-xl text-green-500 font-bold text-center">
@@ -116,7 +124,7 @@ const JoinSection: NextPage<Props> = (props) => {
             </div>
             <div className="flex flex-col gap-2 w-full">
                 <div className="flex flex-col gap-2">
-                    <div className="text-4xl font-bold text-center">
+                    <div className="text-3xl md:text-4xl font-bold text-center">
                         สาขาที่รับสมัคร
                     </div>
                     <div className="text-xl text-green-500 font-bold text-center">

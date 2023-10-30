@@ -26,7 +26,7 @@ const Gurus: NextPage<Props> = () => {
             className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col items-center"
         >
             <div className="flex flex-col gap-2">
-                <div className="text-4xl font-bold text-center">วิทยากร</div>
+                <div className="text-3xl md:text-4xl font-bold text-center">วิทยากร</div>
                 <div className="text-xl text-green-500 font-bold text-center">
                     Gurus
                 </div>
@@ -39,11 +39,12 @@ const Gurus: NextPage<Props> = () => {
                                 isBordered
                                 src={guru.image}
                                 className="h-[8rem] w-[8rem]"
+                                color="success"
                             />
-                            <div className="pt-[1.5rem] font-bold text-[1.25rem]">
+                            <div className="pt-[1.5rem] font-bold text-[1.25rem] text-green-500">
                                 {guru.name}
                             </div>
-                            <div className="text-default-500 text-center">
+                            <div className="text-center text-white">
                                 <div>{guru.job}</div>
                                 <div>@{guru.company}</div>
                             </div>

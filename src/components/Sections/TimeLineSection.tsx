@@ -17,24 +17,28 @@ interface TimelineItem {
 const timelineItems: TimelineItem[] = [
     {
         // children: "เปิดโพลรับปัญหาของเด็กในมหาลัย",
-        children: "PROBLEM SUBMISSION",
+        // children: "PROBLEM SUBMISSION",
+        children: "Problem Submission",
         start: new Date("2023-10-09 23:59"),
         end: new Date("2023-11-03 23:59"),
     },
     {
         // children: "เปิดรับ PROPOSAL",
-        children: "PROPOSAL SUBMISSION",
+        // children: "PROPOSAL SUBMISSION",
+        children: "Registration",
         start: new Date("2023-10-23 23:59"),
         end: new Date("2023-11-10 23:59"),
     },
     {
         // children: "ประกาศผลผู้เข้ารอบ",
-        children: "PARTICIPANT ANNOUNCEMENT",
+        // children: "PARTICIPANT ANNOUNCEMENT",
+        children: "Participant Announcement",
         start: new Date("2023-11-13 23:59"),
         end: new Date("2023-11-13 23:59"),
     },
     {
-        children: "MATCHING TEAMS",
+        // children: "MATCHING TEAMS",
+        children: "Matching Teams",
         start: new Date("2023-11-15 23:59"),
         end: new Date("2023-11-15 23:59"),
         detail: (
@@ -48,13 +52,15 @@ const timelineItems: TimelineItem[] = [
     },
     {
         // children: "ประกาศผลผู้เข้ารอบ",
-        children: "OVERVIEW PROBLEM",
+        // children: "OVERVIEW PROBLEM",
+        children: "Overview Problem",
         start: new Date("2023-11-16 23:59"),
         end: new Date("2023-11-16 23:59"),
     },
     {
         // children: "คลาสสอน UX UI",
-        children: "UX/UI WORKSHOP",
+        // children: "UX/UI WORKSHOP",
+        children: "UX/UI Workshop",
         start: new Date("2023-11-17 23:59"),
         end: new Date("2023-11-17 23:59"),
         detail: (
@@ -68,7 +74,8 @@ const timelineItems: TimelineItem[] = [
     },
     {
         // children: "คลาสสอน UX UI",
-        children: "DEV WORKSHOP",
+        // children: "DEV WORKSHOP",
+        children: "Dev Workshop",
         start: new Date("2023-11-19 23:59"),
         end: new Date("2023-11-19 23:59"),
         detail: (
@@ -76,12 +83,13 @@ const timelineItems: TimelineItem[] = [
                 <div>8:30-9:00 Register</div>
                 <div>9:00-12:00 React</div>
                 <div>12:00-13:00 Break</div>
-                <div>13:00-16:00 FastAPI</div>
+                <div>13:00-16:30 FastAPI</div>
             </div>
         ),
     },
     {
-        children: "PITCHING DAY",
+        // children: "PITCHING DAY",
+        children: "Pitching Day",
         start: new Date("2023-11-20 23:59"),
         end: new Date("2023-11-20 23:59"),
         detail: (
@@ -96,7 +104,8 @@ const timelineItems: TimelineItem[] = [
         ),
     },
     {
-        children: "HACKATHON",
+        // children: "HACKATHON",
+        children: "Hackathon",
         start: new Date("2023-11-22 23:59"),
         end: new Date("2023-11-24 23:59"),
     },
@@ -110,7 +119,7 @@ const TimeLineSection: NextPage<Props> = () => {
                 className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col items-center"
             >
                 <div className="flex flex-col gap-2">
-                    <div className="text-4xl font-bold text-center">
+                    <div className="text-3xl md:text-4xl font-bold text-center">
                         กำหนดการ
                     </div>
                     <div className="text-xl text-green-500 font-bold text-center">
@@ -157,7 +166,7 @@ const TimeLineChild: NextPage<{ item: TimelineItem }> = ({ item }) => {
                         className="text-[#0DBC58] cursor-pointer"
                         onClick={() => setOnExpand(!onExpand)}
                     >
-                        {onExpand ? "Hide detail" : "Show detail"}
+                        {onExpand ? "ซ่อนรายละเอียด" : "แสดงรายละเอียด"}
                     </div>
                 )}
             </div>

@@ -9,7 +9,7 @@ const Objective: NextPage<Props> = () => {
             name="objective"
             className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col md:flex-row justify-between gap-10"
         >
-            <div className="p-5 flex flex-col gap-3 border-l-3 border-green-500 bg-[#0DBC58]/10">
+            <div className="p-5 flex flex-col gap-3 border-l-3 border-green-500 bg-[#0DBC58]/10 rounded-md">
                 <div className="text-xl md:text-3xl">
                     🤔 KU Hackathon คืออะไร?
                 </div>
@@ -24,7 +24,7 @@ const Objective: NextPage<Props> = () => {
                     ที่สามารถช่วยแก้ไขปัญหาในมหาวิทยาลัยเกษตรศาสตร์ต่อไปได้
                 </div>
             </div>
-            <div className="p-5 flex flex-col gap-3 border-l-3 bg-[#0DBC58]/10 border-green-500">
+            <div className="p-5 flex flex-col gap-3 border-l-3 bg-[#0DBC58]/10 border-green-500 rounded-md">
                 <div className="text-xl md:text-2xl">
                     👩‍💻 เป้าหมายหลักของ KU Hackathon
                 </div>

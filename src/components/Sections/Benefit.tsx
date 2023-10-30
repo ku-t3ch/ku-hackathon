@@ -3,6 +3,33 @@ import { Element } from "react-scroll";
 
 interface Props {}
 
+const rewards = [
+    {
+        icon: "🏆",
+        title: "ชิงชนะเลิศ",
+        reward: "30,000",
+        unit: "บาท",
+    },
+    {
+        icon: "🥈",
+        title: "อันดับที่ 2",
+        reward: "15,000",
+        unit: "บาท",
+    },
+    {
+        icon: "🥉",
+        title: "อันดับที่ 3",
+        reward: "5,000",
+        unit: "บาท",
+    },
+    {
+        icon: "🎖️",
+        title: "รางวัลขวัญใจ",
+        reward: "3,000",
+        unit: "บาท",
+    },
+];
+
 const Benefit: NextPage<Props> = () => {
     return (
         <Element
@@ -10,7 +37,7 @@ const Benefit: NextPage<Props> = () => {
             className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col items-center"
         >
             <div className="flex flex-col gap-2">
-                <div className="text-4xl font-bold text-center">
+                <div className="text-3xl md:text-4xl font-bold text-center">
                     รางวัลที่ได้รับ
                 </div>
                 <div className="text-xl text-green-500 font-bold text-center">
@@ -18,22 +45,16 @@ const Benefit: NextPage<Props> = () => {
                 </div>
             </div>
             <div className="flex flex-col md:flex-row gap-3 w-full mt-5">
-                <div className="p-5 w-full flex flex-col gap-3 border-l-3 border-green-500 bg-[#0DBC58]/40 justify-center">
-                    <div className="text-xl">Winner</div>
-                    <div className="text-xl">30,000 THB</div>
-                </div>
-                <div className="p-5 w-full flex flex-col gap-3 border-l-3 border-green-500 bg-[#0DBC58]/30 justify-center">
-                    <div className="text-xl">Second place</div>
-                    <div className="text-lg">20,000 THB</div>
-                </div>
-                <div className="p-5 w-full flex flex-col gap-3 border-l-3 border-green-500 bg-[#0DBC58]/20 justify-center">
-                    <div className="text-xl">Third place</div>
-                    <div className="text-base">10,000 THB</div>
-                </div>
-                <div className="p-5 w-full flex flex-col gap-3 border-l-3 border-green-500 bg-[#0DBC58]/10 justify-center">
-                    <div className="text-xl">Consolation</div>
-                    <div className="text-sm">5,000 THB</div>
-                </div>
+                {rewards.map((item, index) => (
+                    <div className="p-5 w-full flex flex-col gap-1 border-3 border-green-500  justify-center rounded-2xl">
+                        <div className="text-2xl">{item.icon}</div>
+                        <div className="text-xl font-bold">{item.title}</div>
+                        <div className="flex gap-1 items-end text-green-500">
+                            <div className="text-4xl font-bold">{item.reward}</div>
+                            <div className="text-xl font-bold">{item.unit}</div>
+                        </div>
+                    </div>
+                ))}
             </div>
         </Element>
     );
