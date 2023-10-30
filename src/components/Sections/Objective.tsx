@@ -9,28 +9,33 @@ const Objective: NextPage<Props> = () => {
             name="objective"
             className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col md:flex-row justify-between gap-10"
         >
-            <div className="p-5 flex flex-col gap-3 border-l-3 border-green-500 bg-green-500/10">
-                <div className="text-xl md:text-3xl">🤔 What is KU hackathon?</div>
+            <div className="p-5 flex flex-col gap-3 border-3 border-green-500  rounded-2xl">
+                <div className="text-xl md:text-3xl">
+                    🤔 KU Hackathon คืออะไร?
+                </div>
                 <div>
-                    KU Hackathon is a hackathon for developers and design,
-                    hackers and builders to come together to collaborate and
-                    develop innovative solutions for "NISIT KU application".
-                    This event is open to all students from Kasetsart
-                    Universities. KU Hackathon participants will have the
-                    opportunity to create prototypes of new and cool services
-                    for "NISIT KU application".
+                    KU Hackathon
+                    เป็นงานแข่งขันที่จัดขึ้นโดยมหาวิทยาลัยเกษตรศาสตร์ (Kasetsart
+                    University)
+                    โดยงานนี้เป็นมหกรรมที่เน้นการพัฒนาและใช้เทคโนโลยีในการแก้ไขปัญหาต่าง
+                    ๆ ที่เกิดขึ้นในมหาวิทยาลัยเอง
+                    นิสิตจากหลายสาขาที่สนใจและมีความสามารถทางเทคโนโลยีมาเข้าร่วมในงานนี้
+                    จะทำงานร่วมกันเพื่อพัฒนาแนวคิดและโครงการต่าง ๆ
+                    ที่สามารถช่วยแก้ไขปัญหาในมหาวิทยาลัยเกษตรศาสตร์ต่อไปได้
                 </div>
             </div>
-            <div className="p-5 flex flex-col gap-3 border-l-3 bg-green-500/10 border-green-500">
-                <div className="text-xl md:text-3xl">👩‍💻 NISIT KU application</div>
+            <div className="p-5 flex flex-col gap-3 border-3  border-green-500 rounded-2xl">
+                <div className="text-xl md:text-2xl">
+                    👩‍💻 เป้าหมายหลักของ KU Hackathon
+                </div>
                 <div>
-                    Mobile application for Kasetsart University students Bang
-                    Khen and Kamphaeng Saen campuses To focus on providing
-                    various information services for students Provides teaching
-                    and learning transaction services Publishes information
-                    related to teaching and various activities such as
-                    university information, student information and advisor
-                    information.
+                    เปิดโอกาสให้นิสิตนำไอเดียที่พัฒนาขึ้นและสร้าง Prototype
+                    ของแนวคิดดังกล่าว
+                    เพื่อใช้ในการพัฒนาเป็นฟีเจอร์ให้แอปพลิเคชัน "App For Nisit"
+                    ที่ใช้ในอนาคต งานนี้เสริมสร้างโอกาสให้นิสิตจากสาขาต่าง ๆ
+                    ที่มีความสนใจทางเทคโนโลยีและมีความสามารถในการสร้างสรรค์ได้มีส่วนร่วมในการพัฒนามหาวิทยาลัยของตนเอง
+                    โดยทำให้บรรยากาศของบทความดูดีขึ้น
+                    และเน้นการพัฒนาและนำไอเดียเหล่านี้สู่การใช้งานจริงในอนาคต
                 </div>
             </div>
         </Element>

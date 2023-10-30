@@ -1,11 +1,11 @@
-interface TreeNode {
+export interface TreeNode {
   type: 'node';
   value: number;
   name: string;
   children: Tree[];
 }
 
-interface TreeLeaf {
+export interface TreeLeaf {
   type: 'leaf';
   name: string;
   value: number;

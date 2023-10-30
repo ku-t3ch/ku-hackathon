@@ -34,7 +34,7 @@ const Issues: NextPage<Props> = () => {
       name="issues"
       className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col  items-center"
     >
-      <div className="text-4xl font-bold text-center">SUBMITTED ISSUES</div>
+      <div className="text-3xl md:text-4xl font-bold text-center">SUBMITTED ISSUES</div>
       <div ref={circularElement} className="mt-10 w-full text-center">
         {width <= 0 ? (
           <Button

@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/ku-hackathon:latest .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/ku-hackathon:latest --build-arg GOOGLE_SERVICE_ACCOUNT_EMAIL=${{secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL}} --build-arg GOOGLE_SHEET_ID=${{secrets.GOOGLE_SHEET_ID}} --build-arg GOOGLE_PRIV_KEY=${{secrets.GOOGLE_PRIV_KEY}} .
       - name: Push the Docker image
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}

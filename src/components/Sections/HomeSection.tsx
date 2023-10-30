@@ -15,12 +15,12 @@ const HomeSection: NextPage<Props> = () => {
                 <div className="flex flex-col justify-start px-10">
                     <div className="md:text-9xl text-6xl font-bold flex flex-col md:flex-row items-start md:items-end">
                         KU
-                        <div className="text-green-500 md:text-7xl text-5xl hackathon-glow">
+                        <div className="text-[#0DBC58] md:text-7xl text-5xl hackathon-glow">
                             Hackathon
                         </div>
                     </div>
                     <div className="h-1 my-2 flex">
-                        <div className="bg-green-500 w-1/3 h-full"></div>
+                        <div className="bg-[#0DBC58] w-1/3 h-full"></div>
                         <div className="bg-black w-full h-full"></div>
                     </div>
                     <div className="text-base md:text-xl text-gray-300">
@@ -29,7 +29,7 @@ const HomeSection: NextPage<Props> = () => {
                 </div>
                 <ChevronDown
                     className={clsx(
-                        "text-green-500 animate-pulse absolute bottom-5 left-1/2 transform -translate-x-1/2 "
+                        "text-[#0DBC58] animate-pulse absolute bottom-5 left-1/2 transform -translate-x-1/2 "
                     )}
                     size={50}
                 />
