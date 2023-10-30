@@ -145,19 +145,6 @@ const getItems: CollapseProps["items"] = [
             </div>
         ),
     },
-    {
-        key: "11",
-        label: (
-            <div className="text-xl md:text-2xl">
-                หลังจาก Matching Team จะได้ทีมเป็นอย่างไร ?
-            </div>
-        ),
-        children: (
-            <div className="ml-7 text-xl flex flex-col">
-                - Designer 2 คน, Developer 2-3 คน รวมแล้วไม่เกิน 5 คน
-            </div>
-        ),
-    },
 ];
 
 const FAQs: NextPage<Props> = () => {
