@@ -42,6 +42,10 @@ const navLinks: NavLinksInterface[] = [
     ),
   },
   {
+    to: 'faqs',
+    children: 'FAQs',
+  },
+  {
     to: 'time-line',
     children: 'Timeline',
   },
@@ -56,10 +60,6 @@ const navLinks: NavLinksInterface[] = [
   {
     to: 'partners',
     children: 'Supporters',
-  },
-  {
-    to: 'faqs',
-    children: 'FAQs',
   },
 ];
 
