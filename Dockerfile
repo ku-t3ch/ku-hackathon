@@ -27,6 +27,10 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
+ARG GOOGLE_SERVICE_ACCOUNT_EMAIL
+ARG GOOGLE_SHEET_ID
+ARG GOOGLE_PRIV_KEY
+
 RUN yarn build
 
 # If using npm comment out above and use below instead
