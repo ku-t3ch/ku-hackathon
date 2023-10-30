@@ -93,8 +93,32 @@ const getItems: CollapseProps["items"] = [
                 </div>
                 <div>
                     โดยจะประกาศผลทางเว็บไซต์{" "}
-                    <a className="text-blue-500 underline" href="https://hackathon.tech.nisit.ku.ac.th">https://hackathon.tech.nisit.ku.ac.th</a>
+                    <a
+                        className="text-blue-500 underline"
+                        href="https://hackathon.ku.ac.th"
+                    >
+                        https://hackathon.ku.ac.th
+                    </a>
                 </div>
+            </div>
+        ),
+    },
+    {
+        key: "9",
+        label: (
+            <div className="text-lg">
+                เราสามารถจับทีมไปเองได้ไหม Developer กับ Design?
+            </div>
+        ),
+        children: (
+            <div className="ml-7 flex flex-col">
+                - ไม่ได้ เนื่องจากจะต้องจับคู่ทีมผ่านกิจกรรม Matching Team
+                โดยเป็นกิจกรรมที่ผู้เข้าร่วมสามารถทำความรู้จักกัน
+                และแลกเปลี่ยนความคิดเห็นกันผ่านกิจกรรมต่าง ๆ
+                ซึ่งในท้ายกิจกรรมนั้นจะเป็นการจับคู่ทีม
+                จะเริ่มจากผู้นำทีมจะเป็นจากฝ่าย Developer หรือ Designer ก็ได้
+                โดยที่ผู้นำทีมจะต้องแสดงไอเดีย หรือวิสัยทัศน์ เพื่อดึงดูดลูกทีม
+                เพื่อไปแข่งในวัน Hackathon
             </div>
         ),
     },
@@ -106,7 +130,14 @@ const FAQs: NextPage<Props> = () => {
             name="faqs"
             className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col items-center"
         >
-            <div className="text-4xl font-bold text-center">FAQs</div>
+            <div className="flex flex-col gap-2">
+                <div className="text-4xl font-bold text-center">
+                    คำถามที่พบบ่อย
+                </div>
+                <div className="text-xl text-green-500 font-bold text-center">
+                    FAQs
+                </div>
+            </div>
             <div className="flex gap-5 mt-10 w-full">
                 <Collapse
                     className="w-full"

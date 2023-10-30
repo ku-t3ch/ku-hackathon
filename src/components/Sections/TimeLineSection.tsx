@@ -109,7 +109,14 @@ const TimeLineSection: NextPage<Props> = () => {
                 name="time-line"
                 className="max-w-5xl mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col items-center"
             >
-                <div className="text-4xl font-bold text-center">TIMELINE</div>
+                <div className="flex flex-col gap-2">
+                    <div className="text-4xl font-bold text-center">
+                        กำหนดการ
+                    </div>
+                    <div className="text-xl text-green-500 font-bold text-center">
+                        Timeline
+                    </div>
+                </div>
                 <div>
                     <Timeline
                         className="mt-10"
@@ -147,7 +154,7 @@ const TimeLineChild: NextPage<{ item: TimelineItem }> = ({ item }) => {
                 )}
                 {item.detail && (
                     <div
-                        className="text-green-500 cursor-pointer"
+                        className="text-[#0DBC58] cursor-pointer"
                         onClick={() => setOnExpand(!onExpand)}
                     >
                         {onExpand ? "Hide detail" : "Show detail"}

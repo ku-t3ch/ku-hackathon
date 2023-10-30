@@ -17,12 +17,11 @@ export default function Home() {
       <HomeSection />
       <Objective />
       <JoinSection />
+      <FAQs />
       <TimeLineSection />
       <Benefit />
       <Gurus />
-      {/* <Issues /> */}
       <Partners />
-      <FAQs />
     </>
   );
 }
