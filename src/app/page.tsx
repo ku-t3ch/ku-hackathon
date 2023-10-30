@@ -10,6 +10,7 @@ import Objective from '@/components/Sections/Objective';
 import Partners from '@/components/Sections/Partners';
 import ScheduleSection from '@/components/Sections/ScheduleSection';
 import TimeLineSection from '@/components/Sections/TimeLineSection';
+import Problems from '@/components/Sections/Problems';
 
 export default function Home() {
   return (
@@ -17,11 +18,12 @@ export default function Home() {
       <HomeSection />
       <Partners />
       <Objective />
+      <Problems />
+      <Gurus />
       <JoinSection />
       <FAQs />
       <TimeLineSection />
       <Benefit />
-      <Gurus />
     </>
   );
 }
