@@ -9,11 +9,11 @@ interface Props {}
 const Location: NextPage<Props> = () => {
 
     const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: process.env.GOOGLE_MAP_API_KEY!,
+        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY!,
     });
     
     const mapContainerStyle = {
-        width: "70%",
+        width: "80%",
         height: "70%",
         margin: "auto",
     };
