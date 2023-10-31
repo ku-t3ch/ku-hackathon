@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.13",
     "@nextui-org/react": "^2.1.13",
+    "@react-google-maps/api": "^2.19.2",
     "antd": "^5.9.4",
     "apexcharts": "^3.44.0",
     "axios": "^1.6.0",
