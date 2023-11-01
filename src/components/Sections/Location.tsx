@@ -1,32 +1,22 @@
 import { NextPage } from "next";
 import { Element } from "react-scroll";
-import { GoogleMap, InfoWindowF, MarkerF, useJsApiLoader } from "@react-google-maps/api";
+import dynamic from "next/dynamic";
 import dotenv from "dotenv";
 dotenv.config();
 
 interface Props {}
 
+const MapBox = dynamic(
+    () => import("../MapBox"),
+    { ssr: false }
+);
+
 const Location: NextPage<Props> = () => {
-
-    const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY!,
-    });
     
-    const mapContainerStyle = {
-        width: "80%",
-        height: "70%",
-        margin: "auto",
-    };
-    
-    const loc = {
-        lat: 13.844610080312837, 
-        lng: 100.5675085805296,
-    };
-
     return (
         <Element
             name="location"
-            className="mx-auto w-full pt-[5rem] md:pt-[10rem] flex flex-1 md:flex-row gap-10"
+            className="mx-auto w-full pt-[5rem] md:pt-[10rem] flex flex-1 md:flex-row gap-10" 
         >
             <div className="relative">
                 <div className="absolute top-0 left-0 w-full h-full bg-green-900 opacity-50 z-10"></div>
@@ -46,18 +36,11 @@ const Location: NextPage<Props> = () => {
                             <p>มหาวิทยาลัยเกษตรศาสตร์ บางเขน</p>
                         </div>
                     </div>
-                    <div className="hidden md:flex flex-col justify-center">
-                        {isLoaded && (
-                            <GoogleMap
-                                mapContainerStyle={mapContainerStyle}
-                                center={loc}
-                                zoom={18}
-                            >
-                                <MarkerF 
-                                    position={loc}
-                                />
-                            </GoogleMap>
-                        )}
+                    <div className="hidden md:flex flex-col justify-center h-screen/4 px-10 py-10">
+                        <MapBox
+                            center={[13.866, 100.521]}
+                            zoom={17}
+                        />
                     </div>
                 </div>
             </div>
