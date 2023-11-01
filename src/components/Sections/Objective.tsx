@@ -3,8 +3,6 @@ import Image from 'next/image';
 import { Element } from 'react-scroll';
 import TalaiBusImage from '@/assets/TalaiBusImage.png';
 
-import 'src/app/objective.css';
-
 interface Props {}
 
 const Objective: NextPage<Props> = () => {
@@ -28,7 +26,7 @@ const Objective: NextPage<Props> = () => {
             className="p-5 flex flex-col gap-3 rounded-2xl flex-1"
             style={{ alignSelf: 'center' }}
           >
-            <div className="text-2xl md:text-4xl font-bold header-text">
+            <div className="text-2xl md:text-4xl font-bold text-primary">
               KU Hackathon คืออะไร?
             </div>
             <div>
