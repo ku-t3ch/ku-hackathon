@@ -64,7 +64,7 @@ const HackathonLogo: FC<{}> = () => {
           x: 0,
         }}
         transition={{
-          delay: 0.5,
+          delay: 0.1,
           duration: 0.5,
         }}
         className="text-[17.5vw] md:text-[8rem] font-extrabold leading-none text-primary"
@@ -81,7 +81,7 @@ const HackathonLogo: FC<{}> = () => {
           y: 0,
         }}
         transition={{
-          delay: 0.8,
+          delay: 0.65,
           duration: 0.5,
         }}
         className="flex flex-col py-[1vw] md:py-[.5rem]"
