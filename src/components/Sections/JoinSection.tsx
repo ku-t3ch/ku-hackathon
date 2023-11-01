@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { Element } from "react-scroll";
-import { useEffect, useRef, useState } from "react";
-import { Card, CardBody, Button, CardHeader } from "@nextui-org/react";
+import { ReactElement, useEffect, useRef, useState } from "react";
+import { Card, CardBody, Button, CardHeader, useDisclosure, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter } from "@nextui-org/react";
 import { PenTool, SquareCode, ChevronRight } from "lucide-react";
 import { Issue } from "@/interfaces/IssueInterface";
 import { Tree, TreeNode } from "@/interfaces/CircularPackingInterface";
@@ -9,13 +9,54 @@ import Link from "next/link";
 import { Collapse, CollapseProps } from "antd";
 import axios from "axios";
 import _ from "lodash";
+import { on } from "events";
 interface Props {
     // issues: Issue[];
+}
+
+interface ModalContentProps {
+    title: string;
+    content: ReactElement;
+    link: string;
 }
 
 const JoinSection: NextPage<Props> = (props) => {
     const [Issues, setIssues] = useState<Issue[]>([]);
     const [IssueTree, setIssueTree] = useState<Tree[]>([]);
+    const [modalContent, setModalContent] = useState<ReactElement>(<></>);
+    const [modalActionLink, setModalActionLink] = useState<string>("");
+    const [modalTitle, setModalTitle] = useState<string>("");
+
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const developerModalContent: ModalContentProps = {
+        title: "Developer",
+        link: "https://forms.gle/kBLLSRX54Mibyqoo7",
+        content:
+            <div>
+                นักพัฒนา Website สามารถสร้างสรรค์ไอเดียออกมาให้อยู่ในรูปแบบเว็บไซต์ต้นแบบ (Prototype) ตอบโจทย์การใช้งาน เพื่อให้สามารถนำไปพัฒนาต่อยอดใช้งานได้จริง<br />
+                <br />
+                🚨 คุณสมบัติ 🚨<br />
+                &#x2022; สามารถพัฒนาเว็บแอปพลิเคชัน (Web Application) ตามภาษาความถนัดของตัวเอง<br />
+                &#x2022; เข้าใจหลักการทำ Responsive (Mobile First)<br />
+                &#x2022; สามารถทำงานร่วมกันเป็นทีมได้เป็นอย่างดี รับแรงกดดันได้ดี<br />
+            </div>
+    };
+
+    const designerModalContent: ModalContentProps = {
+        title: "Designer",
+        link: "https://forms.gle/v5xdDYXrY2EdXKt5A",
+        content: 
+        <div>
+            นักไอเดียสร้างสรรค์ ชอบคิดแก้ปัญหา รวมถึงออกแบบฟีเจอร์ใหม่ ๆ พร้อมนำเสนอต่อคณะกรรมการได้<br />
+            หน้าที่หลักๆ แล้วจะเป็นคนที่มีความคิดสร้างสรรค์และมีความสามารถในการออกแบบ<br />
+            <br />
+            🚨 คุณสมบัติ 🚨<br />
+            &#x2022; เป็นนักคิดนักวางแผน<br />
+            &#x2022; มีความคิดสร้างสรรค์<br />
+            &#x2022; เข้าใจความรู้สึกของผู้ใช้งานแอพ Nisit KU
+        </div>
+    };
 
     useEffect(() => {
         getIssues();
@@ -45,6 +86,25 @@ const JoinSection: NextPage<Props> = (props) => {
         });
         setIssues(res.data);
     };
+
+    const handleOnOpen = (type: string) => {
+        switch (type) {
+            case "developer":
+                setModalContent(developerModalContent.content);
+                setModalActionLink(developerModalContent.link);
+                setModalTitle(developerModalContent.title)
+                onOpen();
+                break;
+            case "designer":
+                setModalContent(designerModalContent.content);
+                setModalActionLink(designerModalContent.link);
+                setModalTitle(designerModalContent.title)
+                onOpen();
+                break;
+            default:
+                break;
+        }
+    }
 
     const sectionContainer = useRef(null);
 
@@ -104,9 +164,8 @@ const JoinSection: NextPage<Props> = (props) => {
                         expandIcon={({ isActive }) => (
                             <ChevronRight
                                 style={{
-                                    transform: `rotate(${
-                                        isActive ? 90 : 0
-                                    }deg)`,
+                                    transform: `rotate(${isActive ? 90 : 0
+                                        }deg)`,
                                     transition: "transform 0.2s ease-in-out",
                                 }}
                             />
@@ -138,18 +197,14 @@ const JoinSection: NextPage<Props> = (props) => {
                                 size={144}
                                 className="text-primary"
                             ></PenTool>
-                            <Link
-                                href="https://forms.gle/v5xdDYXrY2EdXKt5A"
-                                target="_blank"
+                            <Button
+                                className="font-bold text-lg md:text-2xl mt-5 md:mt-8"
+                                color="primary"
+                                variant="ghost"
+                                onClick={() => handleOnOpen("designer")}
                             >
-                                <Button
-                                    className="font-bold text-lg md:text-2xl mt-5 md:mt-8"
-                                    color="primary"
-                                    variant="ghost"
-                                >
-                                    APPLY
-                                </Button>
-                            </Link>
+                                DESCRIPTION
+                            </Button>
                         </CardBody>
                     </Card>
                     <Card className="w-full h-full md:py-3">
@@ -164,22 +219,52 @@ const JoinSection: NextPage<Props> = (props) => {
                                 size={144}
                                 className="text-primary"
                             ></SquareCode>
-                            <Link
-                                href="https://forms.gle/kBLLSRX54Mibyqoo7"
-                                target="_blank"
+                            <Button
+                                className="font-bold text-lg md:text-2xl mt-5 md:mt-8"
+                                color="primary"
+                                variant="ghost"
+                                onClick={() => handleOnOpen("developer")}
                             >
-                                <Button
-                                    className="font-bold text-lg md:text-2xl mt-5 md:mt-8"
-                                    color="primary"
-                                    variant="ghost"
-                                >
-                                    APPLY
-                                </Button>
-                            </Link>
+                                DESCRIPTION
+                            </Button>
                         </CardBody>
                     </Card>
                 </div>
             </div>
+            <Modal
+                isOpen={isOpen}
+                onClose={onClose}
+                classNames={{
+                    body: "py-6 text-lg",
+                    header: "border-b-[1px] border-[#353839] text-[#21C55D] text-2xl font-bold",
+                }}
+            >
+                <ModalContent>
+                    {(onClose) => (
+                        <>
+                            <ModalHeader className="flex flex-col gap-1">{modalTitle}</ModalHeader>
+                            <ModalBody>
+                                <p>
+                                    {modalContent}
+                                </p>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="danger" variant="ghost" onPress={onClose}>
+                                    Close
+                                </Button>
+                                <Link
+                                    href={modalActionLink}
+                                    target="_blank"
+                                >
+                                    <Button color="primary" variant="ghost">
+                                        APPLY
+                                    </Button>
+                                </Link>
+                            </ModalFooter>
+                        </>
+                    )}
+                </ModalContent>
+            </Modal>
         </Element>
     );
 };
