@@ -38,7 +38,7 @@ const Location: NextPage<Props> = () => {
                     </div>
                     <div className="hidden md:flex flex-col justify-center h-screen/4 px-10 py-10">
                         <MapBox
-                            center={[13.866, 100.521]}
+                            center={[13.844757035106669, 100.56749983783186]}
                             zoom={17}
                         />
                     </div>
