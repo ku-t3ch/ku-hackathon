@@ -36,16 +36,16 @@ const partners = [
 
 const Partners: NextPage<Props> = () => {
   return (
-    <div className="max-w-8xl mx-auto w-full px-3 py-5 flex flex-col bg-[#1F2937]">
+    <div className="max-w-8xl mx-auto w-full px-3 py-5 flex flex-col bg-[#1F2937] shadow-xl">
       <div className="flex flex-nowarp place-content-evenly">
         {partners.map((partner, index) => (
           <a key={index} href={partner.link} target="__blank">
             <Image
               src={partner.image}
-              alt={partner.name}
-              className="grayscale transition duration-1000 hover:grayscale-0"
-              height={48}
               width={48}
+              height={48}
+              alt={partner.name}
+              className="w-[2rem] sm:w-[3rem] grayscale transition duration-1000 hover:grayscale-0"
             />
           </a>
         ))}

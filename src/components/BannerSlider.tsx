@@ -30,6 +30,7 @@ const BannerSlider: FC<Props> = ({ data = [] }) => {
           src={data[0].source}
           className="h-screen w-screen object-cover"
           alt="preload-banner"
+          unoptimized
           priority
         />
       )}
@@ -55,12 +56,12 @@ const BannerSlider: FC<Props> = ({ data = [] }) => {
             return (
               <div key={idx}>
                 <Image
-                  fill
                   src={banner.source}
-                  alt="preload-banner"
+                  alt={`banner-${idx}`}
+                  width={1920}
+                  height={1080}
                   className="h-screen object-cover"
                   unoptimized
-                  priority
                 />
               </div>
             );
