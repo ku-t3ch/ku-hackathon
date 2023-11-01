@@ -43,7 +43,7 @@ const banners = [
 
 const HomeSection: NextPage<Props> = () => {
   return (
-    <Element name="home" className="h-screen relative z-[9]">
+    <Element name="home" className="mx-auto w-full pt-[5rem] md:pt-[10rem] flex flex-1 md:flex-row gap-10 h-screen relative z-[9]">
       <BannerSlider data={banners} />
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[10]">
         <HackathonLogo />
