@@ -1,93 +1,57 @@
-import { Avatar } from "@nextui-org/avatar";
-import { NextPage } from "next";
-import { Element } from "react-scroll";
-import React, { useState, useRef  } from 'react';
-import 'src/app/partner.css';
+import { NextPage } from 'next';
+import { Element } from 'react-scroll';
+import Image from 'next/image';
 
 interface Props {}
 
+const prefix = 'https://s3.tech.nisit.ku.ac.th/assets/ku-hackathon/partners/';
+
 const partners = [
-    {
-        name: "Kasetsart University",
-        image: "https://s3.tech.nisit.ku.ac.th/assets/partner/ku.png",
-        link: "https://www.facebook.com/SDKUkasetsart",
-    },
-    {
-        name: "Office of Computer Services",
-        image: "https://s3.tech.nisit.ku.ac.th/assets/partner/ocslogo.png",
-        link: "https://web.facebook.com/ocs.ku",
-    },
-    {
-        name: "Google Developer Student Clubs",
-        image: "https://s3.tech.nisit.ku.ac.th/assets/partner/GDSCKU.png",
-        link: "https://www.facebook.com/gdsc.ku/",
-    },
-    {
-        name: "KU Startup",
-        image: "https://s3.tech.nisit.ku.ac.th/assets/partner/KUStartup.jpg",
-        link: "https://www.facebook.com/Kustartup",
-    },
-    {
-        name: "KU Tech",
-        image: "https://tech.nisit.ku.ac.th/logo/KUTechBlack.png",
-        link: "https://www.facebook.com/ku.t3ch",
-    },
+  {
+    name: 'KU Startup',
+    image: prefix + 'KUSTARTUP.webp',
+    link: 'https://www.facebook.com/Kustartup',
+  },
+  {
+    name: 'KU Tech',
+    image: prefix + 'KUTECH.webp',
+    link: 'https://www.facebook.com/ku.t3ch',
+  },
+  {
+    name: 'Google Developer Student Clubs',
+    image: prefix + 'GDSCKU.webp',
+    link: 'https://www.facebook.com/gdsc.ku/',
+  },
+  {
+    name: 'Office of Computer Services',
+    image: prefix + 'OCS.webp',
+    link: 'https://web.facebook.com/ocs.ku',
+  },
+  {
+    name: 'Kasetsart University',
+    image: prefix + 'KU.webp',
+    link: 'https://www.facebook.com/SDKUkasetsart',
+  },
 ];
 
 const Partners: NextPage<Props> = () => {
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-    const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
-
-    const handleMouseEnter = (index: number) => {
-        setHoveredIndex(index);
-        if (hoverTimeout.current) {
-            clearTimeout(hoverTimeout.current);
-        }
-    };
-
-    const handleMouseLeave = () => {
-        hoverTimeout.current = setTimeout(() => {
-            setHoveredIndex(null);
-        }, 500);
-    };
-
-    return (
-        <Element
-            name="partners"
-            className="max-w-8xl mx-auto w-full px-3 py-5 flex flex-col bg-slate-800"
-        >
-            <div className="flex flex-wrap place-content-evenly gap-5">
-                {partners.map((partner, index) => (
-                    <div key={index} className="flex flex-col">
-                        <a
-                            className={"avatar-container flex flex-row"}
-                            onMouseEnter={() => handleMouseEnter(index)}
-                            onMouseLeave={handleMouseLeave}
-                            href={partner.link}
-                        >
-                            <Avatar
-                                className={`w-16 h-16 text-large bg-white ${
-                                    index === hoveredIndex ? 'hovered' : 'unhovered'
-                                }`}
-                                src={partner.image}
-                                alt={partner.name}
-                            />
-
-                            {/* <div className={"text-container"}>
-                                <div 
-                                    className={`flex h-full text-xm font-bold ${
-                                        index === hoveredIndex ? 'hovered' : 'unhovered'
-                                    }`} 
-                                    style={{ alignItems: 'center' }}>
-                                    {partners[index].name}
-                                </div>
-                            </div> */}
-                        </a>
-                    </div>
-                ))}
-            </div>
-        </Element>
-    );
+  return (
+    <div className="max-w-8xl mx-auto w-full px-3 py-5 flex flex-col bg-[#1F2937]">
+      <div className="flex flex-nowarp place-content-evenly">
+        {partners.map((partner, index) => (
+          <a key={index} href={partner.link} target="__blank">
+            <Image
+              src={partner.image}
+              alt={partner.name}
+              className="grayscale transition duration-1000 hover:grayscale-0"
+              height={48}
+              width={48}
+            />
+          </a>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Partners;

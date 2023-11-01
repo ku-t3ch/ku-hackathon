@@ -1,12 +1,28 @@
 import { NextPage } from "next";
 import { Element } from "react-scroll";
-import { Card, CardBody, Button, CardHeader } from "@nextui-org/react";
+
+import { 
+    Card, 
+    CardHeader, 
+    CardBody, 
+    CardFooter, 
+    Image, 
+    Button, 
+    Modal, 
+    ModalContent, 
+    ModalHeader, 
+    ModalBody, 
+    ModalFooter, 
+    useDisclosure 
+} from "@nextui-org/react";
+
 import { PenTool, SquareCode, ChevronRight } from "lucide-react";
 import React, { useState } from 'react';
 import Link from "next/link";
 import _ from "lodash";
-import 'src/app/button_arrow.css';
 
+import dotenv from 'dotenv';
+dotenv.config();
 interface Props {
     // issues: Issue[];
 }
@@ -21,27 +37,88 @@ const JoinSection: NextPage<Props> = (props) => {
     const [isFirstArrowAnimate, setFirstArrowAnimate] = useState(false);
     const [isSecondArrowAnimate, setSecondArrowAnimate] = useState(false);
 
-    const [isModalVisible, setModalVisible] = useState(false);
-    const [modalSource, setModalSource] = useState("");
+    const {isOpen, onOpen, onClose} = useDisclosure();
+    const modalStates = [
+        useDisclosure(),
+        useDisclosure()
+    ];
 
-    const toggleModal = (source: string) => {
-        setModalSource(source);
-        setModalVisible(!isModalVisible);
+    const insideContent = (index: number) => {
+        if (index === 0) {
+            return (
+                <>
+                    <div className="flex flex-col gap-5">
+                        <p>โดย Designer นั้นหน้าที่หลักๆ แล้วจะเป็นคนที่มีความคิดสร้างสรรค์และมีความสามารถในการออกแบบ</p>
+                        <div>
+                            <p className="font-bold">🚨Key Responsibility🚨</p>
+                            <p>- วางแผน และออกแบบหน้าตาแอพ ให้เหมาะสมกับผู้ใช้งาน</p>
+                            <p>- ออกแบบเนื้อหาของฟีเจอร์ เพื่อแก้ปัญหานิสิตที่ใช้แอพ Nisit KU</p>
+                        </div>
+                        <div>
+                            <p className="font-bold">🚨Qualifications🚨</p>
+                            <p>- เป็นนักคิดนักวางแผน</p>
+                            <p>- มีความคิดสร้างสรรค์</p>
+                            <p>- มี Empathy ในการเข้าใจความรู้สึกของผู้ใช้งานแอพ Nisit KU</p>
+                        </div>
+                    </div>
+                </>
+            );
+        } else {
+            return (
+                <>
+                    <div className="flex flex-col gap-5">
+                        <p>ทำหน้าที่สร้างเว็บไซต์จากการเขียนโค้ต</p>
+                        <div>
+                            <p className="font-bold">🔑คุณสมบัติ</p>
+                            <p>- สามารถพัฒนาเว็บแอปพลิเคชัน (Web Application)</p>
+                            <p>- เข้าใจหลักการทำ Responsive (Mobile First)</p>
+                            <p>- สามารถทำงานร่วมกันเป็นทีมได้เป็นอย่างดี รับแรงกดดันได้ดี</p>
+                        </div>
+                        <div>
+                            <p className="font-bold">🏆เป้าหมาย</p>
+                            <p>- สามารถพัฒนาเว็บแอปพลิเคชัน (Web Application) Prototype 
+                                ที่สามารถตอบโจทย์การใช้งานภายในมหาวิทยาลัยเกษตรศาสตร์ได้เป็นอย่างดี 
+                                เพื่อให้สามารถนำไปพัฒนาต่อยอดใช้งานได้จริง</p>
+                        </div>
+                        <div>
+                            <p className="font-bold">☀️ร่วมกับเคลื่อนโดย</p>
+                            <p>- หน่วยส่งเสริมอาชีพ งานส่งเสริมสุขภาวะและอาชีพ กองพัฒนานิสิต มหาวิทยาลัยเกษตรศาสตร์</p>
+                            <p>- สำนักบริการคอมพิวเตอร์ มหาวิทยาลัยเกษตรศาสตร์</p>
+                        </div>      
+                        <div>
+                            <p className="font-bold">📅ปิดรับ</p>
+                            <p>
+                                - 10 พฤศจิกายน พ.ศ. 2566 เวลา 23.59 น.
+                            </p>
+                        </div>                  
+                    </div>
+                </>
+            );
+        }
     };
 
-    const Modal: React.FC<ModalProps> = ({ visible, onClose, source }) => {
-        if (!visible) return null;
-    
+    const popUp = (index: number) => {
         return (
-            <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-                <div className="bg-white p-4 rounded shadow-lg relative modal">
-                    {source === "Developer" && (
-                        <div>Here is the developer</div>
-                    )}
-                    <button onClick={onClose}>Close</button>
-                </div>
-            </div>
-        );
+            <ModalContent className="bg-black/80">
+                {(onClose) => (
+                    <>
+                        <ModalHeader className={`flex flex-col gap-1 ${index===0? 'text-orange-500':'text-sky-500'}`}>{index===0? 'Designer':'Developer'}</ModalHeader>
+                        <ModalBody className="">
+                            { insideContent(index) }
+                        </ModalBody>
+                        <ModalFooter>
+                            <a href={index===0? 
+                                "https://docs.google.com/forms/d/e/1FAIpQLSeqWsz5-tMGn3d56-SIczieUVZqlOvxl5Si4rUoJ4OK86IZBA/viewform":
+                                "https://docs.google.com/forms/d/e/1FAIpQLSfxYpFCcbwoboqbNbXf444TY3AXEERMcMjzMyfYuiweITaQQg/viewform"}>
+                                <Button color="primary" >
+                                    ไปที่แบบทดสอบ →
+                                </Button>
+                            </a>
+                        </ModalFooter>
+                    </>
+                )}
+            </ModalContent>
+        )
     };
 
     return (
@@ -72,8 +149,8 @@ const JoinSection: NextPage<Props> = (props) => {
                                 onClick={() => {
                                     setFirstArrowAnimate(!isFirstArrowAnimate);
                                     setTimeout(() => setFirstArrowAnimate(false), 1000);
-                                    toggleModal("Designer");
                                 }}
+                                onPress={modalStates[0].onOpen}
                             >   
                                 ดูรายละเอียด
                                 <span
@@ -100,8 +177,8 @@ const JoinSection: NextPage<Props> = (props) => {
                                 onClick={() => {
                                     setSecondArrowAnimate(!isSecondArrowAnimate);
                                     setTimeout(() => setFirstArrowAnimate(false), 1000);
-                                    toggleModal("Developer");
                                 }}
+                                onPress={modalStates[1].onOpen}
                             >
                                 ดูรายละเอียด
                                 <span
@@ -117,9 +194,20 @@ const JoinSection: NextPage<Props> = (props) => {
                     </div>
                 </div>
             </div>
-            {isModalVisible && (
-                <Modal visible={isModalVisible} onClose={() => toggleModal("")} source={modalSource} />
-            )}
+            <Modal 
+                isOpen={modalStates[0].isOpen} 
+                onClose={modalStates[0].onClose} 
+                size="3xl"
+            >
+                {popUp(0)}
+            </Modal>
+            <Modal 
+                isOpen={modalStates[1].isOpen} 
+                onClose={modalStates[1].onClose} 
+                size="3xl"
+            >
+                {popUp(1)}
+            </Modal>
         </Element>
     );
 };
