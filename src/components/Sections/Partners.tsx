@@ -39,9 +39,8 @@ const Partners: NextPage<Props> = () => {
     <div className="max-w-8xl mx-auto w-full px-3 py-5 flex flex-col bg-[#1F2937]">
       <div className="flex flex-nowarp place-content-evenly">
         {partners.map((partner, index) => (
-          <a href={partner.link} target="__blank">
+          <a key={index} href={partner.link} target="__blank">
             <Image
-              key={index}
               src={partner.image}
               alt={partner.name}
               className="grayscale transition duration-1000 hover:grayscale-0"
