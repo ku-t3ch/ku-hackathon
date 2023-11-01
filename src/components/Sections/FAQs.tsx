@@ -133,11 +133,11 @@ const FAQs: NextPage<Props> = () => {
                 key={1}
                 title={data.label}
                 classNames={{
-                  base: 'bg-[#1D232E] rounded-lg',
-                  heading: 'px-[1rem] bg-green-500 rounded-lg drop-shadow-lg',
-                  title: 'text-[#1D232E] font-medium',
-                  content: 'p-[1rem] bg-[#1D232E] rounded-b-xl',
-                  indicator: 'text-[#1D232E]',
+                  base: 'bg-[#003415] rounded-lg',
+                  heading: 'px-[1rem] bg-[#0B5C2B] rounded-lg drop-shadow-lg',
+                  title: 'text-white font-medium',
+                  content: 'p-[1rem] bg-[#003415] rounded-b-xl',
+                  indicator: 'text-white',
                 }}
               >
                 <>{data.children}</>
