@@ -55,7 +55,6 @@ const Partners: NextPage<Props> = () => {
         <Element
             name="partners"
             className="max-w-8xl mx-auto w-full px-3 py-5 flex flex-col bg-slate-800"
-            style={{ backgroundColor: "#1F2937" }}
         >
             <div className="flex flex-wrap place-content-evenly gap-5">
                 {partners.map((partner, index) => (
@@ -70,7 +69,6 @@ const Partners: NextPage<Props> = () => {
                                 className={`w-16 h-16 text-large bg-white ${
                                     index === hoveredIndex ? 'hovered' : 'unhovered'
                                 }`}
-                                isBordered
                                 src={partner.image}
                                 alt={partner.name}
                             />
