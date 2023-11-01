@@ -31,16 +31,16 @@ const navLinks: NavLinksInterface[] = [
     children: 'สาขาที่รับสมัคร',
   },
   {
-    to: 'faqs',
-    children: 'คำถามที่พบบ่อย',
+    to: 'benefit',
+    children: 'รางวัล',
   },
   {
     to: 'time-line',
     children: 'กำหนดการ',
   },
   {
-    to: 'benefit',
-    children: 'รางวัล',
+    to: 'faqs',
+    children: 'คำถามที่พบบ่อย',
   },
 ];
 

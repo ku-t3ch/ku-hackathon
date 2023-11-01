@@ -23,9 +23,9 @@ export default function Home() {
       <Gurus />
       <Location />
       <JoinSection />
-      <FAQs />
-      <TimeLineSection />
       <Benefit />
+      <TimeLineSection />
+      <FAQs />
     </>
   );
 }
