@@ -112,6 +112,7 @@ const JoinSection: NextPage<Props> = (props) => {
         return {
             key: `Collapsible ${t.name}`,
             label: <div className="text-xl md:text-2xl">{t.name}</div>,
+            size: "lg",
             children: (
                 <div className="flex flex-col gap-3">
                     {_.orderBy(
@@ -232,6 +233,7 @@ const JoinSection: NextPage<Props> = (props) => {
                 </div>
             </div>
             <Modal
+                size="3xl"
                 isOpen={isOpen}
                 onClose={onClose}
                 classNames={{
