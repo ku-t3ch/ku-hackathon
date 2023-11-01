@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import { ClipboardEdit, AlignJustify } from 'lucide-react';
 import { scroller } from 'react-scroll';
 import { NavLinksInterface } from '@/interfaces/NavbarInterface';
-import { usePathname } from 'next/navigation';
 import NavbarLogo from '@/assets/NavbarLogo.webp';
 import Image from 'next/image';
 import tw from 'tailwind-styled-components';
@@ -14,7 +13,6 @@ import { NavScrollLink } from './NavScrollLink';
 
 interface Props {}
 
-// to = ถ้าต้องการให้ redirect ไป page อื่นๆ ให้ใช้ / นำหน้า เช่น /register, /join, ...
 const navLinks: NavLinksInterface[] = [
   {
     to: 'problems',
