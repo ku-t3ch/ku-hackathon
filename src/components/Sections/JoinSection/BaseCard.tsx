@@ -35,7 +35,6 @@ const BaseCard: FC<Props> = ({
         fill
         src={bgImage}
         className="z-0 h-full w-full rounded-lg"
-        objectFit="cover"
         alt="card-bg-image"
         unoptimized
       />
