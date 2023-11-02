@@ -2,15 +2,9 @@ import { FC } from 'react';
 import BaseModal from '../BaseModal';
 import { Code2 } from 'lucide-react';
 
-interface ModalProps {
-  isOpen: boolean;
-  closeModal?: () => void;
-}
-
-const DeveloperModal: FC<ModalProps> = ({ isOpen = false, closeModal }) => {
+const DeveloperModal: FC<{}> = () => {
   return (
     <BaseModal
-      isOpen={isOpen}
       title={
         <div className="flex gap-1 items-center">
           <Code2 size={20} />
@@ -23,7 +17,6 @@ const DeveloperModal: FC<ModalProps> = ({ isOpen = false, closeModal }) => {
       onClickApply={() => {
         window.open('https://forms.gle/kBLLSRX54Mibyqoo7', '_blank');
       }}
-      closeModal={closeModal}
     >
       <div className="flex flex-col gap-5">
         <p className="font-light">

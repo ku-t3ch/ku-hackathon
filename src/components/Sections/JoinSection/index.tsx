@@ -1,29 +1,44 @@
 import { NextPage } from 'next';
 import { Element } from 'react-scroll';
-import { useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import BaseCard from './BaseCard';
 import DesignerModal from './Modal/DesignerModal';
 import DeveloperModal from './Modal/DeveloperModal';
 
 interface Props {}
 
-type ModalName = 'designer' | 'developer';
+enum Modal {
+  Designer = 0,
+  Developer = 1,
+  Close = -1,
+}
+
+const ModalContext = createContext<{
+  closeModal: () => void;
+}>({
+  closeModal: () => {},
+});
 
 const JoinSection: NextPage<Props> = () => {
-  const [isModalOpen, setIsModalOpen] = useState({
-    designer: false,
-    developer: false,
-  });
+  const [targetModal, setTargetModal] = useState<Modal>(-1);
 
-  const openModal = (name: ModalName) => {
-    setIsModalOpen((p) => ({ ...p, [name]: true }));
+  const openModal = (idx: Modal) => {
+    setTargetModal(idx);
   };
 
   const closeModal = () => {
-    setIsModalOpen({
-      designer: false,
-      developer: false,
-    });
+    setTargetModal(-1);
+  };
+
+  const getModal = (idx: Modal) => {
+    switch (idx) {
+      case Modal.Designer:
+        return <DesignerModal />;
+      case Modal.Developer:
+        return <DeveloperModal />;
+      default:
+        return <></>;
+    }
   };
 
   return (
@@ -47,22 +62,25 @@ const JoinSection: NextPage<Props> = () => {
               bgImage={`${process.env.cdn}/join-items/cards/card-designer.webp`}
               borderColor="#FF6100"
               themeColor="#FF914D"
-              onClickBtn={() => openModal('designer')}
+              onClickBtn={() => openModal(Modal.Designer)}
             />
             <BaseCard
               title="Developer"
               bgImage={`${process.env.cdn}/join-items/cards/card-developer.webp`}
               borderColor="#00A1FF"
               themeColor="#38B6FF"
-              onClickBtn={() => openModal('developer')}
+              onClickBtn={() => openModal(Modal.Developer)}
             />
           </div>
         </div>
       </Element>
-      <DesignerModal isOpen={isModalOpen.designer} closeModal={closeModal} />
-      <DeveloperModal isOpen={isModalOpen.developer} closeModal={closeModal} />
+      <ModalContext.Provider value={{ closeModal }}>
+        {getModal(targetModal)}
+      </ModalContext.Provider>
     </>
   );
 };
+
+export const useModal = () => useContext(ModalContext);
 
 export default JoinSection;

@@ -1,19 +1,18 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useState } from 'react';
 import tw from 'tailwind-styled-components';
 import { ArrowLeft, ChevronRightCircle, X } from 'lucide-react';
 import { Button } from '@nextui-org/react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useModal } from '.';
 
 interface Props {
-  isOpen: boolean;
   title: ReactNode | string;
   children: ReactNode;
   bgClassName: string;
   btnCancelColor?: string;
   btnApplyColor?: string;
   heroImage?: string;
-  closeModal?: () => void;
   onClickApply?: () => void;
 }
 
@@ -29,18 +28,25 @@ const modalAnimation = {
 };
 
 const BaseModal: FC<Props> = ({
-  isOpen,
   title,
   children,
   bgClassName,
   btnCancelColor,
   btnApplyColor,
   heroImage,
-  closeModal,
   onClickApply,
 }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(true);
+
+  const { closeModal } = useModal();
+
+  const handleClickCloseModal = () => {
+    setIsOpen(false);
+    setTimeout(() => closeModal(), 250);
+  };
+
   return (
-    <Container $isOpenBackground={isOpen}>
+    <Container $showBackground={isOpen}>
       <ModalContainer>
         <motion.div
           variants={modalAnimation}
@@ -69,7 +75,7 @@ const BaseModal: FC<Props> = ({
                 <div className="w-full text-lg font-medium">{title}</div>
                 <div
                   className="p-[.5rem] hover:bg-[#1F2A37] hover:bg-opacity-50 rounded-lg transition duration-250"
-                  onClick={closeModal}
+                  onClick={handleClickCloseModal}
                 >
                   <X size={20} />
                 </div>
@@ -81,7 +87,7 @@ const BaseModal: FC<Props> = ({
                     radius="none"
                     style={{ backgroundColor: btnCancelColor }}
                     className="rounded-[.5rem]"
-                    onClick={closeModal}
+                    onClick={handleClickCloseModal}
                   >
                     <ArrowLeft size={16} />
                     ย้อนกลับ
@@ -111,8 +117,9 @@ const Container: any = tw.div`
   fixed
   h-screen
   w-screen
-  ${(p: any) =>
-    p.$isOpenBackground ? 'bg-[#1F2A37] bg-opacity-40 z-[1000]' : 'z-0'}
+  ${(p: any) => p.$showBackground && 'bg-[#1F2A37] bg-opacity-40'}
+  z-[1000]
+
   transition
   duration-250
 `;

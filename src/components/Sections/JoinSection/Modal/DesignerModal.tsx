@@ -2,15 +2,9 @@ import { FC } from 'react';
 import BaseModal from '../BaseModal';
 import { Palette } from 'lucide-react';
 
-interface ModalProps {
-  isOpen: boolean;
-  closeModal?: () => void;
-}
-
-const DesignerModal: FC<ModalProps> = ({ isOpen = false, closeModal }) => {
+const DesignerModal: FC<{}> = () => {
   return (
     <BaseModal
-      isOpen={isOpen}
       title={
         <div className="flex gap-1 items-center">
           <Palette size={20} />
@@ -23,7 +17,6 @@ const DesignerModal: FC<ModalProps> = ({ isOpen = false, closeModal }) => {
       onClickApply={() => {
         window.open('https://forms.gle/v5xdDYXrY2EdXKt5A', '_blank');
       }}
-      closeModal={closeModal}
     >
       <div className="flex flex-col gap-5">
         <p className="font-light">
