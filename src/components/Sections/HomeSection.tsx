@@ -16,28 +16,26 @@ const sloganAnimation = {
   },
 };
 
-const prefix = 'https://s3.tech.nisit.ku.ac.th/assets/ku-hackathon/banners/';
-
 const banners = [
   {
     label: 'วิทยาเขตบางเขน',
-    source: prefix + 'bkn-banner.webp',
+    source: `${process.env.cdn}/banners/bkn-banner.webp`,
   },
   {
     label: 'วิทยาเขตกำแพงแสน',
-    source: prefix + 'kps-banner.webp',
+    source: `${process.env.cdn}/banners/kps-banner.webp`,
   },
   {
     label: 'วิทยาเขตศรีราชา',
-    source: prefix + 'src-banner.webp',
+    source: `${process.env.cdn}/banners/src-banner.webp`,
   },
   {
     label: 'วิทยาเขตเฉลิมพระเกียรติ จังหวัดสกลนคร',
-    source: prefix + 'scs-banner.webp',
+    source: `${process.env.cdn}/banners/scs-banner.webp`,
   },
   {
     label: 'วิทยาเขตสุพรรณบุรี',
-    source: prefix + 'sbc-banner.webp',
+    source: `${process.env.cdn}/banners/sbc-banner.webp`,
   },
 ];
 

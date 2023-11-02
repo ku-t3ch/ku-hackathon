@@ -4,32 +4,30 @@ import Image from 'next/image';
 
 interface Props {}
 
-const prefix = 'https://s3.tech.nisit.ku.ac.th/assets/ku-hackathon/partners/';
-
 const partners = [
   {
     name: 'KU Startup',
-    image: prefix + 'KUSTARTUP.webp',
+    image: `${process.env.cdn}/partners/KUSTARTUP.webp`,
     link: 'https://www.facebook.com/Kustartup',
   },
   {
     name: 'KU Tech',
-    image: prefix + 'KUTECH.webp',
+    image: `${process.env.cdn}/partners/KUTECH.webp`,
     link: 'https://www.facebook.com/ku.t3ch',
   },
   {
     name: 'Google Developer Student Clubs',
-    image: prefix + 'GDSCKU.webp',
+    image: `${process.env.cdn}/partners/GDSCKU.webp`,
     link: 'https://www.facebook.com/gdsc.ku/',
   },
   {
     name: 'Office of Computer Services',
-    image: prefix + 'OCS.webp',
+    image: `${process.env.cdn}/partners/OCS.webp`,
     link: 'https://web.facebook.com/ocs.ku',
   },
   {
     name: 'Kasetsart University',
-    image: prefix + 'KU.webp',
+    image: `${process.env.cdn}/partners/KU.webp`,
     link: 'https://www.facebook.com/SDKUkasetsart',
   },
 ];

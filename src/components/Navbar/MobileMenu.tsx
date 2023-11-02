@@ -2,7 +2,6 @@ import { NavLinksInterface } from '@/interfaces/NavbarInterface';
 import { X } from 'lucide-react';
 import { FC } from 'react';
 import tw from 'tailwind-styled-components';
-import NavbarLogo from '@/assets/NavbarLogo.webp';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { NavScrollLink } from './NavScrollLink';
@@ -40,7 +39,14 @@ const MobileMenu: FC<NavbarMobileProps> = ({
     >
       <div className="w-full mb-[1rem] flex">
         <div>
-          <Image src={NavbarLogo} alt="navbar-logo" className="w-[2.5rem]" />
+          <Image
+            src={`${process.env.cdn}/navbar-logo.webp`}
+            width={0}
+            height={0}
+            alt="navbar-logo"
+            className="w-[2.5rem]"
+            unoptimized
+          />
         </div>
         <div className="w-full flex items-center justify-end">
           <div className="p-[.25rem]" onClick={closeMenu}>

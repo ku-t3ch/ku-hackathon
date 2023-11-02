@@ -1,7 +1,6 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
 import { Element } from 'react-scroll';
-import TalaiBusImage from '@/assets/TalaiBusImage.png';
 
 interface Props {}
 
@@ -15,7 +14,7 @@ const Objective: NextPage<Props> = () => {
         <div className="flex flex-1 flex-col items-center md:gap-10 md:flex-row">
           <div className="md:w-1/2">
             <Image
-              src={TalaiBusImage}
+              src={`${process.env.cdn}/talai-bus.webp`}
               width={0}
               height={0}
               alt="talai-bus-image"

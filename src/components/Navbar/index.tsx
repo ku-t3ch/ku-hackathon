@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import { ClipboardEdit, AlignJustify } from 'lucide-react';
 import { scroller } from 'react-scroll';
 import { NavLinksInterface } from '@/interfaces/NavbarInterface';
-import NavbarLogo from '@/assets/NavbarLogo.webp';
 import Image from 'next/image';
 import tw from 'tailwind-styled-components';
 import MobileMenu from './MobileMenu';
@@ -53,6 +52,7 @@ const Navbar: NextPage<Props> = () => {
   };
 
   useEffect(() => {
+    handleScroll();
     window.addEventListener('scroll', handleScroll, true);
 
     return () => {
@@ -82,10 +82,13 @@ const Navbar: NextPage<Props> = () => {
           {/* desktop brand */}
           <NavbarBrand className="hidden lg:inline">
             <Image
-              src={NavbarLogo}
+              src={`${process.env.cdn}/navbar-logo.webp`}
+              width={0}
+              height={0}
               alt="navbar-logo"
               className="w-[3.5rem]"
               onClick={() => scrollTo('home')}
+              unoptimized
             />
           </NavbarBrand>
 

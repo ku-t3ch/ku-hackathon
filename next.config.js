@@ -10,6 +10,9 @@ const nextConfig = {
       },
     ],
   },
+  env: {
+    cdn: 'https://s3.tech.nisit.ku.ac.th/assets/ku-hackathon',
+  },
 };
 
 module.exports = nextConfig;
