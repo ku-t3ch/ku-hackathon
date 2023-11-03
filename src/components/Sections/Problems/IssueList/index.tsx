@@ -7,10 +7,11 @@ import _ from 'lodash';
 import { ChevronDown } from 'lucide-react';
 
 interface Props {
+  minimal?: boolean;
   data: SubIssue[];
 }
 
-const IssueList: FC<Props> = ({ data = [] }) => {
+const IssueList: FC<Props> = ({ minimal = false, data = [] }) => {
   const ScrollableElement = useRef<any>();
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
@@ -34,15 +35,20 @@ const IssueList: FC<Props> = ({ data = [] }) => {
       <ScrollShadow
         ref={ScrollableElement}
         hideScrollBar
-        className="h-[40rem] w-full flex flex-col gap-[1rem]"
+        className="w-full flex flex-col gap-[1rem]"
+        style={{
+          height: minimal ? '35rem' : '40rem',
+        }}
       >
-        {_.orderBy(data, (o) => o.count, 'desc').map((value, idx) => {
-          if (['', '-', 'ไม่มี'].includes(value.name)) return;
+        {_.orderBy(data, (o) => o.count, 'desc')
+          .slice(0, minimal ? 10 : data.length)
+          .map((value, idx) => {
+            if (['', '-', 'ไม่มี'].includes(value.name)) return;
 
-          return <IssueItem key={idx} data={value} />;
-        })}
+            return <IssueItem key={idx} data={value} />;
+          })}
       </ScrollShadow>
-      {!isScrolled && (
+      {!isScrolled && !minimal && (
         <Arrow $type="bottom">
           <ChevronDown size={20} />
         </Arrow>

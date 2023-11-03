@@ -50,7 +50,7 @@ const IssueType: FC<Props> = ({
           transition={{
             duration: 0.38,
           }}
-          className={`absolute bottom-[.25rem] left-[4.5rem] ${
+          className={`absolute bottom-[.25rem] left-[2.5rem] ${
             isActive ? 'grayscale-0' : 'grayscale'
           }`}
         >
@@ -60,16 +60,6 @@ const IssueType: FC<Props> = ({
             height={96}
             alt={`issue-type-icon-${number}`}
           />
-        </motion.div>
-        <motion.div
-          initial={{ y: 10 }}
-          animate={{ y: 0 }}
-          transition={{
-            duration: 0.38,
-          }}
-          className="absolute left-[1rem]"
-        >
-          <Number>{number ?? 0}</Number>
         </motion.div>
         <Text>
           <div className="font-medium text-lg text-white">{label}</div>
@@ -90,13 +80,6 @@ const Card = tw.div`
   relative
   z-[1]
   select-none
-`;
-
-const Number = tw.div`
-  text-[4rem]
-  text-gray-800
-  font-extrabold
-  z-[2]
 `;
 
 const Text = tw.div`

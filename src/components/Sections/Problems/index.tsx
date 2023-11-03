@@ -115,7 +115,10 @@ const Problems: NextPage<Props> = () => {
               <ChevronsRight size={48} className="text-gray-500" />
             </div>
             <div className="w-full lg:w-[45vw]">
-              <IssueList data={getSubIssuesByType(selectedTypeIssue)} />
+              <IssueList
+                minimal={width < 1024}
+                data={getSubIssuesByType(selectedTypeIssue)}
+              />
             </div>
           </div>
         )}
