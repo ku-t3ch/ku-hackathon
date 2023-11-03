@@ -34,7 +34,7 @@ const Location: NextPage<Props> = () => {
                 </div>
                 <div className="mt-[2rem] text-xl">
                   <div>สำนักบริการคอมพิวเตอร์</div>
-                  <div>มหาลัยเกษตรศาสตร์ วิทยาเขตบางเขน</div>
+                  <div>มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตบางเขน</div>
                 </div>
               </div>
               <div
