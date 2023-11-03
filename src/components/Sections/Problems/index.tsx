@@ -8,8 +8,7 @@ import IssueList from './IssueList';
 import IssueType from './IssueType';
 import { ChevronsRight } from 'lucide-react';
 import { useScreenWidthSize } from '@/components/hooks/useScreenWidthSize';
-import { ScrollShadow } from '@nextui-org/react';
-import LoadingSkeleton from './LoadingSkeleton';
+import { ScrollShadow, Spinner } from '@nextui-org/react';
 
 interface Props {}
 
@@ -68,7 +67,9 @@ const Problems: NextPage<Props> = () => {
       </div>
       <div className="mt-[5rem] flex flex-col w-full lg:w-fit">
         {issues.length == 0 ? (
-          <LoadingSkeleton isMobile={width >= 1024} />
+          <div className="py-[10rem] flex justify-center">
+            <Spinner size="lg" />
+          </div>
         ) : (
           <div className="flex flex-col lg:flex-row lg:gap-[2rem]">
             {width >= 1024 ? (
