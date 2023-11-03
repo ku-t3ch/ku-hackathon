@@ -15,6 +15,7 @@ interface TimelineItem {
   start: Date;
   end: Date;
   detail?: JSX.Element | string;
+  tag?: string;
 }
 
 const timelineItems: TimelineItem[] = [
@@ -45,11 +46,13 @@ const timelineItems: TimelineItem[] = [
         <li>13:00-16:00 Matching Team</li>
       </ul>
     ),
+    tag: 'Hybrid',
   },
   {
     children: 'Overview Problem',
     start: new Date('2023-11-16 23:59'),
     end: new Date('2023-11-16 23:59'),
+    tag: 'Online',
   },
   {
     children: 'UX/UI Workshop',
@@ -63,6 +66,7 @@ const timelineItems: TimelineItem[] = [
         <li>13:00-16:00 UX/UI Tool</li>
       </ul>
     ),
+    tag: 'Hybrid',
   },
   {
     children: 'Dev Workshop',
@@ -76,6 +80,7 @@ const timelineItems: TimelineItem[] = [
         <li>13:00-16:30 FastAPI</li>
       </ul>
     ),
+    tag: 'Hybrid',
   },
   {
     children: 'Pitching Day',
@@ -91,6 +96,7 @@ const timelineItems: TimelineItem[] = [
         <li>14:30-15:30 Announce Winner</li>
       </ul>
     ),
+    tag: 'Onsite',
   },
   {
     children: 'Hackathon',
@@ -100,8 +106,6 @@ const timelineItems: TimelineItem[] = [
 ];
 
 const TimeLineSection: NextPage<Props> = () => {
-  let activeEvent = 0;
-
   return (
     <>
       <Element
@@ -122,7 +126,7 @@ const TimeLineSection: NextPage<Props> = () => {
             items={timelineItems.map((item) => {
               const isActiveEvent = isWithinInterval(new Date(), {
                 start: item.start,
-                end: item.end,
+                end: timelineItems[timelineItems.length - 1].end,
               });
 
               return {
@@ -168,9 +172,34 @@ const TimeLineDot: any = tw.div`
 
 const TimeLineChild: NextPage<{ item: TimelineItem }> = ({ item }) => {
   const [onExpand, setOnExpand] = useState(false);
+
+  let tagColor = '';
+
+  switch (item.tag?.toLocaleLowerCase()) {
+    case 'hybrid':
+      tagColor = 'bg-sky-600 text-white';
+      break;
+    case 'online':
+      tagColor = 'bg-green-600 text-white';
+      break;
+    case 'onsite':
+      tagColor = 'bg-pink-600 text-white';
+      break;
+  }
   return (
     <div className="pl-[.25rem] sm:pl-[2.5rem] flex flex-col">
-      <div className="text-[1rem] sm:text-xl font-medium">{item.children}</div>
+      <div className="text-[1rem] sm:text-xl font-medium flex flex-col justify-start items-center gap-2">
+        {item.tag && (
+          <div className="w-full">
+            <div
+              className={`w-fit flex justify-start text-xs px-1 rounded-sm ${tagColor}`}
+            >
+              {item.tag}
+            </div>
+          </div>
+        )}
+        <div className="w-full">{item.children}</div>
+      </div>
       <div className="flex gap-2">
         {item.detail && (
           <div
