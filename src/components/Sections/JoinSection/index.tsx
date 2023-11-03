@@ -45,7 +45,7 @@ const JoinSection: NextPage<Props> = () => {
     <>
       <Element
         name="join"
-        className="max-w-[95vw] xl:max-w-[70vw] pt-[5rem] md:pt-[10rem] self-center w-full px-5 flex flex-col items-center gap-3"
+        className="max-w-[95vw] xl:max-w-[70rem] pt-[5rem] md:pt-[10rem] self-center w-full px-5 flex flex-col items-center gap-3"
       >
         <div className="flex flex-col gap-2 w-full">
           <div className="flex flex-col gap-2">
@@ -56,7 +56,7 @@ const JoinSection: NextPage<Props> = () => {
               Major Register
             </div>
           </div>
-          <div className="mt-[5rem] grid grid-cols-1 md:grid-cols-2 gap-[1.5rem]">
+          <div className="mt-[5rem] w-full grid grid-cols-1 md:grid-cols-2 gap-[1.5rem]">
             <BaseCard
               title="Designer"
               bgImage={`${process.env.cdn}/join-items/cards/card-designer.webp`}

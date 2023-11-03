@@ -11,7 +11,7 @@ const DesignerModal: FC<{}> = () => {
           <span className="font-semibold">Designer</span>
         </div>
       }
-      heroImage="https://s3.tech.nisit.ku.ac.th/assets/ku-hackathon/join-items/icons/icon-designer.webp"
+      heroImage={`${process.env.cdn}/join-items/icons/icon-designer.webp`}
       btnApplyColor="#FF914D"
       bgClassName="bg-gradient-to-b from-[#FF6100] via-[#845941] to-transparent opacity-30"
       onClickApply={() => {

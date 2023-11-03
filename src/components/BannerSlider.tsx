@@ -60,7 +60,7 @@ const BannerSlider: FC<Props> = ({ data = [] }) => {
                   alt={`banner-${idx}`}
                   width={1920}
                   height={1080}
-                  className="h-screen object-cover"
+                  className="h-screen w-screen object-cover"
                   unoptimized
                 />
               </div>

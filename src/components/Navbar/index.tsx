@@ -53,10 +53,10 @@ const Navbar: NextPage<Props> = () => {
 
   useEffect(() => {
     handleScroll();
-    window.addEventListener('scroll', handleScroll, true);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll, true);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
