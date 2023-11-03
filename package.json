@@ -37,6 +37,7 @@
     "react-apexcharts": "^1.4.1",
     "react-awesome-slider": "^4.1.0",
     "react-bootstrap": "^2.9.1",
+    "react-countup": "^6.5.0",
     "react-dom": "latest",
     "react-elastic-carousel": "^0.11.5",
     "react-icons": "^4.11.0",
