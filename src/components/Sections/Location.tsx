@@ -34,8 +34,8 @@ const Location: NextPage<Props> = () => {
             </div>
           </div>
           <div className="py-[5rem] flex justify-center">
-            <div className="flex flex-col lg:flex-row items-center gap-[2rem] lg:gap-[4rem] xl:gap-[10rem]">
-              <div className="w-full lg:w-[30vw] text-md md:text-2xl font-medium">
+            <div className="flex flex-col lg:flex-row items-center gap-[2rem] lg:gap-[4rem] xl:gap-[5rem]">
+              <div className="w-full lg:w-[30vw] text-md md:text-2xl font-semibold drop-shadow-sm">
                 <div>สำนักบริการคอมพิวเตอร์</div>
                 <div>มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตบางเขน</div>
               </div>
