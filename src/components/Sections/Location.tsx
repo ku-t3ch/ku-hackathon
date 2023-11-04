@@ -3,6 +3,7 @@ import { Element } from 'react-scroll';
 import dynamic from 'next/dynamic';
 import dotenv from 'dotenv';
 import { useScreenWidthSize } from '../hooks/useScreenWidthSize';
+import Image from 'next/image';
 dotenv.config();
 
 interface Props {}
@@ -14,7 +15,15 @@ const Location: NextPage<Props> = () => {
 
   return (
     <Element name="location" className="pt-[5rem] md:pt-[10rem]">
-      <div className="w-full py-[5rem] bg-[#003415] bg-opacity-50">
+      <div className="w-full py-[5rem] bg-[#003415] bg-opacity-50 relative">
+        <Image
+          fill
+          src={`${process.env.cdn}/com-service-building.webp`}
+          className="object-cover opacity-10 z-[1]"
+          unoptimized
+          sizes="100vw"
+          alt="ocs-building"
+        />
         <div className="max-w-[80vw] lg:max-w-[80rem] w-full mx-auto">
           <div className="flex flex-col gap-2">
             <div className="text-3xl md:text-4xl font-bold text-center">
@@ -26,7 +35,7 @@ const Location: NextPage<Props> = () => {
           </div>
           <div className="py-[5rem] flex justify-center">
             <div className="flex flex-col lg:flex-row items-center gap-[2rem] lg:gap-[4rem] xl:gap-[10rem]">
-              <div className="w-full lg:w-fit">
+              <div className="w-full lg:w-[30vw]">
                 <div className="pb-[.25rem] border-b-2 border-primary">
                   <div className="text-start text-2xl font-semibold tracking-wider">
                     สถานที่จัดค่าย
@@ -38,42 +47,16 @@ const Location: NextPage<Props> = () => {
                 </div>
               </div>
               <div
+                className="border-[3px] border-green-600 h-[30vw] w-[80vw] md:w-[30vw] bg-gray-800"
                 style={{
                   height: width >= 768 ? '20rem' : '18rem',
-                  width: width >= 768 ? '35rem' : width - 80,
+                  width: width >= 768 ? '35rem' : width - 70,
                 }}
               >
                 <MapBox
                   center={[13.844757035106669, 100.56749983783186]}
                   zoom={17}
                   popUpLabel="สำนักบริการคอมพิวเตอร์"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-center">
-            <div className="flex flex-col lg:flex-row-reverse items-center gap-[2rem] lg:gap-[4rem] xl:gap-[10rem]">
-              <div className="w-full lg:w-fit">
-                <div className="pb-[.25rem] border-b-2 border-primary">
-                  <div className="text-start text-2xl font-semibold tracking-wider">
-                    สถานที่พัก
-                  </div>
-                  <div>สำหรับนิสิตนอกวิทยาเขต</div>
-                </div>
-                <div className="mt-[2rem] text-xl">
-                  พอพักภายในมหาวิทยาลัยเกษตรศาสตร์ (ฟรี)
-                </div>
-              </div>
-              <div
-                style={{
-                  height: width >= 768 ? '20rem' : '18rem',
-                  width: width >= 768 ? '35rem' : width - 80,
-                }}
-              >
-                <MapBox
-                  center={[13.847562653540281, 100.56962211759917]}
-                  zoom={17}
-                  popUpLabel="หอพักใน (แยกหญิงและชาย)"
                 />
               </div>
             </div>
