@@ -10,6 +10,7 @@ import Partners from '@/components/Sections/Partners';
 import TimeLineSection from '@/components/Sections/TimeLineSection';
 import Problems from '@/components/Sections/Problems';
 import Location from '@/components/Sections/Location';
+import OtherCampus from '@/components/Sections/OtherCampus';
 
 export default function Home() {
   return (
@@ -19,9 +20,10 @@ export default function Home() {
       <Objective />
       <Problems />
       <Gurus />
-      <Location />
       <JoinSection />
       <Benefit />
+      <Location />
+      <OtherCampus />
       <TimeLineSection />
       <FAQs />
     </>
