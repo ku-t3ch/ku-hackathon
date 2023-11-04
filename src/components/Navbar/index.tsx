@@ -22,16 +22,16 @@ const navLinks: NavLinksInterface[] = [
     children: 'วิทยากร',
   },
   {
-    to: 'location',
-    children: 'สถานที่จัด',
-  },
-  {
     to: 'join',
     children: 'สาขาที่รับสมัคร',
   },
   {
     to: 'benefit',
     children: 'รางวัล',
+  },
+  {
+    to: 'location',
+    children: 'สถานที่จัด',
   },
   {
     to: 'time-line',

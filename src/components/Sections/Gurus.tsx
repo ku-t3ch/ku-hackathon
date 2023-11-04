@@ -17,6 +17,12 @@ const gurus = [
     company: 'SignageSurf',
     image: 'https://s3.tech.nisit.ku.ac.th/assets/speaker/uncle-ake.jpg',
   },
+  {
+    name: 'Kanokpol Kulsri (Palm)',
+    job: 'Software Engineer',
+    company: 'Agoda',
+    image: 'https://s3.tech.nisit.ku.ac.th/assets/speaker/uncle-ake.jpg',
+  },
 ];
 
 const Gurus: NextPage<Props> = () => {
@@ -27,13 +33,13 @@ const Gurus: NextPage<Props> = () => {
     >
       <div className="flex flex-col gap-2">
         <div className="text-3xl md:text-4xl font-bold text-center">
-          วิทยากร
+          วิทยากร & ที่ปรึกษา
         </div>
         <div className="text-xl text-green-500 font-bold text-center">
-          Gurus
+          Gurus and Mentor
         </div>
       </div>
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-[4rem]">
+      <div className="mt-10 grid grid-cols-1 lg:grid-flow-col gap-[4rem]">
         {gurus.map((guru, idx) => {
           return (
             <div className="flex flex-col items-center" key={idx}>
