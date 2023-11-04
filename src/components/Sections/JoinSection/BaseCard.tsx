@@ -42,7 +42,7 @@ const BaseCard: FC<Props> = ({
         <div className="font-bold drop-shadow text-xl tracking-wide">
           {title}
         </div>
-        <div className="text">
+        <div>
           สมัครแล้ว{' '}
           <span
             className="font-medium"

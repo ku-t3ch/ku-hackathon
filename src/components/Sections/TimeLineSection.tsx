@@ -102,6 +102,7 @@ const timelineItems: TimelineItem[] = [
     children: 'Hackathon',
     start: new Date('2023-11-22 23:59'),
     end: new Date('2023-11-24 23:59'),
+    tag: 'Onsite',
   },
 ];
 

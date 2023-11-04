@@ -24,7 +24,7 @@ const Location: NextPage<Props> = () => {
           sizes="100vw"
           alt="ocs-building"
         />
-        <div className="max-w-[80vw] lg:max-w-[80rem] w-full mx-auto">
+        <div className="max-w-[80vw] lg:max-w-[75rem] w-full mx-auto">
           <div className="flex flex-col gap-2">
             <div className="text-3xl md:text-4xl font-bold text-center">
               สถานที่
@@ -35,16 +35,9 @@ const Location: NextPage<Props> = () => {
           </div>
           <div className="py-[5rem] flex justify-center">
             <div className="flex flex-col lg:flex-row items-center gap-[2rem] lg:gap-[4rem] xl:gap-[10rem]">
-              <div className="w-full lg:w-[30vw]">
-                <div className="pb-[.25rem] border-b-2 border-primary">
-                  <div className="text-start text-2xl font-semibold tracking-wider">
-                    สถานที่จัดค่าย
-                  </div>
-                </div>
-                <div className="mt-[2rem] text-xl">
-                  <div>สำนักบริการคอมพิวเตอร์</div>
-                  <div>มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตบางเขน</div>
-                </div>
+              <div className="w-full lg:w-[30vw] text-md md:text-2xl font-medium">
+                <div>สำนักบริการคอมพิวเตอร์</div>
+                <div>มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตบางเขน</div>
               </div>
               <div
                 className="border-[3px] border-green-600 h-[30vw] w-[80vw] md:w-[30vw] bg-gray-800"

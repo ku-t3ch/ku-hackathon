@@ -73,7 +73,7 @@ const faqs: FAQS[] = [
   },
   {
     label: 'ไม่ไป Matching Team ได้ไหม ?',
-    children: 'แนะนำให้มาแบบ Onsite เพราะหากไม่มาพี่ๆจะจับทีมให้ในรูปแบบสุ่ม',
+    children: 'แนะนำให้มาแบบ Onsite เพราะหากไม่มาพี่ ๆจะจับทีมให้ในรูปแบบสุ่ม',
   },
 ];
 
@@ -100,7 +100,7 @@ const FAQs: NextPage<Props> = () => {
   return (
     <Element
       name="faqs"
-      className="w-full md:max-w-[90vw] xl:max-w-[70vw] mx-auto px-5 pt-[5rem] md:pt-[10rem] flex flex-col items-center"
+      className="w-[90vw] lg:max-w-[75rem] mx-auto pt-[5rem] md:pt-[10rem] flex flex-col items-center"
     >
       <div className="flex flex-col gap-2">
         <div className="text-3xl md:text-4xl font-bold text-center">

@@ -35,11 +35,11 @@ const OtherCampus: NextPage<Props> = () => {
   return (
     <Element
       name="other-campus"
-      className="max-w-[90rem] md:max-w-[80vw] lg:max-w-[70rem] mx-auto w-full px-5 pt-[5rem] md:pt-[10rem] flex flex-col items-center"
+      className="max-w-[90rem] lg:max-w-[75rem] mx-auto w-full pt-[5rem] md:pt-[10rem] flex flex-col items-center"
     >
       <div className="flex flex-col gap-2">
         <div className="text-3xl md:text-4xl font-bold text-center">
-          วิทยาเขตอื่นๆ
+          วิทยาเขตอื่น ๆ
         </div>
         <div className="text-xl text-primary font-bold text-center">
           Other Campus
@@ -53,9 +53,11 @@ const OtherCampus: NextPage<Props> = () => {
           >
             <div className="mb-1">
               <div className="text-2xl">{item.icon}</div>
-              <div className="text-xl md:text-2xl font-bold">{item.title}</div>
+              <div className="text-xl md:text-2xl font-bold text-primary">
+                {item.title}
+              </div>
             </div>
-            <div className="flex flex-col text-primary">
+            <div className="flex flex-col">
               <div className="text-xl md:text-2xl font-semibold">
                 {item.detail}
               </div>

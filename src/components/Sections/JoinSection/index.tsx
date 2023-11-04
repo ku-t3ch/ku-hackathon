@@ -1,9 +1,10 @@
 import { NextPage } from 'next';
 import { Element } from 'react-scroll';
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import BaseCard from './BaseCard';
 import DesignerModal from './Modal/DesignerModal';
 import DeveloperModal from './Modal/DeveloperModal';
+import axios from 'axios';
 
 interface Props {}
 
@@ -19,7 +20,16 @@ const ModalContext = createContext<{
   closeModal: () => {},
 });
 
+interface ReqRequestData {
+  designers: number;
+  developers: number;
+}
+
 const JoinSection: NextPage<Props> = () => {
+  const [register, setRegister] = useState<ReqRequestData>({
+    designers: 0,
+    developers: 0,
+  });
   const [targetModal, setTargetModal] = useState<Modal>(-1);
 
   const openModal = (idx: Modal) => {
@@ -41,11 +51,23 @@ const JoinSection: NextPage<Props> = () => {
     }
   };
 
+  useEffect(() => {
+    const getRegisterCount = async () => {
+      try {
+        const { data } = await axios.get('/api/registrants');
+
+        setRegister(data);
+      } catch {}
+    };
+
+    getRegisterCount();
+  }, []);
+
   return (
     <>
       <Element
         name="join"
-        className="max-w-[95vw] xl:max-w-[70rem] pt-[5rem] md:pt-[10rem] self-center w-full px-5 flex flex-col items-center gap-3"
+        className="max-w-[95vw] xl:max-w-[75rem] pt-[5rem] md:pt-[10rem] self-center w-full flex flex-col items-center gap-3"
       >
         <div className="flex flex-col gap-2 w-full">
           <div className="flex flex-col gap-2">
@@ -62,6 +84,7 @@ const JoinSection: NextPage<Props> = () => {
               bgImage={`${process.env.cdn}/join-items/cards/card-designer.webp`}
               borderColor="#FF6100"
               themeColor="#FF914D"
+              applyAmount={register?.designers ?? 0}
               onClickBtn={() => openModal(Modal.Designer)}
             />
             <BaseCard
@@ -69,6 +92,7 @@ const JoinSection: NextPage<Props> = () => {
               bgImage={`${process.env.cdn}/join-items/cards/card-developer.webp`}
               borderColor="#00A1FF"
               themeColor="#38B6FF"
+              applyAmount={register?.developers ?? 0}
               onClickBtn={() => openModal(Modal.Developer)}
             />
           </div>
