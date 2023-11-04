@@ -1,99 +1,43 @@
 import { NextPage } from 'next';
 import { Element } from 'react-scroll';
 import { Accordion, AccordionItem } from '@nextui-org/react';
+import { useScreenWidthSize } from '../hooks/useScreenWidthSize';
+import { FC, ReactNode } from 'react';
 
 interface Props {}
 
-const faqs = [
+interface FAQS {
+  label: string;
+  children: ReactNode;
+}
+
+const faqs: FAQS[] = [
   {
-    label: 'ใครสมัครได้บ้าง?',
+    label: 'ใครสมัครได้บ้าง ?',
     children: (
-      <div className="text-md">
+      <div>
         นิสิตมหาวิทยาลัยเกษตรศาสตร์ทุกวิทยาเขต ที่กำลังศึกษาอยู่ในปัจจุบัน
         เท่านั้น
       </div>
     ),
   },
   {
-    label: 'งานจัดเมื่อไร?',
+    label: 'สมัครเดี่ยวหรือเป็นกลุ่ม ?',
     children: (
-      <div className="text-md">
-        เริ่มจัดตั้งแต่วันที่ 15 พฤศจิกายน 2023 และ มีการจัด Workshop
-        ตามสาขาที่ยื่นสมัคร ในตารางที่กำหนดให้
-      </div>
-    ),
-  },
-  {
-    label: 'มีค่าใช้จ่ายไหม ?',
-    children: (
-      <div className="text-md">
-        มีค่าใช้จ่ายเป็นมัดจำ 300 บาท ได้คืนหลังจบโครงการ
-      </div>
-    ),
-  },
-  {
-    label: 'สมัครแล้วได้เข้าร่วมทุกคนหรือไม่?',
-    children: (
-      <div className="text-md flex flex-col">
-        <span>ทางทีมงานจะคัดเลือกแต่ละสาขา สาขา Developer 40-60 คน</span>
-        <span>
-          และ สาขา Designer 40 คน
-          รวมแล้วจะมีผู้ที่ถูกคัดเลือกให้เข้าร่วมรอบต่อไปจำนวน 80-100 คน
-        </span>
-      </div>
-    ),
-  },
-  {
-    label: 'สมัครได้กี่สาขา?',
-    children: (
-      <div className="text-md">
-        สมัครได้เพียง 1 สาขาเท่านั้น โดยแต่ละสาขาจะมีโจทย์ที่แตกต่างกันออกไป
-      </div>
-    ),
-  },
-  {
-    label: 'จัดออนไซต์หรือออนไลน์',
-    children: (
-      <div className="text-md">จัดแบบผสม โดยจะมีจัดออนไลน์ในบางกิจกกรม</div>
-    ),
-  },
-  {
-    label: 'สมัครเดี่ยวหรือเป็นกลุ่ม?',
-    children: (
-      <div className="text-md flex flex-col space-y-[1rem]">
-        <div>สาขา Developer ทีมละ 2-3 คน (กลุ่ม)</div>
-        <div>สาขา Designer 1 คน (เดี่ยว)</div>
-      </div>
-    ),
-  },
-  {
-    label: 'จะทราบผลการคัดเลือกได้จากช่องทางไหน เมื่อไร?',
-    children: (
-      <ul className="text-md flex flex-col space-y-[1rem]">
-        <li>
-          การประกาศผลผู้สิทธิ์มีเข้าร่วมโครงการ ซึ่งจะประกาศในวันที่ 13
-          พฤศจิกายน 2023
-        </li>
-        <li>
-          การประกาศผ่านการคัดเลือกเข้าสู่รอบ Hackathon ในวันที่ 20 พฤศจิกายน
-          2023
-        </li>
-        <li>
-          โดยจะประกาศผลทางเว็บไซต์{' '}
-          <a
-            className="text-blue-500 underline"
-            href="https://hackathon.ku.ac.th"
-          >
-            https://hackathon.ku.ac.th
-          </a>
-        </li>
+      <ul className="px-[1rem] flex flex-col space-y-[1rem] list-disc">
+        <li>สาขา Developer ทีมละ 2-3 คน (กลุ่ม)</li>
+        <li>สาขา Designer 1 คน (เดี่ยว)</li>
       </ul>
     ),
   },
   {
+    label: 'มีค่าใช้จ่ายไหม ?',
+    children: <div>มีค่าใช้จ่ายเป็นมัดจำ 300 บาท ได้คืนหลังจบโครงการ</div>,
+  },
+  {
     label: 'เราสามารถจับทีมไปเองได้ไหม Developer กับ Designer?',
     children: (
-      <div className="text-md">
+      <div>
         ไม่ได้ เนื่องจากจะต้องจับคู่ทีมผ่านกิจกรรม Matching Team
         โดยเป็นกิจกรรมที่ผู้เข้าร่วมสามารถทำความรู้จักกัน
         และแลกเปลี่ยนความคิดเห็นกันผ่านกิจกรรมต่าง ๆ
@@ -104,16 +48,55 @@ const faqs = [
     ),
   },
   {
-    label: 'หลังจาก Matching Team จะได้ทีมเป็นอย่างไร ?',
+    label: 'สมัครแล้วได้เข้าร่วมทุกคนหรือไม่?',
     children: (
-      <div className="text-md">
-        Designer 2 คน, Developer 2-3 คน รวมแล้วไม่เกิน 5 คน
+      <div className=" flex flex-col">
+        <span>ทางทีมงานจะคัดเลือกแต่ละสาขา สาขา Developer 40-60 คน</span>
+        <span>
+          และ สาขา Designer 40 คน
+          รวมแล้วจะมีผู้ที่ถูกคัดเลือกให้เข้าร่วมรอบต่อไปจำนวน 80-100 คน
+        </span>
       </div>
     ),
+  },
+  {
+    label: 'หลังจาก Matching Team จะได้ทีมเป็นอย่างไร ?',
+    children: <div>Designer 2 คน, Developer 2-3 คน รวมแล้วไม่เกิน 5 คน</div>,
+  },
+  {
+    label: 'สมัครได้กี่สาขา?',
+    children: (
+      <div>
+        สมัครได้เพียง 1 สาขาเท่านั้น โดยแต่ละสาขาจะมีโจทย์ที่แตกต่างกันออกไป
+      </div>
+    ),
+  },
+  {
+    label: 'ไม่ไป Matching Team ได้ไหม ?',
+    children: 'แนะนำให้มาแบบ Onsite เพราะหากไม่มาพี่ๆจะจับทีมให้ในรูปแบบสุ่ม',
   },
 ];
 
 const FAQs: NextPage<Props> = () => {
+  const width = useScreenWidthSize();
+
+  const getSplitFaqs = () => {
+    let left = [],
+      right = [];
+
+    for (var i = 0; i < faqs.length; i++) {
+      const value = faqs[i];
+
+      if (i % 2 == 0) {
+        left.push(value);
+      } else {
+        right.push(value);
+      }
+    }
+
+    return [left, right];
+  };
+
   return (
     <Element
       name="faqs"
@@ -125,28 +108,53 @@ const FAQs: NextPage<Props> = () => {
         </div>
         <div className="text-xl text-green-500 font-bold text-center">FAQs</div>
       </div>
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[1rem] mt-[5rem]">
-        {faqs.map((data, idx) => {
-          return (
-            <Accordion key={idx} variant="light" fullWidth={true}>
-              <AccordionItem
-                key={1}
-                title={data.label}
-                classNames={{
-                  base: 'bg-[#003415] rounded-lg',
-                  heading: 'px-[1rem] bg-[#0B5C2B] rounded-lg drop-shadow-lg',
-                  title: 'text-white font-medium',
-                  content: 'p-[1rem] bg-[#003415] rounded-b-xl',
-                  indicator: 'text-white',
-                }}
-              >
-                <>{data.children}</>
-              </AccordionItem>
-            </Accordion>
-          );
-        })}
+      {width}
+      <div className="mt-[5rem] w-full grid grid-cols-1 md:grid-cols-2 gap-[1rem]">
+        {width >= 768 ? (
+          <>
+            {getSplitFaqs().map((data, idx) => {
+              return (
+                <div key={idx} className="flex flex-col gap-[1rem]">
+                  <AccordionList data={data} />
+                </div>
+              );
+            })}
+          </>
+        ) : (
+          <AccordionList data={faqs} />
+        )}
       </div>
     </Element>
+  );
+};
+
+interface AccordionListProps {
+  data: FAQS[];
+}
+
+const AccordionList: FC<AccordionListProps> = ({ data = [] }) => {
+  return (
+    <>
+      {data.map((item, idx) => {
+        return (
+          <Accordion key={idx} variant="light" fullWidth={true}>
+            <AccordionItem
+              key={1}
+              title={item.label}
+              classNames={{
+                base: 'bg-[#003415] rounded-lg',
+                heading: 'px-[1rem] bg-[#0B5C2B] rounded-lg drop-shadow-lg',
+                title: 'text-white font-medium',
+                content: 'p-[1rem] bg-[#003415] rounded-b-xl',
+                indicator: 'text-white',
+              }}
+            >
+              <>{item.children}</>
+            </AccordionItem>
+          </Accordion>
+        );
+      })}
+    </>
   );
 };
 
