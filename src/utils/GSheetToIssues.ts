@@ -1,5 +1,5 @@
 import { GoogleSpreadsheetWorksheet } from 'google-spreadsheet';
-import { getSheet } from "./GoogleSheets";
+import { getIssueSheet } from "./GoogleSheets";
 import { Issue, SubIssue } from '@/interfaces/IssueInterface';
 
 const cols: string[] = [
@@ -7,10 +7,8 @@ const cols: string[] = [
 ]
 
 export async function getListedIssues(): Promise<Issue[]> {
-    const sheet: GoogleSpreadsheetWorksheet = await getSheet();
+    const sheet: GoogleSpreadsheetWorksheet = await getIssueSheet();
     let issues: Issue[] = [];
-
-    console.log("Starting listing issues...");
 
     for (let col of cols) {
         sheet.resetLocalCache(true);
@@ -51,8 +49,6 @@ export async function getListedIssues(): Promise<Issue[]> {
             }
         }
     }
-
-    console.log("Finishing listing issues...");
 
     return issues;
 }
