@@ -12,11 +12,27 @@ const serviceAccountAuth = new JWT({
     ]
 })
 
-const _doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID!, serviceAccountAuth)
+const _issue_doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ISSUES!, serviceAccountAuth);
+const _design_doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_DESIGN_FORM!, serviceAccountAuth);
+const _dev_doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_DEV_FORM!, serviceAccountAuth);
 
-const getSheet: () => Promise<GoogleSpreadsheetWorksheet> = async () => {
-    await _doc.loadInfo();
-    return _doc.sheetsByIndex[0];
+const getIssueSheet: () => Promise<GoogleSpreadsheetWorksheet> = async () => {
+    await _issue_doc.loadInfo();
+    return _issue_doc.sheetsByIndex[0];
 }
 
-export { getSheet };
+interface RegistrantSheets {
+    designers: GoogleSpreadsheetWorksheet;
+    developers: GoogleSpreadsheetWorksheet;
+}
+
+const getRegistrantSheets: () => Promise<RegistrantSheets> = async () => {
+    await _design_doc.loadInfo();
+    await _dev_doc.loadInfo();
+    return {
+        designers: _design_doc.sheetsByIndex[0],
+        developers: _dev_doc.sheetsByIndex[0]
+    }
+}
+
+export { getIssueSheet, getRegistrantSheets };

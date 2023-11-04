@@ -10,6 +10,7 @@ import { Collapse, CollapseProps } from "antd";
 import axios from "axios";
 import _ from "lodash";
 import { on } from "events";
+import { RegistrantCount } from "@/utils/GSheetToRegistrant";
 interface Props {
     // issues: Issue[];
 }
@@ -23,6 +24,10 @@ interface ModalContentProps {
 const JoinSection: NextPage<Props> = (props) => {
     const [Issues, setIssues] = useState<Issue[]>([]);
     const [IssueTree, setIssueTree] = useState<Tree[]>([]);
+    const [regCount, setRegistrantCount] = useState<RegistrantCount>({
+        designers: 0,
+        developers: 0
+    });
     const [modalContent, setModalContent] = useState<ReactElement>(<></>);
     const [modalActionLink, setModalActionLink] = useState<string>("");
     const [modalTitle, setModalTitle] = useState<string>("");
@@ -60,6 +65,7 @@ const JoinSection: NextPage<Props> = (props) => {
 
     useEffect(() => {
         getIssues();
+        getRegistrantCount();
     }, []);
 
     const getIssues = async () => {
@@ -86,6 +92,11 @@ const JoinSection: NextPage<Props> = (props) => {
         });
         setIssues(res.data);
     };
+
+    const getRegistrantCount = async () => {
+        const res = await axios.get<RegistrantCount>("/api/registrants");
+        setRegistrantCount(res.data);
+    }
 
     const handleOnOpen = (type: string) => {
         switch (type) {
@@ -191,15 +202,21 @@ const JoinSection: NextPage<Props> = (props) => {
                             <span className="text-2xl md:text-4xl font-bold text-primary">
                                 DESIGNER
                             </span>
-                            <span className="text-lg md:text-2xl mb-5 md:mb-8">
+                            <span className="text-lg md:text-2xl">
                                 นักออกแบบ
                             </span>
                             <PenTool
                                 size={144}
-                                className="text-primary"
+                                className="text-primary mt-5 mb-5 md:mt8 md:mb-8"
                             ></PenTool>
+
+                            {/* TODO: Be edit to reflect the latest design */}
+                            <span className="text-lg mb-2">
+                                สมัครแล้ว {regCount.designers.toString()} คน
+                            </span>
+                            
                             <Button
-                                className="font-bold text-lg md:text-2xl mt-5 md:mt-8"
+                                className="font-bold text-lg md:text-2xl"
                                 color="primary"
                                 variant="ghost"
                                 onClick={() => handleOnOpen("designer")}
@@ -213,15 +230,21 @@ const JoinSection: NextPage<Props> = (props) => {
                             <span className="text-2xl md:text-4xl font-bold text-primary">
                                 DEVELOPER
                             </span>
-                            <span className="text-lg md:text-2xl mb-5 md:mb-8">
+                            <span className="text-lg md:text-2xl">
                                 นักพัฒนา
                             </span>
                             <SquareCode
                                 size={144}
-                                className="text-primary"
+                                className="text-primary mt-5 mb-5 md:mt8 md:mb-8"
                             ></SquareCode>
+
+                            {/* TODO: Be edit to reflect the latest design */}
+                            <span className="text-lg mb-2">
+                                สมัครแล้ว {regCount.developers.toString()} คน
+                            </span>
+
                             <Button
-                                className="font-bold text-lg md:text-2xl mt-5 md:mt-8"
+                                className="font-bold text-lg md:text-2xl"
                                 color="primary"
                                 variant="ghost"
                                 onClick={() => handleOnOpen("developer")}
