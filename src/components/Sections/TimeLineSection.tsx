@@ -188,9 +188,10 @@ const TimeLineChild: NextPage<{ item: TimelineItem }> = ({ item }) => {
   }
   return (
     <div className="pl-[.25rem] sm:pl-[2.5rem] flex flex-col">
-      <div className="text-[1rem] sm:text-xl font-medium flex flex-col justify-start items-center gap-2">
+      <div className="text-[1rem] sm:text-xl font-medium flex flex-col-reverse sm:flex-row justify-start items-center gap-2">
+        <div className="w-full lg:w-fit">{item.children}</div>
         {item.tag && (
-          <div className="w-full">
+          <div className="w-full lg:w-fit">
             <div
               className={`w-fit flex justify-start text-xs px-1 rounded-sm ${tagColor}`}
             >
@@ -198,7 +199,6 @@ const TimeLineChild: NextPage<{ item: TimelineItem }> = ({ item }) => {
             </div>
           </div>
         )}
-        <div className="w-full">{item.children}</div>
       </div>
       <div className="flex gap-2">
         {item.detail && (
