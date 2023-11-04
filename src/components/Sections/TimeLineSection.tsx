@@ -46,7 +46,7 @@ const timelineItems: TimelineItem[] = [
         <li>13:00-16:00 Matching Team</li>
       </ul>
     ),
-    tag: 'Hybrid',
+    tag: 'Onsite',
   },
   {
     children: 'Overview Problem',
