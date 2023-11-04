@@ -67,7 +67,7 @@ const JoinSection: NextPage<Props> = () => {
     <>
       <Element
         name="join"
-        className="max-w-[95vw] xl:max-w-[75rem] pt-[5rem] md:pt-[10rem] self-center w-full flex flex-col items-center gap-3"
+        className="max-w-[90vw] xl:max-w-[75rem] pt-[5rem] md:pt-[10rem] self-center w-full flex flex-col items-center gap-3"
       >
         <div className="flex flex-col gap-2 w-full">
           <div className="flex flex-col gap-2">

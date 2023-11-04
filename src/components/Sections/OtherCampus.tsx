@@ -35,7 +35,7 @@ const OtherCampus: NextPage<Props> = () => {
   return (
     <Element
       name="other-campus"
-      className="max-w-[90rem] lg:max-w-[75rem] mx-auto w-full pt-[5rem] md:pt-[10rem] flex flex-col items-center"
+      className="max-w-[90vw] xl:max-w-[75rem] mx-auto w-full pt-[5rem] md:pt-[10rem] flex flex-col items-center"
     >
       <div className="flex flex-col gap-2">
         <div className="text-3xl md:text-4xl font-bold text-center">
