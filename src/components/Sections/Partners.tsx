@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import { Element } from 'react-scroll';
 import Image from 'next/image';
+import { useScreenWidthSize } from '../hooks/useScreenWidthSize';
 
 interface Props {}
 
@@ -33,18 +34,26 @@ const partners = [
 ];
 
 const Partners: NextPage<Props> = () => {
+  const width = useScreenWidthSize();
+
   return (
     <div className="max-w-8xl mx-auto w-full px-3 py-5 flex flex-col bg-[#1F2937] shadow-xl">
       <div className="flex flex-nowarp place-content-evenly">
         {partners.map((partner, index) => (
-          <a key={index} href={partner.link} target="__blank">
+          <a
+            key={index}
+            href={partner.link}
+            target="__blank"
+            className="flex items-center gap-[1rem] grayscale transition duration-1000 hover:grayscale-0"
+          >
             <Image
               src={partner.image}
               width={48}
               height={48}
               alt={partner.name}
-              className="w-[2rem] sm:w-[3rem] grayscale transition duration-1000 hover:grayscale-0"
+              className="w-[2rem] sm:w-[3rem]"
             />
+            {width > 1286 ? partner.name : ''}
           </a>
         ))}
       </div>
