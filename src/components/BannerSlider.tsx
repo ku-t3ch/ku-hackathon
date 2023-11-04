@@ -62,6 +62,7 @@ const BannerSlider: FC<Props> = ({ data = [] }) => {
                   height={1080}
                   className="h-screen w-screen object-cover"
                   unoptimized
+                  priority
                 />
               </div>
             );
