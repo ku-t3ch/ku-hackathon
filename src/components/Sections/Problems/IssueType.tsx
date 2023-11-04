@@ -42,7 +42,8 @@ const IssueType: FC<Props> = ({
           src={`${process.env.cdn}/issue-items/card.webp`}
           sizes="50vw"
           className={`rounded-l-lg ${isActive ? 'grayscale-0' : 'grayscale'}`}
-          alt="issue-card-bg"
+          alt={`issue-card-bg-${number}`}
+          priority
         />
         <motion.div
           initial={{ y: -10 }}
@@ -59,6 +60,7 @@ const IssueType: FC<Props> = ({
             width={96}
             height={96}
             alt={`issue-type-icon-${number}`}
+            priority
           />
         </motion.div>
         <Text>

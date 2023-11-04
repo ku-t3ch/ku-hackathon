@@ -89,6 +89,7 @@ const Navbar: NextPage<Props> = () => {
               className="w-[3.5rem]"
               onClick={() => scrollTo('home')}
               unoptimized
+              priority
             />
           </NavbarBrand>
 
