@@ -108,7 +108,6 @@ const FAQs: NextPage<Props> = () => {
         </div>
         <div className="text-xl text-green-500 font-bold text-center">FAQs</div>
       </div>
-      {width}
       <div className="mt-[5rem] w-full grid grid-cols-1 md:grid-cols-2 gap-[1rem]">
         {width >= 768 ? (
           <>
