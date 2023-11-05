@@ -15,8 +15,9 @@ const Objective: NextPage<Props> = () => {
           <div className="flex justify-end">
             <Image
               src={`${process.env.cdn}/talai-bus.webp`}
-              width={612}
-              height={476}
+              width={550}
+              height={642}
+              className="-rotate-6"
               alt="talai-bus-image"
               unoptimized
             />
@@ -28,7 +29,7 @@ const Objective: NextPage<Props> = () => {
             <div className="text-2xl md:text-4xl font-bold text-primary">
               KU Hackathon คืออะไร?
             </div>
-            <div className="text-xl">
+            <div className="text-md lg:text-xl tracking-wider font-light">
               KU Hackathon เป็นงานแข่งขันที่จัดขึ้นโดยมหาวิทยาลัยเกษตรศาสตร์
               (Kasetsart University)
               โดยงานนี้เป็นมหกรรมที่เน้นการพัฒนาและใช้เทคโนโลยีในการแก้ไขปัญหาต่าง
