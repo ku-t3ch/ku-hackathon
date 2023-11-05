@@ -70,7 +70,7 @@ const HackathonLogo: FC<{}> = () => {
           delay: 0.1,
           duration: 0.5,
         }}
-        className="text-[17.5vw] md:text-[8rem] font-extrabold leading-none text-primary"
+        className="text-[17.5vw] md:text-[8rem] font-extrabold leading-none text-primary hackathon-glow"
       >
         KU
       </motion.div>
@@ -89,7 +89,7 @@ const HackathonLogo: FC<{}> = () => {
         }}
         className="flex flex-col py-[1vw] md:py-[.5rem]"
       >
-        <div className="text-[8vw] md:text-[4rem] font-bold leading-none tracking-wider text-primary">
+        <div className="text-[8vw] md:text-[4rem] font-bold leading-none tracking-wider text-primary hackathon-glow">
           Hackathon
         </div>
         <div className="text-[3.25vw] md:text-[1.65rem] tracking-winder">

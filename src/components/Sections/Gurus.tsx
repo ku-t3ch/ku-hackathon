@@ -9,19 +9,19 @@ const gurus = [
     name: 'Isoon Phitiphasit (Non)',
     job: 'Full-stack Developer',
     company: 'RentSpree Thailand',
-    image: 'https://s3.tech.nisit.ku.ac.th/assets/speaker/isoon.jpg',
+    image: `${process.env.cdn}/gurus/Isoon-Phitiphasit.webp`,
   },
   {
     name: 'Ekkasit Trakulkiattikul (Ake)',
     job: 'Founder',
     company: 'SignageSurf',
-    image: 'https://s3.tech.nisit.ku.ac.th/assets/speaker/uncle-ake.jpg',
+    image: `${process.env.cdn}/gurus/Ekkasit-Trakulkiattikul.webp`,
   },
   {
     name: 'Kanokpol Kulsri (Palm)',
     job: 'Software Engineer',
     company: 'Agoda',
-    image: 'https://s3.tech.nisit.ku.ac.th/assets/speaker/uncle-ake.jpg',
+    image: `${process.env.cdn}/gurus/Kanokpol-Kulsri.webp`,
   },
 ];
 
@@ -48,7 +48,7 @@ const Gurus: NextPage<Props> = () => {
                 src={guru.image}
                 className="h-[8rem] w-[8rem]"
                 color="success"
-              />
+              ></Avatar>
               <div className="pt-[1.5rem] font-bold text-[1.25rem] text-green-500">
                 {guru.name}
               </div>
