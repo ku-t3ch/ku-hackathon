@@ -85,6 +85,7 @@ const JoinSection: NextPage<Props> = () => {
               borderColor="#FF6100"
               themeColor="#FF914D"
               applyAmount={register?.designers ?? 0}
+              extension="คน"
               onClickBtn={() => openModal(Modal.Designer)}
             />
             <BaseCard
@@ -93,6 +94,7 @@ const JoinSection: NextPage<Props> = () => {
               borderColor="#00A1FF"
               themeColor="#38B6FF"
               applyAmount={register?.developers ?? 0}
+              extension="ทีม"
               onClickBtn={() => openModal(Modal.Developer)}
             />
           </div>
