@@ -121,7 +121,7 @@ const TimeLineSection: NextPage<Props> = () => {
             Timeline
           </div>
         </div>
-        <div className="w-full mt-[5rem]">
+        <div className="mt-[2.5rem] md:mt-[5rem] w-full">
           <Timeline
             mode="left"
             items={timelineItems.map((item) => {

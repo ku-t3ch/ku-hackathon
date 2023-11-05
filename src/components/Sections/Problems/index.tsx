@@ -65,7 +65,7 @@ const Problems: NextPage<Props> = () => {
           University’s Pain Point
         </div>
       </div>
-      <div className="mt-[5rem] flex flex-col w-full lg:w-fit">
+      <div className="mt-[2.5rem] md:mt-[5rem] flex flex-col w-full lg:w-fit">
         {issues.length == 0 ? (
           <div className="py-[10rem] flex justify-center">
             <Spinner size="lg" />

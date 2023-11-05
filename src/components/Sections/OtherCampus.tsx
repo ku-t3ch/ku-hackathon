@@ -45,7 +45,7 @@ const OtherCampus: NextPage<Props> = () => {
           Other Campus
         </div>
       </div>
-      <div className="mt-[5rem] w-full flex flex-col lg:grid lg:grid-cols-2 gap-[2rem]">
+      <div className="mt-[2.5rem] md:mt-[5rem] w-full flex flex-col lg:grid lg:grid-cols-2 gap-[2rem]">
         {data.map((item, index) => (
           <div
             key={index}

@@ -39,7 +39,7 @@ const Gurus: NextPage<Props> = () => {
           Gurus and Mentor
         </div>
       </div>
-      <div className="mt-10 grid grid-cols-1 lg:grid-flow-col gap-[4rem]">
+      <div className="mt-[2.5rem] md:mt-[5rem] grid grid-cols-1 lg:grid-flow-col gap-[4rem]">
         {gurus.map((guru, idx) => {
           return (
             <div className="flex flex-col items-center" key={idx}>

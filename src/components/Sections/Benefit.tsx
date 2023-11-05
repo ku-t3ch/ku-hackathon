@@ -44,7 +44,7 @@ const Benefit: NextPage<Props> = () => {
           Reward & Benefit
         </div>
       </div>
-      <div className="mt-[5rem] w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-[1rem] md:gap-[1rem] lg:gap-[1.5rem]">
+      <div className="mt-[2.5rem] md:mt-[5rem] w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-[1rem] md:gap-[1rem] lg:gap-[1.5rem]">
         {rewards.map((item, index) => (
           <div
             key={index}
