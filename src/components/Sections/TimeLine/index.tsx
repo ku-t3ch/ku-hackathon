@@ -2,10 +2,12 @@ import { NextPage } from 'next';
 import { Element } from 'react-scroll';
 import { format, isSameDay, isWithinInterval } from 'date-fns';
 import { Timeline } from 'antd';
-import { FC, useState } from 'react';
+import { FC, ReactNode, useState } from 'react';
 import Collapse from '@mui/material/Collapse';
 import tw from 'tailwind-styled-components';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp, Info } from 'lucide-react';
+import Modal from './Modal';
+import { useScreenWidthSize } from '@/components/hooks/useScreenWidthSize';
 
 interface Props {}
 
@@ -39,11 +41,11 @@ const timelineItems: TimelineItem[] = [
     start: new Date('2023-11-15 23:59'),
     end: new Date('2023-11-15 23:59'),
     detail: (
-      <ul className="ml-[1.25rem] list-disc">
-        <li>8:30-9:00 Register</li>
-        <li>9:00-12:00 Overview</li>
-        <li>12:00-13:00 Break</li>
-        <li>13:00-16:00 Matching Team</li>
+      <ul className="ml-[1.25rem] list-disc space-y-3">
+        <li>09:00-09:30 Registration</li>
+        <li>09:30-12:00 Pre-Matching</li>
+        <li>12:00-13:00 Lunch time</li>
+        <li>13:00-15:00 Matching Team</li>
       </ul>
     ),
     tag: 'Onsite',
@@ -53,17 +55,27 @@ const timelineItems: TimelineItem[] = [
     start: new Date('2023-11-16 23:59'),
     end: new Date('2023-11-16 23:59'),
     tag: 'Online',
+    detail: (
+      <ul className="ml-[1.25rem] list-disc space-y-3">
+        <li>08:30-09:00 Registration</li>
+        <li>09:00-12:30 Workshop</li>
+        <li>12:30-13:30 Lunch time</li>
+        <li>13:30-15:15 UX/UI Tool</li>
+        <li>15:15-16:00 Questionnaire & Preview</li>
+      </ul>
+    ),
   },
   {
     children: 'UX/UI Workshop',
     start: new Date('2023-11-17 23:59'),
     end: new Date('2023-11-17 23:59'),
     detail: (
-      <ul className="ml-[1.25rem] list-disc">
-        <li>8:30-9:00 Register</li>
-        <li>9:00-12:00 Design Thinking</li>
-        <li>12:00-13:00 Break</li>
-        <li>13:00-16:00 UX/UI Tool</li>
+      <ul className="ml-[1.25rem] list-disc space-y-3">
+        <li>08:30-09:00 Registration</li>
+        <li>09:00-12:30 Workshop</li>
+        <li>12:30-13:30 Lunch time</li>
+        <li>13:30-15:15 UX/UI Tool</li>
+        <li>15:15-16:00 Questionnaire & Preview</li>
       </ul>
     ),
     tag: 'Hybrid',
@@ -73,11 +85,12 @@ const timelineItems: TimelineItem[] = [
     start: new Date('2023-11-19 23:59'),
     end: new Date('2023-11-19 23:59'),
     detail: (
-      <ul className="ml-[1.25rem] list-disc">
-        <li>8:30-9:00 Register</li>
-        <li>9:00-12:00 React</li>
-        <li>12:00-13:00 Break</li>
-        <li>13:00-16:30 FastAPI</li>
+      <ul className="ml-[1.25rem] list-disc space-y-3">
+        <li>08:30-09:00 Registration</li>
+        <li>09:00-09:10 Introduction</li>
+        <li>09:10-12:20 Learn: React</li>
+        <li>12:20-13:20 Lunch time</li>
+        <li>13:20-16:30 Learn: FastAPI</li>
       </ul>
     ),
     tag: 'Hybrid',
@@ -87,10 +100,10 @@ const timelineItems: TimelineItem[] = [
     start: new Date('2023-11-20 23:59'),
     end: new Date('2023-11-20 23:59'),
     detail: (
-      <ul className="ml-[1.25rem] list-disc">
-        <li>8:30-9:00 Register</li>
-        <li>9:00-12:00 Pitching</li>
-        <li>12:00-13:00 Break</li>
+      <ul className="ml-[1.25rem] list-disc space-y-3">
+        <li>08:30-09:00 Registration</li>
+        <li>09:00-12:00 Pitching</li>
+        <li>12:00-13:00 Lunch time</li>
         <li>13:00-14:00 Pitching</li>
         <li>14:00-14:30 Break</li>
         <li>14:30-15:30 Announce Winner</li>
@@ -106,7 +119,32 @@ const timelineItems: TimelineItem[] = [
   },
 ];
 
-const TimeLineSection: NextPage<Props> = () => {
+const TimeLine: NextPage<Props> = () => {
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const [isEffect, setEffect] = useState<boolean>(false);
+
+  const [modal, setModal] = useState<{
+    title: string | ReactNode;
+    content: string | ReactNode;
+  }>({
+    title: '',
+    content: '',
+  });
+
+  const openModal = (item: TimelineItem) => {
+    setIsOpenModal(true);
+    setEffect(true);
+    setModal({
+      title: item.children,
+      content: item.detail,
+    });
+  };
+
+  const closeModal = () => {
+    setEffect(false);
+    setTimeout(() => setIsOpenModal(false), 500);
+  };
+
   return (
     <>
       <Element
@@ -133,13 +171,26 @@ const TimeLineSection: NextPage<Props> = () => {
               return {
                 label: <TimeLineLabel start={item.start} end={item.end} />,
                 dot: <TimeLineDot $isActive={isActiveEvent} />,
-                children: <TimeLineChild item={item} />,
+                children: (
+                  <TimeLineChild
+                    item={item}
+                    openModal={() => openModal(item)}
+                  />
+                ),
                 className: `!pb-[2.5rem] ${isActiveEvent && 'tail-active'}`,
               };
             })}
           />
         </div>
       </Element>
+      {isOpenModal && (
+        <Modal
+          isOpen={isEffect}
+          title={modal.title}
+          content={modal.content}
+          closeModal={closeModal}
+        />
+      )}
     </>
   );
 };
@@ -171,7 +222,14 @@ const TimeLineDot: any = tw.div`
     ${(p: any) => (p.$isActive ? 'bg-primary' : 'bg-stone-400 bg-opacity-80')}
 `;
 
-const TimeLineChild: NextPage<{ item: TimelineItem }> = ({ item }) => {
+interface TimeLineChildProps {
+  item: TimelineItem;
+  openModal?: () => void;
+}
+
+const TimeLineChild: NextPage<TimeLineChildProps> = ({ item, openModal }) => {
+  const width = useScreenWidthSize();
+
   const [onExpand, setOnExpand] = useState(false);
 
   let tagColor = '';
@@ -203,12 +261,21 @@ const TimeLineChild: NextPage<{ item: TimelineItem }> = ({ item }) => {
       </div>
       <div className="flex gap-2">
         {item.detail && (
-          <div
-            className="flex items-center gap-1 text-primary cursor-pointer"
-            onClick={() => setOnExpand(!onExpand)}
-          >
-            {onExpand ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-            <span>แสดงรายละเอียด</span>
+          <div className="text-primary cursor-pointer">
+            {width > 768 ? (
+              <div
+                className="flex items-center gap-1"
+                onClick={() => setOnExpand(!onExpand)}
+              >
+                {onExpand ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                <span>แสดงรายละเอียด</span>
+              </div>
+            ) : (
+              <div onClick={openModal} className="flex items-center gap-1">
+                <Info size={12} />
+                <span>แสดงรายละเอียด</span>
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -222,4 +289,4 @@ const TimeLineChild: NextPage<{ item: TimelineItem }> = ({ item }) => {
   );
 };
 
-export default TimeLineSection;
+export default TimeLine;

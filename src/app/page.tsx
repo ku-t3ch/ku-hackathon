@@ -7,7 +7,7 @@ import HomeSection from '@/components/Sections/HomeSection';
 import JoinSection from '@/components/Sections/JoinSection';
 import Objective from '@/components/Sections/Objective';
 import Partners from '@/components/Sections/Partners';
-import TimeLineSection from '@/components/Sections/TimeLineSection';
+import TimeLine from '@/components/Sections/TimeLine';
 import Problems from '@/components/Sections/Problems';
 import Location from '@/components/Sections/Location';
 import OtherCampus from '@/components/Sections/OtherCampus';
@@ -24,7 +24,7 @@ export default function Home() {
       <Benefit />
       <Location />
       <OtherCampus />
-      <TimeLineSection />
+      <TimeLine />
       <FAQs />
     </>
   );
