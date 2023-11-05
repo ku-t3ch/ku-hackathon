@@ -11,6 +11,7 @@ interface Props {
   borderColor?: string;
   themeColor?: string;
   bgImage: string;
+  extension?: string;
   onClickBtn?: () => void;
 }
 
@@ -20,6 +21,7 @@ const BaseCard: FC<Props> = ({
   applyAmount = 0,
   borderColor,
   bgImage,
+  extension,
   onClickBtn,
 }) => {
   const [isEffect, setEffect] = useState(false);
@@ -52,7 +54,7 @@ const BaseCard: FC<Props> = ({
           >
             {applyAmount}
           </span>{' '}
-          คน
+          {extension}
         </div>
         <div className="mt-[1rem]">
           <Button
