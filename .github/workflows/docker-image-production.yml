@@ -4,23 +4,18 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set Docker environment variable
-        run: echo "DOCKER_BUILDKIT=0" >> $GITHUB_ENV
 
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Build the Docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/ku-hackathon:latest --build-arg GOOGLE_SERVICE_ACCOUNT_EMAIL=${{ secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL}} --build-arg GOOGLE_SHEET_ISSUES=${{ secrets.GOOGLE_SHEET_ISSUES}} --build-arg GOOGLE_SHEET_DEV_FORM=${{ secrets.GOOGLE_SHEET_DEV_FORM}} --build-arg GOOGLE_SHEET_DESIGN_FORM=${{ secrets.GOOGLE_SHEET_DESIGN_FORM}} --build-arg GOOGLE_PRIV_KEY=${{ secrets.GOOGLE_PRIV_KEY}} .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/ku-hackathon:latest --build-arg GOOGLE_SERVICE_ACCOUNT_EMAIL=${{ secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL}} --build-arg GOOGLE_SHEET_ISSUES=${{ secrets.GOOGLE_SHEET_ISSUES}} --build-arg GOOGLE_SHEET_DEV_FORM=${{ secrets.GOOGLE_SHEET_DEV_FORM}} --build-arg GOOGLE_SHEET_DESIGN_FORM=${{ secrets.GOOGLE_SHEET_DESIGN_FORM}} --build-arg GOOGLE_PRIV_KEY=${{ secrets.GOOGLE_PRIV_KEY}} -f Dockerfile .
 
       - name: Push the Docker image
         run: |
