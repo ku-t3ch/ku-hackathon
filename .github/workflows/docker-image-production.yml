@@ -2,25 +2,32 @@ name: Docker Image CI
 
 on:
   push:
-    branches: ['main']
+    branches:
+      - main
   pull_request:
-    branches: ['main']
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Build the Docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/ku-hackathon:latest --build-arg GOOGLE_SERVICE_ACCOUNT_EMAIL=${{secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL}} --build-arg GOOGLE_SHEET_ISSUES=${{secrets.GOOGLE_SHEET_ISSUES}} --build-arg GOOGLE_SHEET_DEV_FORM=${{secrets.GOOGLE_SHEET_DEV_FORM}} --build-arg GOOGLE_SHEET_DESIGN_FORM=${{secrets.GOOGLE_SHEET_DESIGN_FORM}} --build-arg GOOGLE_PRIV_KEY=${{secrets.GOOGLE_PRIV_KEY}} .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/ku-hackathon:latest --build-arg GOOGLE_SERVICE_ACCOUNT_EMAIL=${{ secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL}} --build-arg GOOGLE_SHEET_ISSUES=${{ secrets.GOOGLE_SHEET_ISSUES}} --build-arg GOOGLE_SHEET_DEV_FORM=${{ secrets.GOOGLE_SHEET_DEV_FORM}} --build-arg GOOGLE_SHEET_DESIGN_FORM=${{ secrets.GOOGLE_SHEET_DESIGN_FORM}} --build-arg GOOGLE_PRIV_KEY=${{ secrets.GOOGLE_PRIV_KEY}} .
+        
       - name: Push the Docker image
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker push ${{ secrets.DOCKER_USERNAME }}/ku-hackathon:latest
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
+
     steps:
       - name: Trigger deployment
         run: |
