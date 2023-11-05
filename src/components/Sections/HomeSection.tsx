@@ -1,41 +1,124 @@
-import { ChevronDown } from "lucide-react";
-import { NextPage } from "next";
-import { Element } from "react-scroll";
-import clsx from "clsx";
+import { NextPage } from 'next';
+import { Element } from 'react-scroll';
+import { motion } from 'framer-motion';
+
+import BannerSlider from '../BannerSlider';
+import { FC, useState } from 'react';
 
 interface Props {}
 
+const sloganAnimation = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+  },
+};
+
+const banners = [
+  {
+    label: 'วิทยาเขตบางเขน',
+    source: `${process.env.cdn}/banners/bkn-banner.webp`,
+  },
+  {
+    label: 'วิทยาเขตกำแพงแสน',
+    source: `${process.env.cdn}/banners/kps-banner.webp`,
+  },
+  {
+    label: 'วิทยาเขตศรีราชา',
+    source: `${process.env.cdn}/banners/src-banner.webp`,
+  },
+  {
+    label: 'วิทยาเขตเฉลิมพระเกียรติ จังหวัดสกลนคร',
+    source: `${process.env.cdn}/banners/scs-banner.webp`,
+  },
+  {
+    label: 'วิทยาเขตสุพรรณบุรี',
+    source: `${process.env.cdn}/banners/sbc-banner.webp`,
+  },
+];
+
 const HomeSection: NextPage<Props> = () => {
-    return (
-        <Element
-            name="home"
-            className="grid-bg min-h-screen flex justify-center flex-col"
-        >
-            <div className="flex justify-center flex-col mx-auto gap-10">
-                <div className="flex flex-col justify-start px-10">
-                    <div className="md:text-9xl text-6xl font-bold flex flex-col md:flex-row items-start md:items-end">
-                        KU
-                        <div className="text-[#0DBC58] md:text-7xl text-5xl hackathon-glow">
-                            Hackathon
-                        </div>
-                    </div>
-                    <div className="h-1 my-2 flex">
-                        <div className="bg-[#0DBC58] w-1/3 h-full"></div>
-                        <div className="bg-black w-full h-full"></div>
-                    </div>
-                    <div className="text-base md:text-xl text-gray-300">
-                        กระเทาะแอปนิสิต โดยนิสิต เพื่อนิสิต
-                    </div>
-                </div>
-                <ChevronDown
-                    className={clsx(
-                        "text-[#0DBC58] animate-pulse absolute bottom-5 left-1/2 transform -translate-x-1/2 "
-                    )}
-                    size={50}
-                />
-            </div>
-        </Element>
-    );
+  return (
+    <Element
+      name="home"
+      className="mx-auto w-full flex flex-1 md:flex-row gap-10 h-screen relative z-[9]"
+    >
+      <BannerSlider data={banners} />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[10]">
+        <HackathonLogo />
+      </div>
+    </Element>
+  );
+};
+
+const HackathonLogo: FC<{}> = () => {
+  const slogan = 'กระเทาะแอปนิสิต โดยนิสิต เพื่อนิสิต';
+  const highlight = [7, 8, 9, 10, 11, 12, 13, 14]; // index of slogan text
+
+  return (
+    <div className="flex gap-2 md:gap-4 items-start">
+      <motion.div
+        initial={{
+          x: '100%',
+        }}
+        animate={{
+          x: 0,
+        }}
+        transition={{
+          delay: 0.1,
+          duration: 0.5,
+        }}
+        className="text-[17.5vw] md:text-[8rem] font-extrabold leading-none text-primary hackathon-glow"
+      >
+        KU
+      </motion.div>
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: '5vw',
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          delay: 0.65,
+          duration: 0.5,
+        }}
+        className="flex flex-col py-[1vw] md:py-[.5rem]"
+      >
+        <div className="text-[8vw] md:text-[4rem] font-bold leading-none tracking-wider text-primary hackathon-glow">
+          Hackathon
+        </div>
+        <div className="text-[3.25vw] md:text-[1.65rem] tracking-winder">
+          <motion.span
+            initial="hidden"
+            animate="visible"
+            transition={{ staggerChildren: 0.1 }}
+            aria-hidden
+          >
+            {slogan.split('').map((char, idx) => {
+              return (
+                <motion.span
+                  key={idx}
+                  variants={sloganAnimation}
+                  className={
+                    highlight.includes(idx)
+                      ? 'text-[#e23776] font-semibold'
+                      : ''
+                  }
+                >
+                  {char}
+                </motion.span>
+              );
+            })}
+          </motion.span>
+        </div>
+      </motion.div>
+    </div>
+  );
 };
 
 export default HomeSection;

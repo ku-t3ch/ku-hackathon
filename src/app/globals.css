@@ -1,25 +1,56 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-    font-family: "Noto Sans Thai", sans-serif;
+  font-family: 'Noto Sans Thai', sans-serif;
 }
 
-.btn-primary {
-    @apply bg-[#0DBC58] hover:bg-green-600 px-3 md:px-4 py-1 md:py-2 text-white duration-100 select-none w-fit;
+body {
+  background: #111827;
+}
+
+.ant-timeline-item-head {
+  background: transparent !important;
+}
+
+.tail-active > .ant-timeline-item-tail {
+  @apply !bg-primary !opacity-50;
+}
+
+.tail-active:has(+ :not(.tail-active)) > .ant-timeline-item-tail {
+  @apply !bg-transparent;
+}
+
+.arrow-animation {
+  animation: arrow 1.25s ease-out;
+}
+
+@keyframes arrow {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  33% {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+  66% {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .hackathon-glow {
-    --tw-drop-shadow: drop-shadow(0 3px 31px rgb(255 255 255 / 5%)) drop-shadow(0 2px 14px rgb(3 247 37 / 71%));
-    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
-        var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert)
-        var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-.grid-bg {
-    background-size: 40px 40px;
-    background-image: linear-gradient(to right,#2626269c 1px,transparent 1px),linear-gradient(to bottom,#2626269c 1px,transparent 1px);
+  --tw-drop-shadow: drop-shadow(0 3px 31px rgb(255 255 255 / 5%))
+    drop-shadow(0 2px 14px rgb(3 247 37 / 50%));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
+    var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate)
+    var(--tw-sepia) var(--tw-drop-shadow);
 }
