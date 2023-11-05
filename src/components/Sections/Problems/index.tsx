@@ -55,7 +55,7 @@ const Problems: NextPage<Props> = () => {
   return (
     <Element
       name="problems"
-      className="sm:max-w-[90vw] lg:max-w-[75rem] mx-auto w-full pt-[5rem] md:pt-[10rem] flex flex-col items-center"
+      className="max-w-[90vw] lg:max-w-[75rem] mx-auto w-full pt-[5rem] md:pt-[10rem] flex flex-col items-center"
     >
       <div className="flex flex-col gap-2">
         <div className="text-3xl md:text-4xl font-bold text-center">
@@ -71,7 +71,7 @@ const Problems: NextPage<Props> = () => {
             <Spinner size="lg" />
           </div>
         ) : (
-          <div className="flex flex-col lg:flex-row lg:gap-[2rem]">
+          <div className="flex flex-col lg:grid lg:grid-flow-col lg:gap-[2rem]">
             {width >= 1024 ? (
               <div className="w-full flex flex-col gap-[1.5rem]">
                 {_.orderBy(issues, (o) => o.count, 'desc').map((type, idx) => {
