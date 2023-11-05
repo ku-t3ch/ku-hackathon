@@ -31,7 +31,6 @@ const MobileMenu: FC<NavbarMobileProps> = ({
       variants={navbarAnimation}
       initial="hidden"
       animate={isOpen ? 'visible' : 'hidden'}
-      onAnimationEnd={() => console.log('ends')}
       transition={{
         duration: 0.38,
       }}
