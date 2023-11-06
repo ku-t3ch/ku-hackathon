@@ -78,7 +78,7 @@ const timelineItems: TimelineItem[] = [
         <li>15:15-16:00 Questionnaire & Preview</li>
       </ul>
     ),
-    tag: 'Hybrid',
+    tag: 'Online',
   },
   {
     children: 'Dev Workshop',
@@ -93,7 +93,7 @@ const timelineItems: TimelineItem[] = [
         <li>13:20-16:30 Learn: FastAPI</li>
       </ul>
     ),
-    tag: 'Hybrid',
+    tag: 'Online',
   },
   {
     children: 'Pitching Day',
