@@ -1,7 +1,7 @@
 import { getRegistrants } from '@/utils/GSheetToRegistered';
 import { NextRequest, NextResponse } from 'next/server';
 
-export const revalidate = 120;
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: Request | NextRequest) {
   let res = await getRegistrants();
@@ -13,5 +13,6 @@ export async function GET(request: Request | NextRequest) {
    *      developers: 32
    * }
    */
+
   return NextResponse.json(res, { status: 200 });
 }
