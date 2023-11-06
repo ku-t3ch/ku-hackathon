@@ -17,12 +17,6 @@ const gurus = [
     company: 'SignageSurf',
     image: `${process.env.cdn}/gurus/Ekkasit-Trakulkiattikul.webp`,
   },
-  {
-    name: 'Kanokpol Kulsri (Palm)',
-    job: 'Software Engineer',
-    company: 'Agoda',
-    image: `${process.env.cdn}/gurus/Kanokpol-Kulsri.webp`,
-  },
 ];
 
 const Gurus: NextPage<Props> = () => {
@@ -36,7 +30,7 @@ const Gurus: NextPage<Props> = () => {
           วิทยากร & ที่ปรึกษา
         </div>
         <div className="text-xl text-green-500 font-bold text-center">
-          Gurus and Mentor
+          Gurus and Mentors
         </div>
       </div>
       <div className="mt-[2.5rem] md:mt-[5rem] grid grid-cols-1 lg:grid-flow-col gap-[4rem]">
