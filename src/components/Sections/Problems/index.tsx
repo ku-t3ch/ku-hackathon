@@ -28,7 +28,7 @@ const Problems: NextPage<Props> = () => {
 
   const getIssues = async () => {
     try {
-      const { data } = await axios.get<Issue[]>('/api/issues');
+      const { data } = await axios.get<Issue[]>('https://api-ku-hackathon.netlify.app/api/issues');
 
       let newData: ModifiedIssue[] = [];
 

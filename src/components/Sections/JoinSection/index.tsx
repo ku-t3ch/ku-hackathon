@@ -54,7 +54,7 @@ const JoinSection: NextPage<Props> = () => {
   useEffect(() => {
     const getRegisterCount = async () => {
       try {
-        const { data } = await axios.get('/api/registrants');
+        const { data } = await axios.get('https://api-ku-hackathon.netlify.app/api/registrants');
 
         setRegister(data);
       } catch {}

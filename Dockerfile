@@ -34,6 +34,7 @@ ENV GOOGLE_SHEET_DEV_FORM=$GOOGLE_SHEET_DEV_FORM
 ENV GOOGLE_SHEET_DESIGN_FORM=$GOOGLE_SHEET_DESIGN_FORM
 ENV GOOGLE_PRIV_KEY=$GOOGLE_PRIV_KEY
 
+RUN export NODE_OPTIONS=--openssl-legacy-provider
 RUN yarn build
 
 # Production image, copy files and configure runtime environment

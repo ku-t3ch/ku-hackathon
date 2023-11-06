@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && next build",
+    "start": "export NODE_OPTIONS=--openssl-legacy-provider && next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -33,6 +33,7 @@
     "lucide-react": "^0.279.0",
     "mapbox-gl": "^2.15.0",
     "next": "^14.0.0",
+    "node-cache": "^5.1.2",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
     "react-awesome-slider": "^4.1.0",
