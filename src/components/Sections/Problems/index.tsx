@@ -28,23 +28,20 @@ const Problems: NextPage<Props> = () => {
 
   const getIssues = async () => {
     try {
-      const { data } = await axios.get<Issue[]>('https://api-ku-hackathon.netlify.app/api/issues');
+      const { data } = await axios.get<Issue[]>(
+        'https://api-ku-hackathon.netlify.app/api/issues'
+      );
 
-      let newData: ModifiedIssue[] = [];
-
-      data.map((type) => {
-        newData = [
-          ...newData,
-          {
-            ...type,
-            count: type.subissues.reduce((accumulator, object) => {
-              return accumulator + object.count;
-            }, 0),
-          },
-        ];
+      let newData: ModifiedIssue[] = data.map((type) => {
+        return {
+          ...type,
+          count: type.subissues.reduce((accumulator, object) => {
+            return accumulator + object.count;
+          }, 0),
+        };
       });
 
-      setIssues(newData);
+      setIssues(_.orderBy(newData, (o) => o.count, 'desc'));
     } catch {}
   };
 
@@ -74,7 +71,7 @@ const Problems: NextPage<Props> = () => {
           <div className="flex flex-col lg:grid lg:grid-flow-col lg:gap-[2rem]">
             {width >= 1024 ? (
               <div className="w-full flex flex-col gap-[1.5rem]">
-                {_.orderBy(issues, (o) => o.count, 'desc').map((type, idx) => {
+                {issues.map((type, idx) => {
                   return (
                     <IssueType
                       key={idx}
@@ -94,20 +91,18 @@ const Problems: NextPage<Props> = () => {
                 className="overflow-y-hidden py-[1rem]"
               >
                 <div className="grid grid-flow-col gap-[1rem]">
-                  {_.orderBy(issues, (o) => o.count, 'desc').map(
-                    (type, idx) => {
-                      return (
-                        <IssueType
-                          key={idx}
-                          number={idx + 1}
-                          label={type.name}
-                          issueCount={type.count}
-                          isActive={idx == selectedTypeIssue}
-                          onClick={() => setSelectedTypeIssue(idx)}
-                        />
-                      );
-                    }
-                  )}
+                  {issues.map((type, idx) => {
+                    return (
+                      <IssueType
+                        key={idx}
+                        number={idx + 1}
+                        label={type.name}
+                        issueCount={type.count}
+                        isActive={idx == selectedTypeIssue}
+                        onClick={() => setSelectedTypeIssue(idx)}
+                      />
+                    );
+                  })}
                 </div>
               </ScrollShadow>
             )}
