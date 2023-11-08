@@ -9,25 +9,31 @@ const gurus = [
     name: 'Isoon Phitiphasit',
     job: 'Full-stack Developer',
     company: 'RentSpree Thailand',
-    image: `${process.env.cdn}/gurus/Isoon-Phitiphasit.webp`,
+    image: 'Isoon-Phitiphasit.webp',
   },
   {
     name: 'Ekkasit Trakulkiattikul',
     job: 'Founder',
     company: 'SignageSurf',
-    image: `${process.env.cdn}/gurus/Ekkasit-Trakulkiattikul.webp`,
+    image: 'Ekkasit-Trakulkiattikul.webp',
   },
   {
     name: 'Nonthawit Doungsodsri',
     job: 'Chief Executive Officer',
     company: 'The Existing Company',
-    image: `${process.env.cdn}/gurus/Nonthawit-Doungsodsri.webp`,
+    image: 'Nonthawit-Doungsodsri.webp',
   },
   {
     name: 'Sathipakorn Vibulprapan',
     job: 'Business Incubation Officer',
     company: 'MAX Ventures',
-    image: `${process.env.cdn}/gurus/Sathipakorn-Vibulprapan.webp`,
+    image: 'Sathipakorn-Vibulprapan.webp',
+  },
+  {
+    name: 'Sahanon Phisetpakasit',
+    job: 'Software Engineer',
+    company: 'National Digital ID',
+    image: 'Sahanon-Phisetpakasit.webp',
   },
 ];
 
@@ -45,16 +51,16 @@ const Gurus: NextPage<Props> = () => {
           Gurus and Mentors
         </div>
       </div>
-      <div className="mt-[2.5rem] md:mt-[5rem] grid md:grid-cols-2 xl:grid-flow-col gap-[4rem]">
+      <div className="mt-[2.5rem] md:mt-[5rem] grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[3rem]">
         {gurus.map((guru, idx) => {
           return (
             <div className="flex flex-col items-center" key={idx}>
               <Avatar
                 isBordered
-                src={guru.image}
+                src={`${process.env.cdn}/gurus/${guru.image}`}
                 className="h-[8rem] w-[8rem]"
                 color="success"
-              ></Avatar>
+              />
               <div className="pt-[1.5rem] font-bold text-[1.25rem] text-green-500">
                 {guru.name}
               </div>
