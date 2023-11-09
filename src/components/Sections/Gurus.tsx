@@ -71,8 +71,8 @@ const Gurus: NextPage<Props> = () => {
                 {guru.name}
               </div>
               <div className="text-center">
-                <div className="text-white">{guru.job}</div>
-                <div className="text-gray-400">@{guru.company}</div>
+                <div className="text-white whitespace-nowrap">{guru.job}</div>
+                <div className="text-gray-400 whitespace-nowrap">@{guru.company}</div>
               </div>
             </div>
           );
