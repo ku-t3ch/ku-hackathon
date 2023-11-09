@@ -35,6 +35,12 @@ const gurus = [
     company: 'National Digital ID',
     image: 'Sahanon-Phisetpakasit.webp',
   },
+  {
+    name: 'Kongpon Charanwattanakit',
+    job: 'Former Co-Founder & CTO at Ape Board',
+    company: 'Nansen',
+    image: 'Kongpon-Charanwattanakit.webp',
+  },
 ];
 
 const Gurus: NextPage<Props> = () => {
@@ -51,22 +57,22 @@ const Gurus: NextPage<Props> = () => {
           Gurus and Mentors
         </div>
       </div>
-      <div className="mt-[2.5rem] md:mt-[5rem] grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[3rem]">
+      <div className="mt-[2.5rem] md:mt-[5rem] flex flex-wrap justify-center gap-[3rem]">
         {gurus.map((guru, idx) => {
           return (
-            <div className="flex flex-col items-center" key={idx}>
+            <div className="flex flex-col items-center w-[17rem]" key={idx}>
               <Avatar
                 isBordered
                 src={`${process.env.cdn}/gurus/${guru.image}`}
                 className="h-[8rem] w-[8rem]"
                 color="success"
               />
-              <div className="pt-[1.5rem] font-bold text-[1.25rem] text-green-500">
+              <div className="pt-[1.5rem] font-bold text-[1.25rem] text-green-500 whitespace-nowrap">
                 {guru.name}
               </div>
               <div className="text-center">
-                <div className="text-white">{guru.job}</div>
-                <div className="text-gray-400">@{guru.company}</div>
+                <div className="text-white whitespace-nowrap">{guru.job}</div>
+                <div className="text-gray-400 whitespace-nowrap">@{guru.company}</div>
               </div>
             </div>
           );
