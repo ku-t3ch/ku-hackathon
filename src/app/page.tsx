@@ -20,7 +20,7 @@ export default function Home() {
       <Objective />
       <Problems />
       <Gurus />
-      <JoinSection />
+      {/* <JoinSection /> */}
       <Benefit />
       <Location />
       <OtherCampus />
