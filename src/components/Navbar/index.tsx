@@ -21,10 +21,10 @@ const navLinks: NavLinksInterface[] = [
     to: 'gurus',
     children: 'วิทยากร',
   },
-  {
-    to: 'join',
-    children: 'สาขาที่รับสมัคร',
-  },
+//   {
+//     to: 'join',
+//     children: 'สาขาที่รับสมัคร',
+//   },
   {
     to: 'benefit',
     children: 'รางวัล',
