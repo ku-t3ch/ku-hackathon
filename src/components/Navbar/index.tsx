@@ -105,7 +105,7 @@ const Navbar: NextPage<Props> = () => {
           </NavbarBrand>
 
           {/* desktop content */}
-          <NavbarContent className="hidden lg:flex">
+          {/* <NavbarContent className="hidden lg:flex">
             {navLinks.map((menu, idx) => {
               return (
                 <NavScrollLink key={idx} to={menu.to} className="h-full">
@@ -122,10 +122,10 @@ const Navbar: NextPage<Props> = () => {
               <ClipboardEdit size={16} />
               <span>ลงทะเบียน</span>
             </Button>
-          </NavbarContent>
+          </NavbarContent> */}
 
           {/* mobile content */}
-          <NavbarContent className="lg:hidden">
+          {/* <NavbarContent className="lg:hidden">
             <Button
               color="primary"
               size="md"
@@ -135,7 +135,7 @@ const Navbar: NextPage<Props> = () => {
               <ClipboardEdit size={16} />
               <span>ลงทะเบียน</span>
             </Button>
-          </NavbarContent>
+          </NavbarContent> */}
         </NavbarBody>
       </NavbarContainer>
       <MobileMenu
