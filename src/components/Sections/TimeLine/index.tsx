@@ -57,11 +57,12 @@ const timelineItems: TimelineItem[] = [
     tag: 'Online',
     detail: (
       <ul className="ml-[1.25rem] list-disc space-y-3">
-        <li>08:30-09:00 Registration</li>
-        <li>09:00-12:30 Workshop</li>
-        <li>12:30-13:30 Lunch time</li>
-        <li>13:30-15:15 UX/UI Tool</li>
-        <li>15:15-16:00 Questionnaire & Preview</li>
+        <li>08.30-09.00 Registration</li>
+        <li>09.00-10.00 Registrar</li>
+        <li>10.30-11.30 PSE</li>
+        <li>13.00-14.00 PR</li>
+        <li>14.30-15.30 Library</li>
+        <li>16.00-17.00 SA</li>
       </ul>
     ),
   },
