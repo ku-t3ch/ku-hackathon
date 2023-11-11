@@ -2,9 +2,8 @@
 "use client";
 
 import { NextUIProvider } from "@nextui-org/react";
-import useSWR, { SWRConfig } from "swr";
-
 import { ConfigProvider, theme } from "antd";
+import { SWRConfig } from "swr";
 
 export function Providers({ children }: { children: React.ReactNode }) {
     function localStorageProvider() {

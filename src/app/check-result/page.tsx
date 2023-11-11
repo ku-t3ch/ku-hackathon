@@ -1,21 +1,18 @@
 "use client";
-import HomeSection from "@/components/Sections/HomeSection";
-import {
-    FetcherAxiosCheckResultInterface,
-    fetcherAxiosCheckResult,
-} from "@/utils/Fetcher";
 import { checkResultMutater } from "@/utils/Mutater";
-import { Button, Card, Form, Input } from "antd";
-import axios, { AxiosInstance } from "axios";
+import { Button } from "@nextui-org/react";
+import { Form, Input } from "antd";
 import { NextPage } from "next";
-import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 
 interface Props {}
 
 const Page: NextPage<Props> = () => {
     const [form] = Form.useForm();
-    const { trigger, isMutating } = useSWRMutation("/api/user", checkResultMutater);
+    const { trigger, isMutating } = useSWRMutation(
+        "/api/user",
+        checkResultMutater
+    );
 
     const onFinish = async () => {
         trigger(form.getFieldValue("studentId"));
@@ -34,21 +31,26 @@ const Page: NextPage<Props> = () => {
             <div className="flex flex-col">
                 <div className="text-3xl">ประกาศผลการคัดเลือก</div>
             </div>
-            <Form form={form} onFinish={onFinish} layout="vertical">
+            <Form form={form} onFinish={onFinish} layout="vertical" className="flex flex-col gap-2">
                 <Form.Item
                     label="รหัสนิสิต"
                     name="studentId"
                     rules={[{ required: true, validator: studuentIdValidator }]}
                 >
-                    <Input size="large" placeholder="b65xxxxxxxx" />
+                    {/* <Input size="large" placeholder="b65xxxxxxxx" /> */}
+                    <input
+                        type="text"
+                        className="p-3 w-full rounded-lg"
+                        placeholder="b65xxxxxxxx"
+                    />
                 </Form.Item>
                 <Form.Item>
                     <Button
-                        loading={isMutating}
-                        className="w-full"
-                        size="large"
-                        type="primary"
-                        htmlType="submit"
+                        color="primary"
+                        size="md"
+                        className="h-[2.25rem]  font-semibold rounded-[.25rem]"
+                        isLoading={isMutating}
+                        type="submit"
                     >
                         ตรวจสอบ
                     </Button>
