@@ -8,4 +8,8 @@ interface SubIssue {
     count: number;
 }
 
-export type { Issue, SubIssue };
+interface ModifiedIssue extends Issue {
+    count: number;
+}
+
+export type { Issue, SubIssue, ModifiedIssue };
