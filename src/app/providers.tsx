@@ -3,20 +3,42 @@
 
 import { NextUIProvider } from "@nextui-org/react";
 import { ConfigProvider, theme } from "antd";
+import { SWRConfig } from "swr";
 
 export function Providers({ children }: { children: React.ReactNode }) {
+    function localStorageProvider() {
+        if (typeof window === "undefined") {
+            return () => new Map();
+        }
+
+        const map = new Map(
+            JSON.parse(localStorage.getItem("app-cache") || "[]")
+        );
+
+        // Before unloading the app, we write back all the data into `localStorage`.
+        window.addEventListener("beforeunload", () => {
+            const appCache = JSON.stringify(Array.from(map.entries()));
+            localStorage.setItem("app-cache", appCache);
+        });
+
+        // We still use the map for write & read for performance.
+        return map;
+    }
+
     return (
-        <NextUIProvider>
-            <ConfigProvider
-                theme={{
-                    token: {
-                        colorPrimary: "#21C55D",
-                    },
-                    algorithm: theme.darkAlgorithm,
-                }}
-            >
-                {children}
-            </ConfigProvider>
-        </NextUIProvider>
+        // <SWRConfig value={{ provider: localStorageProvider as any }}>
+            <NextUIProvider>
+                <ConfigProvider
+                    theme={{
+                        token: {
+                            colorPrimary: "#21C55D",
+                        },
+                        algorithm: theme.darkAlgorithm,
+                    }}
+                >
+                    {children}
+                </ConfigProvider>
+            </NextUIProvider>
+        // </SWRConfig>
     );
 }

@@ -11,6 +11,7 @@ import TimeLine from '@/components/Sections/TimeLine';
 import Problems from '@/components/Sections/Problems';
 import Location from '@/components/Sections/Location';
 import OtherCampus from '@/components/Sections/OtherCampus';
+import RegisterResult from '@/components/Sections/RegisterResult';
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Objective />
       <Problems />
       <Gurus />
+      <RegisterResult />
       {/* <JoinSection /> */}
       <Benefit />
       <Location />

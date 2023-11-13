@@ -23,22 +23,22 @@ interface TimelineItem {
 const timelineItems: TimelineItem[] = [
   {
     children: 'Problem Submission',
-    start: new Date('2023-10-09 23:59'),
+    start: new Date('2023-10-09 00:00'),
     end: new Date('2023-11-03 23:59'),
   },
   {
     children: 'Registration',
-    start: new Date('2023-10-23 23:59'),
+    start: new Date('2023-10-23 00:00'),
     end: new Date('2023-11-10 23:59'),
   },
   {
     children: 'Participant Announcement',
-    start: new Date('2023-11-13 23:59'),
+    start: new Date('2023-11-13 00:00'),
     end: new Date('2023-11-13 23:59'),
   },
   {
     children: 'Matching Teams',
-    start: new Date('2023-11-15 23:59'),
+    start: new Date('2023-11-15 00:00'),
     end: new Date('2023-11-15 23:59'),
     detail: (
       <ul className="ml-[1.25rem] list-disc space-y-3">
@@ -52,7 +52,7 @@ const timelineItems: TimelineItem[] = [
   },
   {
     children: 'Overview Problem',
-    start: new Date('2023-11-16 23:59'),
+    start: new Date('2023-11-16 00:00'),
     end: new Date('2023-11-16 23:59'),
     tag: 'Online',
     detail: (
@@ -68,7 +68,7 @@ const timelineItems: TimelineItem[] = [
   },
   {
     children: 'UX/UI Workshop',
-    start: new Date('2023-11-17 23:59'),
+    start: new Date('2023-11-17 00:00'),
     end: new Date('2023-11-17 23:59'),
     detail: (
       <ul className="ml-[1.25rem] list-disc space-y-3">
@@ -83,7 +83,7 @@ const timelineItems: TimelineItem[] = [
   },
   {
     children: 'Dev Workshop',
-    start: new Date('2023-11-19 23:59'),
+    start: new Date('2023-11-19 00:00'),
     end: new Date('2023-11-19 23:59'),
     detail: (
       <ul className="ml-[1.25rem] list-disc space-y-3">
@@ -98,7 +98,7 @@ const timelineItems: TimelineItem[] = [
   },
   {
     children: 'Pitching Day',
-    start: new Date('2023-11-20 23:59'),
+    start: new Date('2023-11-20 00:00'),
     end: new Date('2023-11-20 23:59'),
     detail: (
       <ul className="ml-[1.25rem] list-disc space-y-3">
@@ -114,7 +114,7 @@ const timelineItems: TimelineItem[] = [
   },
   {
     children: 'Hackathon',
-    start: new Date('2023-11-22 23:59'),
+    start: new Date('2023-11-22 00:00'),
     end: new Date('2023-11-24 23:59'),
     tag: 'Onsite',
   },

@@ -9,6 +9,7 @@ import Image from 'next/image';
 import tw from 'tailwind-styled-components';
 import MobileMenu from './MobileMenu';
 import { NavScrollLink } from './NavScrollLink';
+import { useRouter } from 'next/navigation';
 
 interface Props {}
 
@@ -21,10 +22,10 @@ const navLinks: NavLinksInterface[] = [
     to: 'gurus',
     children: 'วิทยากร',
   },
-//   {
-//     to: 'join',
-//     children: 'สาขาที่รับสมัคร',
-//   },
+  //   {
+  //     to: 'join',
+  //     children: 'สาขาที่รับสมัคร',
+  //   },
   {
     to: 'benefit',
     children: 'รางวัล',
@@ -44,6 +45,7 @@ const navLinks: NavLinksInterface[] = [
 ];
 
 const Navbar: NextPage<Props> = () => {
+  const { push } = useRouter();
   const [showBackground, setShowBackground] = useState<boolean>(false);
   const [isOpenMobileMenu, setIsOpenMobileMenu] = useState<boolean>(false);
 
@@ -72,6 +74,10 @@ const Navbar: NextPage<Props> = () => {
     scrollTo('join');
   };
 
+  const handleOnClickCheckResult = () => {
+    scrollTo('register-result');
+  };
+
   return (
     <>
       <NavbarContainer
@@ -87,7 +93,10 @@ const Navbar: NextPage<Props> = () => {
               height={0}
               alt="navbar-logo"
               className="w-[3.5rem]"
-              onClick={() => scrollTo('home')}
+              onClick={() => {
+                push('/');
+                scrollTo('home');
+              }}
               unoptimized
               priority
             />
@@ -113,29 +122,29 @@ const Navbar: NextPage<Props> = () => {
                 </NavScrollLink>
               );
             })}
-            {/* <Button
+            <Button
               color="primary"
               size="md"
               className="text-[#2D3648] h-full font-semibold rounded-[.25rem]"
-              onClick={handleOnClickApply}
+              onClick={handleOnClickCheckResult}
             >
               <ClipboardEdit size={16} />
-              <span>ลงทะเบียน</span>
-            </Button> */}
+              <span>ผลการคัดเลือก</span>
+            </Button>
           </NavbarContent>
 
           {/* mobile content */}
-          {/* <NavbarContent className="lg:hidden">
+          <NavbarContent className="lg:hidden">
             <Button
               color="primary"
               size="md"
               className="h-[2.25rem] text-[#2D3648] font-semibold rounded-[.25rem]"
-              onClick={handleOnClickApply}
+              onClick={handleOnClickCheckResult}
             >
               <ClipboardEdit size={16} />
-              <span>ลงทะเบียน</span>
+              <span>ผลการคัดเลือก</span>
             </Button>
-          </NavbarContent> */}
+          </NavbarContent>
         </NavbarBody>
       </NavbarContainer>
       <MobileMenu
