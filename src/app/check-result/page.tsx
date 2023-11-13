@@ -63,19 +63,18 @@ const Page: NextPage<Props> = () => {
           className="flex flex-col gap-2"
         >
           <Form.Item
-            label="Email"
-            name="studentId"
+            label="อีเมลที่ใช้สมัคร"
+            name="email"
             rules={[
               {
                 required: true,
-                //  validator: studuentIdValidator
               },
             ]}
           >
             <input
               type="email"
               className="p-3 w-full rounded-lg"
-              placeholder="email ที่ใช้สมัคร"
+              placeholder="กรุณากรอกอีเมล @ku.th เท่านั้น"
             />
           </Form.Item>
           <Form.Item>

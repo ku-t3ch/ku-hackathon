@@ -75,7 +75,7 @@ const Navbar: NextPage<Props> = () => {
   };
 
   const handleOnClickCheckResult = () => {
-    push('/check-result');
+    scrollTo('register-result');
   };
 
   return (
