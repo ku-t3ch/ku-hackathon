@@ -8,14 +8,14 @@ import Image from 'next/image';
 
 interface Props {}
 
-const sloganAnimation = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-  },
-};
+// const sloganAnimation = {
+//   hidden: {
+//     opacity: 0,
+//   },
+//   visible: {
+//     opacity: 1,
+//   },
+// };
 
 const banners = [
   {
@@ -55,8 +55,8 @@ const HomeSection: NextPage<Props> = () => {
 };
 
 const HackathonLogo: FC<{}> = () => {
-  const slogan = 'กระเทาะแอปนิสิต โดยนิสิต เพื่อนิสิต';
-  const highlight = [7, 8, 9, 10, 11, 12, 13, 14]; // index of slogan text
+  //const slogan = 'กระเทาะแอปนิสิต โดยนิสิต เพื่อนิสิต';
+  //const highlight = [7, 8, 9, 10, 11, 12, 13, 14]; // index of slogan text
 
   return (
     <div className="flex flex-col items-center">
@@ -70,16 +70,15 @@ const HackathonLogo: FC<{}> = () => {
           scale: 1,
         }}
         transition={{
+          delay: 0,
           duration: 0.5,
         }}
       >
         <Image
           src={`${process.env.cdn}/main-logo.webp`}
-          width={0}
-          height={0}
+          width={300}
+          height={300}
           alt="main-logo"
-          className="w-[300px] text-center"
-          unoptimized
           priority
         />
       </motion.div>
