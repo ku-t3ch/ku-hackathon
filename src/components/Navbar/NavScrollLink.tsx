@@ -5,10 +5,16 @@ import { Link } from 'react-scroll';
 interface Props {
   to: string;
   className?: string;
+  onClick?: () => void;
   children?: ReactNode;
 }
 
-export const NavScrollLink: FC<Props> = ({ to, className, children }) => {
+export const NavScrollLink: FC<Props> = ({
+  to,
+  className,
+  onClick,
+  children,
+}) => {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -21,6 +27,8 @@ export const NavScrollLink: FC<Props> = ({ to, className, children }) => {
       className={`flex items-center font-medium hover:text-primary cursor-default ${className}`}
       activeClass="text-primary shadow-[inset_0_-2.5px]"
       onClick={() => {
+        onClick;
+
         if (pathname == '/') {
           return;
         }
