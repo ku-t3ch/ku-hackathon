@@ -1,16 +1,20 @@
-import axios from "axios";
-import axiosInstance from "./axiosInstance";
+import { CheckResultResponse } from "@/interfaces/CheckResultResponse";
 
 export async function checkResultMutater(
     url: string,
-    { arg }: { arg: string }
+    { arg }: { arg: number }
 ) {
-    const { data, status } = await axiosInstance.post(url, {
-        arg,
+    const res = await fetch("https://api-ku-hackathon.vercel.app" + url, {
+        method: "POST",
+        body: JSON.stringify({
+            email: arg,
+        }),
     });
 
+    const data = await res.json();
+
     return {
-        status,
-        data,
+        status: res.status,
+        data: data.data as CheckResultResponse,
     };
 }
