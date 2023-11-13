@@ -93,7 +93,7 @@ const RegisterResult: NextPage<Props> = () => {
                   isLoading={isMutating}
                   type="submit"
                 >
-                  <MailSearch size={16} />
+                  {!isMutating && <MailSearch size={16} />}
                   ตรวจสอบผล
                 </Button>
               </Form.Item>
