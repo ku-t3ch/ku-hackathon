@@ -7,7 +7,7 @@ interface Props {}
 const gurus = [
   {
     name: 'Isoon Phitiphasit',
-    job: 'Full-stack Developer',
+    job: 'Software Engineer',
     company: 'RentSpree Thailand',
     image: 'Isoon-Phitiphasit.webp',
   },
