@@ -1,3 +1,5 @@
+'use client';
+
 import { NextPage } from 'next';
 import { Element } from 'react-scroll';
 import { format, isSameDay, isWithinInterval } from 'date-fns';
@@ -8,6 +10,7 @@ import tw from 'tailwind-styled-components';
 import { ChevronDown, ChevronUp, Info } from 'lucide-react';
 import Modal from './Modal';
 import { useScreenWidthSize } from '@/components/hooks/useScreenWidthSize';
+import { utcToZonedTime } from 'date-fns-tz';
 
 interface Props {}
 
@@ -146,6 +149,8 @@ const TimeLine: NextPage<Props> = () => {
     setTimeout(() => setIsOpenModal(false), 500);
   };
 
+  const todayTime = utcToZonedTime(new Date(), 'Asia/Bangkok');
+
   return (
     <>
       <Element
@@ -164,9 +169,12 @@ const TimeLine: NextPage<Props> = () => {
           <Timeline
             mode="left"
             items={timelineItems.map((item) => {
-              const isActiveEvent = isWithinInterval(new Date(), {
-                start: item.start,
-                end: timelineItems[timelineItems.length - 1].end,
+              const isActiveEvent = isWithinInterval(todayTime, {
+                start: utcToZonedTime(item.start, 'Asia/Bangkok'),
+                end: utcToZonedTime(
+                  timelineItems[timelineItems.length - 1].end,
+                  'Asia/Bangkok'
+                ),
               });
 
               return {
