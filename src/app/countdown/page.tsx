@@ -36,12 +36,7 @@ const CountDownPage: NextPage<{}> = () => {
     const [isStart, setIsStart] = useState<boolean>(false);
     const [isEnd, setIsEnd] = useState<boolean>(false);
     const unitTime = ["days", "hours", "minutes", "seconds"];
-
-    (async() => {
-        const record = await pb.collection('hackathon').getOne('3oojmx9qvh0l4mg');
-        setIsStart(record.isStarted);
-    })();
-
+    
     useEffect(() => {
         (async() => {
             const record = await pb.collection('hackathon').getOne('3oojmx9qvh0l4mg');

@@ -5,6 +5,8 @@ import { NextPage } from "next"
 import { useEffect, useState } from "react";
 import PocketBase from 'pocketbase';
 import { HackathonLogo } from "@/components/Sections/HomeSection";
+import { Slider } from "@nextui-org/react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const pb = new PocketBase("https://ku-hackathon.pockethost.io");
 pb.autoCancellation(false);
@@ -32,69 +34,87 @@ const banners = [
     },
 ];
 
-const CountDownPage: NextPage<{}> = () => {
-    const [countdown, setCountdown] = useState<number[]>([0, 0, 0, 0]);
+const OpenButtonPage: NextPage<{}> = () => {
+    const [slider, setSlider] = useState<number | number[]>(0.0);
     const [isStart, setIsStart] = useState<boolean>(false);
-    const [isEnd, setIsEnd] = useState<boolean>(false);
-    const unitTime = ["days", "hours", "minutes", "seconds"];
 
-    (async() => {
-        const record = await pb.collection('hackathon').getOne('3oojmx9qvh0l4mg');
-        setIsStart(record.isStarted);
-    })();
+    const router = useRouter();
+    const pathname = usePathname();
+
+    const searchParams = useSearchParams()
+    const reset = searchParams.get('reset') || null;
 
     useEffect(() => {
-        (async() => {
+        if (reset === "1") {
+            (async () => {
+                await pb.collection('hackathon').update('3oojmx9qvh0l4mg', { "isStarted": false });
+                setIsStart(false);
+                router.push(pathname)
+            })();
+        }
+    })
+
+    useEffect(() => {
+        (async () => {
             const record = await pb.collection('hackathon').getOne('3oojmx9qvh0l4mg');
             setIsStart(record.isStarted);
         })();
-    },[]);
+    }, []);
 
     useEffect(() => {
-        pb.collection('hackathon').subscribe('3oojmx9qvh0l4mg', (e) => {
-            setIsStart(e.record.isStarted);
-        });
-    });
-    
-    useEffect(() => {
-        const countdownInterval = setInterval(() => {
-            if (isStart) {
-                if (!isEnd) {
-                    const now = new Date();
-                    const end = new Date('2023-11-24 18:00:00');
-                    const diff = end.getTime() - now.getTime();
-        
-                    if (diff <= 0) {
-                        setIsEnd(true);
-                    };
-        
-                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
-                    const minutes = Math.floor(diff / (1000 * 60)) % 60;
-                    const seconds = Math.floor(diff / 1000) % 60;
-        
-                    setCountdown([days, hours, minutes, seconds]);
-                }
-            } else {
-                setCountdown([0, 0, 0, 0]);
-                return
+        const sliderInterval = setInterval(async () => {
+            if (slider === 100) {
+                await pb.collection('hackathon').update('3oojmx9qvh0l4mg', { "isStarted": true });
+                setIsStart(true);
+                setSlider(0);
             }
-        }, 1000);
+        }, 1000)
 
         return () => {
-            clearInterval(countdownInterval);
-        };
+            clearInterval(sliderInterval);
+        }
     });
-    
 
     return (
         <div className="w-full flex flex-1 h-screen relative z-[999]">
             <BannerSlider data={banners} />
             <div className="w-full h-screen flex flex-col items-center justify-center absolute z-[10]">
-                <HackathonLogo />
+                <div className="flex flex-col w-2/3 lg:w-full items-center justify-center">
+                    <HackathonLogo />
+                    <div className="flex flex-col w-full items-center justify-center">
+                        {reset === "1" ? <div className="text-sm font-bold opacity-30 animate-pulse">
+                            กำลังโหลด...
+                        </div> : !isStart ?
+                            <>
+                                <div className="text-sm font-bold opacity-30 animate-pulse">
+                                    {slider === 100 ? "กำลังโหลด..." : "เลื่อนเพื่อเข้าสู่แฮกกะตรอน"}
+                                </div>
+                                <Slider
+                                    showTooltip={true}
+                                    tooltipValueFormatOptions={{ style: 'unit', unit: 'percent' }}
+                                    size={"lg"}
+                                    step={1}
+                                    maxValue={100}
+                                    minValue={0}
+                                    aria-label="Temperature"
+                                    defaultValue={0}
+                                    className="max-w-md"
+                                    onChange={(e) => {
+                                        setSlider(e);
+                                    }}
+                                    isDisabled={slider === 100}
+                                />
+                            </> : <>
+                                <div className="text-sm font-bold opacity-60">
+                                    กิจกรรมกำลังดำเนินอยู่
+                                </div>
+                            </>}
+
+                    </div>
+                </div>
             </div>
         </div>
     )
 }
 
-export default CountDownPage;
+export default OpenButtonPage;
