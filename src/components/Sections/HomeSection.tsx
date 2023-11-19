@@ -146,4 +146,5 @@ const HackathonLogo: FC<{}> = () => {
   );
 };
 
+export { HackathonLogo };
 export default HomeSection;
