@@ -9,6 +9,7 @@ import { MailSearch, RefreshCcw, Search, Undo2Icon } from 'lucide-react';
 import { NextPage } from 'next';
 import { useState } from 'react';
 import useSWRMutation from 'swr/mutation';
+import CountDown from '@/components/CountDown';
 
 interface Props {}
 
@@ -56,14 +57,17 @@ const RegisterResult: NextPage<Props> = () => {
       >
         <div className="flex flex-col gap-2">
           <div className="text-3xl md:text-4xl font-bold text-center">
-            ประกาศผลการคัดเลือก
+            นับถอยหลังการนำเสนอ
           </div>
           <div className="text-xl text-primary font-bold text-center">
-            Participant Announcement
+            Countdown Presentation
           </div>
         </div>
         <hr />
-        <div className="mt-[2.5rem] md:mt-[5rem] w-full max-w-[40rem]">
+        <div className="mt-[2.5rem] md:mt-[5rem] flex flex-col w-full items-center justify-center">
+          <CountDown />
+        </div>
+        {/* <div className="mt-[2.5rem] md:mt-[5rem] w-full max-w-[40rem]">
           {Status === 'check' && (
             <Form
               form={form}
@@ -108,7 +112,7 @@ const RegisterResult: NextPage<Props> = () => {
               ตรวจสอบอีกครั้ง
             </Button>
           )}
-        </div>
+        </div> */}
       </Element>
     </>
   );
