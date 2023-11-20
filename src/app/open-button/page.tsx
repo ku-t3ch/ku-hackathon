@@ -11,29 +11,6 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 const pb = new PocketBase("https://ku-hackathon.pockethost.io");
 pb.autoCancellation(false);
 
-const banners = [
-    {
-        label: 'วิทยาเขตบางเขน',
-        source: `${process.env.cdn}/banners/bkn-banner.webp`,
-    },
-    {
-        label: 'วิทยาเขตกำแพงแสน',
-        source: `${process.env.cdn}/banners/kps-banner.webp`,
-    },
-    {
-        label: 'วิทยาเขตศรีราชา',
-        source: `${process.env.cdn}/banners/src-banner.webp`,
-    },
-    {
-        label: 'วิทยาเขตเฉลิมพระเกียรติ จังหวัดสกลนคร',
-        source: `${process.env.cdn}/banners/scs-banner.webp`,
-    },
-    {
-        label: 'วิทยาเขตสุพรรณบุรี',
-        source: `${process.env.cdn}/banners/sbc-banner.webp`,
-    },
-];
-
 const OpenButtonPage: NextPage<{}> = () => {
     const [slider, setSlider] = useState<number | number[]>(0.0);
     const [isStart, setIsStart] = useState<boolean>(false);
@@ -76,8 +53,7 @@ const OpenButtonPage: NextPage<{}> = () => {
     });
 
     return (
-        <div className="w-full flex flex-1 h-screen relative z-[999]">
-            <BannerSlider data={banners} />
+        <div className="w-full h-screen relative z-[999] bg-black">
             <div className="w-full h-screen flex flex-col items-center justify-center absolute z-[10]">
                 <div className="flex flex-col w-2/3 lg:w-full items-center justify-center">
                     <HackathonLogo />
@@ -87,7 +63,7 @@ const OpenButtonPage: NextPage<{}> = () => {
                         </div> : !isStart ?
                             <>
                                 <div className="text-sm font-bold opacity-30 animate-pulse">
-                                    {slider === 100 ? "กำลังโหลด..." : "เลื่อนเพื่อเข้าสู่แฮกกะตรอน"}
+                                    {slider === 100 ? "กำลังโหลด..." : "เลื่อนเพื่อเริ่มนับเวลา"}
                                 </div>
                                 <Slider
                                     showTooltip={true}
@@ -106,7 +82,7 @@ const OpenButtonPage: NextPage<{}> = () => {
                                 />
                             </> : <>
                                 <div className="text-sm font-bold opacity-60">
-                                    กิจกรรมกำลังดำเนินอยู่
+                                    การนับเวลาได้เริ่มขึ้นแล้ว
                                 </div>
                             </>}
 
