@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 
-interface Props {}
+interface Props {} 
 
 const Reject: NextPage<Props> = () => {
   return (
