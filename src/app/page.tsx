@@ -12,6 +12,7 @@ import Problems from '@/components/Sections/Problems';
 import Location from '@/components/Sections/Location';
 import OtherCampus from '@/components/Sections/OtherCampus';
 import RegisterResult from '@/components/Sections/RegisterResult';
+import WinnerTeams from '@/components/Sections/WinnerTeams';
 
 export default function Home() {
   return (
@@ -21,8 +22,9 @@ export default function Home() {
       <Objective />
       <Problems />
       <Gurus />
-      <RegisterResult />
+      {/* <RegisterResult /> */}
       {/* <JoinSection /> */}
+      <WinnerTeams />
       <Benefit />
       <Location />
       <OtherCampus />
