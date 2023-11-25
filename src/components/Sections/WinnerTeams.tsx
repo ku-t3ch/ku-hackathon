@@ -67,7 +67,7 @@ const WinnerTeams: NextPage<Props> = () => {
   return (
     <Element
       name="winners"
-      className="max-w-[90vw] xl:max-w-[75rem] mx-auto w-full pt-[5rem] md:pt-[10rem] flex flex-col items-center"
+      className="max-w-[90vw] sm:max-w-[60vw] md:max-w-[90vw] xl:max-w-[75rem] mx-auto w-full pt-[5rem] md:pt-[10rem] flex flex-col items-center"
     >
       <div className="flex flex-col gap-2">
         <div className="text-3xl md:text-4xl font-bold text-center">
@@ -79,17 +79,14 @@ const WinnerTeams: NextPage<Props> = () => {
       </div>
       <div
         className={clsx(
-          'mt-[2.5rem] md:mt-[5rem]w-full items-end',
+          'mt-[2.5rem] md:mt-[5rem] w-full items-end',
           isMobile
-            ? 'grid grid-cols-1 lg:grid-cols-2 gap-10'
+            ? 'grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-10 md:gap-5 lg:gap-10'
             : 'flex flex-wrap gap-3'
         )}
       >
         {getTeams(isMobile).map((item, index) => (
-          <div
-            key={index}
-            className={clsx(isMobile ? 'w-[22.5rem]' : 'w-[18rem]')}
-          >
+          <div key={index} className={clsx(isMobile ? 'w-full' : 'w-[18rem]')}>
             {!isMobile && (
               <div className="text-center font-medium tracking-wide pb-3 text-lg">
                 {item.title}
@@ -102,7 +99,7 @@ const WinnerTeams: NextPage<Props> = () => {
                 isMobile ? 'rounded-lg' : 'rounded-t-lg'
               )}
               style={{
-                height: isMobile ? '24rem' : `${42 - item.rankId * 5.8}rem`,
+                height: isMobile ? '24rem' : `${42 - item.rankId * 5.5}rem`,
               }}
             >
               <div className="flex justify-center">
@@ -127,7 +124,7 @@ const WinnerTeams: NextPage<Props> = () => {
               </div>
 
               <div className="px-[1rem] mt-5">
-                <ul className="space-y-1 list-disc">
+                <ul className="md:px-3 lg:px-1 space-y-1 list-disc">
                   {item.members?.map((name, idx) => {
                     return (
                       <li key={idx} className="text-gray-300">
