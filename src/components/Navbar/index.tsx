@@ -122,7 +122,7 @@ const Navbar: NextPage<Props> = () => {
                 </NavScrollLink>
               );
             })}
-            <Button
+            {/* <Button
               color="primary"
               size="md"
               className="text-[#2D3648] h-full font-semibold rounded-[.25rem]"
@@ -130,12 +130,12 @@ const Navbar: NextPage<Props> = () => {
             >
               <ClipboardEdit size={16} />
               <span>ผลการคัดเลือก</span>
-            </Button>
+            </Button> */}
           </NavbarContent>
 
           {/* mobile content */}
           <NavbarContent className="lg:hidden">
-            <Button
+            {/* <Button
               color="primary"
               size="md"
               className="h-[2.25rem] text-[#2D3648] font-semibold rounded-[.25rem]"
@@ -143,7 +143,7 @@ const Navbar: NextPage<Props> = () => {
             >
               <ClipboardEdit size={16} />
               <span>ผลการคัดเลือก</span>
-            </Button>
+            </Button> */}
           </NavbarContent>
         </NavbarBody>
       </NavbarContainer>
