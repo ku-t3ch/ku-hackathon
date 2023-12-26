@@ -15,7 +15,7 @@ import { IssueFetcher } from "@/utils/Fetcher";
 interface Props {}
 
 const Problems: NextPage<Props> = () => {
-    const { isLoading, data: issues } = useSWR("/api/issues", IssueFetcher, {
+    const { isLoading, data: issues } = useSWR("/api/v1/issues", IssueFetcher, {
         revalidateOnFocus: false,
     });
     const width = useScreenWidthSize();
@@ -28,6 +28,9 @@ const Problems: NextPage<Props> = () => {
         }
         return [];
     };
+
+    console.log(issues);
+    
 
     return (
         <Element

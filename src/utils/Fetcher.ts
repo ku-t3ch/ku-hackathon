@@ -22,7 +22,7 @@ export const fetcherAxiosCheckResult: Fetcher<
 };
 
 export const IssueFetcher: Fetcher<ModifiedIssue[], string> = (url) => {
-    return axiosInstance.get(url).then(({ data }: { data: Issue[] }) => {
+    return axios.get(url).then(({ data }: { data: Issue[] }) => {
         let newData: ModifiedIssue[] = data.map((type) => {
             return {
                 ...type,
