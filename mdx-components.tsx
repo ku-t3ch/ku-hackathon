@@ -1,3 +1,4 @@
+import BackButton from '@/components/BackButton'
 import { Button } from '@nextui-org/react'
 import { ChevronLeftIcon, MoveLeftIcon } from 'lucide-react'
 import type { MDXComponents } from 'mdx/types'
@@ -8,9 +9,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         ...components,
         wrapper(props) {
             return (
-                <div>
+                <div className='max-w-4xl mx-auto'>
                     <div className="prose prose-sm md:prose-base prose-invert p-5">
-                        <Button size='sm' ><ChevronLeftIcon />กลับ</Button>
+                        <BackButton />
                         {props.children}
                     </div>
                 </div>

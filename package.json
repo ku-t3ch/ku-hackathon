@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/css": "^11.11.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mdx-js/loader": "^3.0.0",
@@ -17,6 +18,7 @@
     "@next/mdx": "^14.0.4",
     "@nextui-org/react": "^2.1.13",
     "@react-google-maps/api": "^2.19.2",
+    "@splidejs/react-splide": "^0.7.12",
     "@tailwindcss/typography": "^0.5.10",
     "@types/mdx": "^2.0.10",
     "@types/react-leaflet": "^3.0.0",
