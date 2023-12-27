@@ -58,3 +58,15 @@ body {
 .leaflet-container {
   z-index: 998 !important;
 }
+
+.prose {
+  @apply max-w-none;
+}
+
+.splide__pagination__page {
+    background: #cccccc49 !important;
+}
+
+.splide__pagination__page.is-active {
+    background: #ffffff57 !important;
+}

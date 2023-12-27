@@ -20,8 +20,8 @@ export default function Home() {
       <WinnerTeams />
       {/* <HomeSection /> */}
       {/* <Partners /> */}
-      <Objective />
-      <Problems />
+      {/* <Objective /> */}
+      {/* <Problems /> */}
       {/* <Gurus /> */}
       {/* <RegisterResult /> */}
       {/* <JoinSection /> */}
