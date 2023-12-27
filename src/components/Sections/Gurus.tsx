@@ -1,3 +1,4 @@
+"use client";
 import { NextPage } from 'next';
 import { Element } from 'react-scroll';
 import { Avatar } from '@nextui-org/avatar';
@@ -63,6 +64,7 @@ const Gurus: NextPage<Props> = () => {
             <div className="flex flex-col items-center w-[17rem]" key={idx}>
               <Avatar
                 isBordered
+                imgProps={{ loading: 'lazy' ,}}
                 src={`${process.env.cdn}/gurus/${guru.image}`}
                 className="h-[8rem] w-[8rem]"
                 color="success"

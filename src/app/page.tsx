@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 
 import Benefit from '@/components/Sections/Benefit';
 import FAQs from '@/components/Sections/FAQs';
@@ -17,19 +17,19 @@ import WinnerTeams from '@/components/Sections/WinnerTeams';
 export default function Home() {
   return (
     <>
-      <HomeSection />
-      <Partners />
+      <WinnerTeams />
+      {/* <HomeSection /> */}
+      {/* <Partners /> */}
       <Objective />
       <Problems />
-      <Gurus />
+      {/* <Gurus /> */}
       {/* <RegisterResult /> */}
       {/* <JoinSection /> */}
-      <WinnerTeams />
-      <Benefit />
-      <Location />
-      <OtherCampus />
-      <TimeLine />
-      <FAQs />
+      {/* <Benefit /> */}
+      {/* <Location /> */}
+      {/* <OtherCampus /> */}
+      {/* <TimeLine /> */}
+      {/* <FAQs /> */}
     </>
   );
 }

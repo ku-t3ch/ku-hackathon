@@ -1,3 +1,4 @@
+"use client";
 import { NextPage } from 'next';
 import { Element } from 'react-scroll';
 import { motion } from 'framer-motion';

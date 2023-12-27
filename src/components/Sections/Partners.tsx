@@ -1,3 +1,4 @@
+"use client";
 import { NextPage } from 'next';
 import { Element } from 'react-scroll';
 import Image from 'next/image';
