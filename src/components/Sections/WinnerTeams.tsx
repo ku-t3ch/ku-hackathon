@@ -73,7 +73,7 @@ const WinnerTeams: NextPage<Props> = () => {
     >
       <div className="flex flex-col gap-2">
         <div className="text-3xl md:text-4xl font-bold text-center">
-          ทีมผู้ชนะการแข่งขัน Hackathon 2023
+          ทีมผู้ชนะการแข่งขัน KU Hackathon 2023
         </div>
         <div className="text-xl text-primary font-bold text-center">
           The Winner Teams
