@@ -44,7 +44,7 @@ export default function RootLayout({
             <body className={inter.className}>
                 <Providers>
                     {/* <Navbar /> */}
-                    <div className="flex flex-col">{children}</div>
+                    <div className="flex flex-col min-h-screen">{children}</div>
                     <Footer />
                 </Providers>
             </body>

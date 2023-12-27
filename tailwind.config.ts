@@ -3,6 +3,7 @@ import { nextui } from '@nextui-org/react';
 
 const config: Config = {
   content: [
+    "./mdx-components.tsx",
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -19,6 +20,7 @@ const config: Config = {
   },
   darkMode: 'class',
   plugins: [
+    require('@tailwindcss/typography'),
     nextui({
       themes: {
         light: {

@@ -58,3 +58,7 @@ body {
 .leaflet-container {
   z-index: 998 !important;
 }
+
+.prose {
+  @apply max-w-none;
+}
