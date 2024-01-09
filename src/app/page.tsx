@@ -21,7 +21,7 @@ export default function Home() {
       {/* <HomeSection /> */}
       {/* <Partners /> */}
       {/* <Objective /> */}
-      {/* <Problems /> */}
+      <Problems />
       {/* <Gurus /> */}
       {/* <RegisterResult /> */}
       {/* <JoinSection /> */}
